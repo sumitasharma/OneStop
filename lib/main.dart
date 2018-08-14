@@ -17,14 +17,15 @@ class RandomWords extends StatefulWidget {
   @override
   RandomWordsState createState() => new RandomWordsState();
 
-  void _pushSaved() {
-  }
 }
 
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   final Set<WordPair> _saved = new Set<WordPair>();
   final _biggerFont = const TextStyle(fontSize: 18.0);
+
+  void _pushSaved() {
+  }
 
   Widget _buildSuggestions() {
     return ListView.builder(
