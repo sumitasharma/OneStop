@@ -7,19 +7,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Startup Name Generator',
-      home: RandomWords(),
+      title: 'News Today',
+      home: NewsMain(),
     );
   }
 }
 
-class RandomWords extends StatefulWidget {
+class NewsMain extends StatefulWidget {
   @override
-  RandomWordsState createState() => new RandomWordsState();
+  NewsMainState createState() => new NewsMainState();
 
 }
 
-class RandomWordsState extends State<RandomWords> {
+class NewsMainState extends State<NewsMain> {
   final _suggestions = <WordPair>[];
   final Set<WordPair> _saved = new Set<WordPair>();
   final _biggerFont = const TextStyle(fontSize: 18.0);
@@ -113,7 +113,7 @@ class RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Startup Name Generator First'),
+        title: Text('News Today'),
         actions: <Widget>[ // Add 3 lines from here...
           new IconButton(icon: const Icon(Icons.list), onPressed: _pushSaved),
         ], // ... to here.
