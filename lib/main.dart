@@ -41,7 +41,11 @@ void main() {
         appBar: AppBar(
           title: Text("News "),
         ),
-        body: newsRectangle(),
+          body: Padding(
+            padding: const EdgeInsets.all(25.0),
+            child:
+            newsRectangle(),
+      )
       )
       ,)
     ,);
