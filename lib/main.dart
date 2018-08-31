@@ -1,52 +1,57 @@
 import 'package:flutter/material.dart';
 
-class newsRectangle extends StatelessWidget {
+void main() {
+  runApp(new MaterialApp(
+      home: MyStatelessWidget()
+  ));
+}
+
+class MyStatelessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.transparent,
-        child: Container(
-            child: Center(
-                child: InkWell(
-                    highlightColor: Color(50),
-                    splashColor: Color(100),
-                    onTap: () {
-                      print("Tapped");
-                    },
-                    child: Container(
-                      color: Colors.greenAccent,
-                      height: 400.0,
-                      width: 500.0,
-                      child: Center(
-                        child: Text(
-                          'Daily News',
-                          style: TextStyle(fontSize: 40.0),
-                        ),
-                      )
-                      ,)
-                )
-            )
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("My AppBar")),
+      body: new Container(
+          padding: EdgeInsets.all(8.0),
+          child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              new MyCardView(
+                  text: new Text("hello", style: new TextStyle(
+                      fontSize: 25.0, fontStyle: FontStyle.italic)),
+                  icon: new Icon(
+                      Icons.face, size: 40.0, color: Colors.limeAccent)
+              ),
+              new MyCardView(
+                  text: new Text("Bye", style: new TextStyle(
+                      fontSize: 25.0, fontStyle: FontStyle.italic)),
+                  icon: new Icon(Icons.accessibility_new, size: 40.0,
+                      color: Colors.lightGreen)
+              )
+            ],
+          )
+      ),
+    );
+  }
+}
+
+class MyCardView extends StatelessWidget {
+  MyCardView({this.text, this.icon});
+
+  final Widget text;
+  final Widget icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+        child: new Card(
+          child: new Column(
+            children: <Widget>[
+              text,
+              icon
+            ],
+          ),
         )
     );
   }
-
-
-}
-
-void main() {
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("News "),
-        ),
-          body: Padding(
-            padding: const EdgeInsets.all(25.0),
-            child:
-            newsRectangle(),
-      )
-      )
-      ,)
-    ,);
 }
