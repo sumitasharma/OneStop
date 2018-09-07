@@ -1,35 +1,61 @@
+import 'dart:async';
+import 'dart:convert' show json;
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(new MaterialApp(
+    home: new HomePage(),
+  ));
+}
 
-class MyApp extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  HomePageState createState() => new HomePageState();
+}
+
+class HomePageState extends State<HomePage> {
+
+  List data;
+
+  Future<String> getData() async {
+    var response = await http.get(
+        "https://newsapi.org/v2/top-headlines?country=us");
+    print("hello");
+
+    print(response.body);
+    this.setState(() {
+      Map decoded = json.decode(response.body);
+
+      String name = decoded['status'];
+      print(name);
+      data = decoded['articles'];
+    });
+    return "Success!";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.getData();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final title = 'Global News';
-
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-        ),
-        body: ListView(
-          children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.map),
-              title: Text('Map'),
-            ),
-            ListTile(
-              leading: Icon(Icons.photo_album),
-              title: Text('Album'),
-            ),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('Phone'),
-            ),
-          ],
-        ),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Listviews"),
+      ),
+      body: new ListView.builder(
+        itemCount: data == null ? 0 : data.length,
+        itemBuilder: (BuildContext context, int index) {
+          return new Card(
+            child: new Text(data[index]["title"]),
+          );
+        },
       ),
     );
   }
 }
+
