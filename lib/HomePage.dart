@@ -19,7 +19,6 @@ class HomePageState extends State<HomePage> {
 
   List data;
 
-
   Future<String> getData() async {
     var response = await http.get(widget.url);
     print("hello");
@@ -58,37 +57,39 @@ class HomePageState extends State<HomePage> {
                           MaterialPageRoute(builder: (context) =>
                               DetailNews(data[index]["url"])),
                         ),
-                    child: new Row(
+                    child: new Wrap(
+                        spacing: 8.0,
+                        // gap between adjacent chips
+                        runSpacing: 4.0,
+                        // gap between lines
+                        direction: Axis.horizontal,
+                        // main axis (rows or columns)
+
                         children: <Widget>[
+
+                          data[index]["source"]["name"] == null
+                              ? new Text("")
+                              : new Text(data[index]["source"]["name"],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+
                           data[index]["urlToImage"] == null
                               ? new Image.network(
                               " https://static01.nyt.com/images/2018/09/08/business/08dc-trade/08dc-trade-facebookJumbo.jpg")
                               : new Image.network(
-                            data[index]["urlToImage"], height: 100.0,
-                            width: 100.0,),
+                            data[index]["urlToImage"],),
                           new Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
-
-                              data[index]["source"]["name"] == null
-                                  ? new Text("")
-                                  : new Text(data[index]["source"]["name"],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                                maxLines: 2,),
 
                               data[index]["title"] == null
                                   ? new Text("Missing Title")
                                   : new Text(data[index]["title"],
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 7),
+                                textAlign: TextAlign.center,),
 
                               data[index]["description"] == null
                                   ? new Text("")
                                   : new Text(data[index]["description"],
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 7),
+                                textAlign: TextAlign.center,),
                             ],
                           )
                         ]
