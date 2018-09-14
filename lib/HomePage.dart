@@ -49,6 +49,7 @@ class HomePageState extends State<HomePage> {
           itemCount: data == null ? 0 : data.length,
           itemBuilder: (BuildContext context, int index) {
             return new Card(
+                margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16.0),
                 elevation: 4.0,
                 child: new InkWell(
                     onTap: () =>
@@ -57,44 +58,66 @@ class HomePageState extends State<HomePage> {
                           MaterialPageRoute(builder: (context) =>
                               DetailNews(data[index]["url"])),
                         ),
-                    child: new Wrap(
-                        spacing: 8.0,
-                        // gap between adjacent chips
-                        runSpacing: 4.0,
-                        // gap between lines
-                        direction: Axis.horizontal,
-                        // main axis (rows or columns)
+                    child: new Container(
+                        padding: new EdgeInsets.only(
+                            left: 16.0, right: 16.0, bottom: 8.0),
 
-                        children: <Widget>[
+                        child: new Wrap(
+                          spacing: 8.0,
+                          // gap between adjacent chips
+                          runSpacing: 4.0,
+                          // gap between lines
+                          direction: Axis.horizontal,
+                          // main axis (rows or columns)
 
-                          data[index]["source"]["name"] == null
-                              ? new Text("")
-                              : new Text(data[index]["source"]["name"],
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          children: <Widget>[
+                            new Container(
+                                height: 16.0),
 
-                          data[index]["urlToImage"] == null
-                              ? new Image.network(
-                              " https://static01.nyt.com/images/2018/09/08/business/08dc-trade/08dc-trade-facebookJumbo.jpg")
-                              : new Image.network(
-                            data[index]["urlToImage"],),
-                          new Column(
-                            children: <Widget>[
+                            data[index]["source"]["name"] == null
+                                ? new Text("")
+                                : new Container(
+                                height: 20.0,
+                                child: new Text(data[index]["source"]["name"],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic),
+                                    textAlign: TextAlign.center)),
 
-                              data[index]["title"] == null
-                                  ? new Text("Missing Title")
-                                  : new Text(data[index]["title"],
-                                textAlign: TextAlign.center,),
+                            data[index]["urlToImage"] == null
+                                ? new Image.network(
+                                " https://static01.nyt.com/images/2018/09/08/business/08dc-trade/08dc-trade-facebookJumbo.jpg")
+                                : new Image.network(
+                                data[index]["urlToImage"], fit: BoxFit.cover),
+                            new Container(
+                              height: 20.0,
+                            ),
 
-                              data[index]["description"] == null
-                                  ? new Text("")
-                                  : new Text(data[index]["description"],
-                                textAlign: TextAlign.center,),
-                            ],
-                          )
-                        ]
+                            data[index]["title"] == null
+                                ? new Text("Missing Title")
+                                : new Container(
+                                height: 40.0,
+                                child: new Text(data[index]["title"],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic),
+                                    textAlign: TextAlign.center)),
+
+                            data[index]["description"] == null
+                                ? new Text("")
+                                : new Container(
+                                height: 100.0,
+                                child: new Text(data[index]["description"],
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic))),
+
+                          ],
+
+                        )
                     )
-                ));
+                )
+
+            );
           },
         )
         )
