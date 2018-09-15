@@ -13,6 +13,7 @@ dependencies:
   english_words: ^3.1.0
   url_launcher: ^3.0.0
   connectivity: ^0.3.0
+  flutter_webview_plugin: ^ 0.2.1+2
 
 dev_dependencies:
   flutter_test:

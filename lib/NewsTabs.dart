@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news_app/HomePage.dart';
 
 
+
 class NewsTabs extends StatelessWidget {
   final _apiKey = "";
+
 
 
   @override
@@ -13,6 +15,8 @@ class NewsTabs extends StatelessWidget {
         length: 9,
         child: Scaffold(
           appBar: AppBar(
+            actions: <Widget>[
+            ],
             bottom: new TabBar(isScrollable: true,
               tabs: <Widget>[
                 new Tab(text: "World"),
@@ -34,28 +38,28 @@ class NewsTabs extends StatelessWidget {
                 url: "https://newsapi.org/v2/top-headlines?language=en&apiKey=" +
                     _apiKey,),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?country=us&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?country=us&language=en&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?country=in&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?country=in&language=en&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?category=business&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?category=technology&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?category=technology&country=us&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?category=entertainment&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?category=entertainment&country=us&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?category=sports&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?category=sports&country=us&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?category=science&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?category=science&country=us&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?category=health&source=google&apiKey=" +
+                  url: "https://newsapi.org/v2/top-headlines?category=health&country=us&apiKey=" +
                       _apiKey),
             ],
           ),
