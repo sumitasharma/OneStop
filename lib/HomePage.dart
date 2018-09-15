@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert' show json;
+
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/DetailNews.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:http/http.dart' as http;
 
 
 class HomePage extends StatefulWidget {
@@ -27,8 +27,10 @@ class HomePageState extends State<HomePage> {
     try {
       var response = await http.get(widget.url);
       this.setState(() {
+        print(widget.url);
         Map decoded = json.decode(response.body);
         data = decoded['articles'];
+        print(data[0]["url"]);
       });
       return "Success!";
     }
