@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/HomePage.dart';
 
+
 class NewsTabs extends StatelessWidget {
   final _apiKey = "";
+
 
   @override
   Widget build(BuildContext context) {
