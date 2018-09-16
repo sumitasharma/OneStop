@@ -98,22 +98,9 @@ class HomePageState extends State<HomePage> {
                                 new Container(
                                     height: 16.0),
 
-
-                                data[index]["source"]["name"] == null
-                                    ? new Text("")
-                                    : new Container(
-                                    height: 20.0,
-                                    child: new Text(
-                                        data[index]["source"]["name"],
-                                        style
-                                            : TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.italic),
-                                        textAlign: TextAlign.center)),
-
                                 data[index]["urlToImage"] == null
-                                    ? new Image.network(
-                                    " https://static01.nyt.com/images/2018/09/08/business/08dc-trade/08dc-trade-facebookJumbo.jpg")
+                                    ? new Image(
+                                    image: new AssetImage('assets/news.jpg'))
                                     : new Image.network(
                                     data[index]["urlToImage"],
                                     fit: BoxFit.cover),
@@ -124,14 +111,14 @@ class HomePageState extends State<HomePage> {
                                 data[index]["title"] == null
                                     ? new Text("Missing Title")
                                     : new Container(
-                                    height: 60.0,
+                                    height: 80.0,
                                     child: new Text(data[index]["title"],
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.italic,
+                                            fontStyle: FontStyle.normal,
                                             fontSize: 16.0
                                         ),
-                                        textAlign: TextAlign.center)),
+                                        textAlign: TextAlign.left)),
 
                                 data[index]["description"] == null
                                     ? new Text("")
@@ -139,8 +126,21 @@ class HomePageState extends State<HomePage> {
                                     height: 100.0,
                                     child: new Text(data[index]["description"],
                                         style: TextStyle(
-                                            fontStyle: FontStyle.italic))
+                                            fontStyle: FontStyle.normal))
                                 ),
+                                data[index]["source"]["name"] == null
+                                    ? new Text("")
+                                    : new Container(
+                                    height: 20.0,
+                                    child: new Text(
+                                        data[index]["source"]["name"],
+                                        style
+                                            : TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle: FontStyle.italic,
+                                          color: Colors.lightGreen,
+                                        ),
+                                        textAlign: TextAlign.center)),
 
                               ],
 
