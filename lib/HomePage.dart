@@ -148,40 +148,40 @@ class HomePageState extends State<HomePage> {
 
                           ),
                         ),
-                        new Container(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceEvenly,
-                                children: [
-                                  new Icon(Icons.share),
-                                  new InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        if (_saved.containsKey(index)) {
-                                          _saved.remove(index);
-
-                                          print(data[index]["url" +
-                                              "was  there"]);
-                                        } else {
-                                          _saved[index] =
-                                          data[index]; //  _alreadySaved[index] = true;
-                                          print(data[index]["url"] +
-                                              ' new added');
-                                        }
-                                      });
-                                    },
-                                    child: new Icon(
-                                      _saved.containsKey(index)
-                                          ? Icons.favorite
-                                          : Icons
-                                          .favorite_border,
-                                      color: _saved.containsKey(index) ? Colors
-                                          .red : null,),
-
-                                  )
-                                ]
-                            )
-                        )
+//                        new Container(
+//                            child: Row(
+//                                mainAxisAlignment: MainAxisAlignment
+//                                    .spaceEvenly,
+//                                children: [
+//                                  new Icon(Icons.share),
+//                                  new InkWell(
+//                                    onTap: () {
+//                                      setState(() {
+//                                        if (_saved.containsKey(index)) {
+//                                          _saved.remove(index);
+//
+//                                          print(data[index]["url" +
+//                                              "was  there"]);
+//                                        } else {
+//                                          _saved[index] =
+//                                          data[index]; //  _alreadySaved[index] = true;
+//                                          print(data[index]["url"] +
+//                                              ' new added');
+//                                        }
+//                                      });
+//                                    },
+//                                    child: new Icon(
+//                                      _saved.containsKey(index)
+//                                          ? Icons.favorite
+//                                          : Icons
+//                                          .favorite_border,
+//                                      color: _saved.containsKey(index) ? Colors
+//                                          .red : null,),
+//
+//                                  )
+//                                ]
+//                            )
+//                        )
                       ]
                   )
 

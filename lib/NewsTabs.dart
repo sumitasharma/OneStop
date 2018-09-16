@@ -4,15 +4,17 @@ import 'package:flutter_news_app/HomePage.dart';
 
 class NewsTabs extends StatefulWidget {
   @override
-  HomePageState createState() => new HomePageState();
+  NewsPageState createState() => new NewsPageState();
 }
 
-class HomePageState extends State<NewsTabs> {
+class NewsPageState extends State<NewsTabs> {
 
   String _apiKey = "";
   String _country = "us";
   String _countryName = "USA";
   String _urlString = "https://newsapi.org/v2/top-headlines?";
+  int _currentIndex = 0;
+
 
   @override
   void initState() {
@@ -23,7 +25,6 @@ class HomePageState extends State<NewsTabs> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 8,
         child: Scaffold(
@@ -32,7 +33,7 @@ class HomePageState extends State<NewsTabs> {
               // overflow menu
               PopupMenuButton<Choice>(
                   itemBuilder: (BuildContext context) {
-                    return choices.map((Choice choice) {
+                    return choices.skip(1).map((Choice choice) {
                       return PopupMenuItem<Choice>(
                         value: choice,
                         child: Text(choice.title),
@@ -96,8 +97,31 @@ class HomePageState extends State<NewsTabs> {
                       _apiKey),
             ],
           ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (newIndex) =>
+                setState(() {
+                  _currentIndex = newIndex;
+                  bottomNavigation(_currentIndex, context);
+                }),
+            items: [
+              BottomNavigationBarItem(
+                icon: new Icon(Icons.home),
+                title: new Text('Home'),
+              ),
+              BottomNavigationBarItem(
+                icon: new Icon(Icons.search),
+                title: new Text('Search'),
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite),
+                  title: Text('Favorite')
+              )
+            ],
+          ),
         ),
-      ),
+      ), debugShowCheckedModeBanner: false,
+
     );
   }
 }
@@ -124,7 +148,7 @@ String country(String country) {
       _countryCode = "nl";
       break;
     case 'New Zealand':
-      _countryCode = "nz";
+      _countryCode = "it";
       break;
     case 'United Kingdom':
       _countryCode = "gb";
@@ -137,6 +161,26 @@ String country(String country) {
       break;
   }
   return _countryCode;
+}
+
+void bottomNavigation(indexOption, context) {
+  int index = indexOption;
+//  switch(index) {
+//    case 0:
+//      Navigator.push(context,
+//        MaterialPageRoute(builder: (context) => SecondScreen());
+//      break;
+//  case 0:
+//  Navigator.push(context,
+//  MaterialPageRoute(builder: (context) => SecondScreen());
+//  break;
+//  case 0:
+//  Navigator.push(context,
+//  MaterialPageRoute(builder: (context) => SecondScreen());
+//  break;
+//          }
+
+
 }
 
 class Choice {
@@ -152,7 +196,7 @@ const List<Choice> choices = const <Choice>[
   const Choice(title: 'Australia'),
   const Choice(title: 'Ireland'),
   const Choice(title: 'Netherland'),
-  const Choice(title: 'New Zealand'),
+  const Choice(title: 'Italy'),
   const Choice(title: 'United Kingdom'),
   const Choice(title: 'Japan'),
   const Choice(title: 'Israel')
