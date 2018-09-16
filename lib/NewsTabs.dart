@@ -2,38 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news_app/HomePage.dart';
 
 
+class NewsTabs extends StatefulWidget {
+  @override
+  HomePageState createState() => new HomePageState();
+}
 
-class NewsTabs extends StatelessWidget {
-  final _apiKey = "";
+class HomePageState extends State<NewsTabs> {
+
+  String _apiKey = "";
+  String _country = "us";
+  String _countryName = "USA";
+  String _urlString = "https://newsapi.org/v2/top-headlines?";
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    String _country = 'us';
-    String _urlString = "https://newsapi.org/v2/top-headlines?";
+
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        length: 9,
+        length: 8,
         child: Scaffold(
           appBar: AppBar(
             actions: <Widget>[
               // overflow menu
               PopupMenuButton<Choice>(
-                  onSelected: null,
                   itemBuilder: (BuildContext context) {
-                    return choices.skip(2).map((Choice choice) {
+                    return choices.map((Choice choice) {
                       return PopupMenuItem<Choice>(
                         value: choice,
                         child: Text(choice.title),
                       );
-                    }).toList();
+                    }
+                    ).toList();
+                  },
+                  onSelected: (Choice result) {
+                    setState(() {
+                      _countryName = result.title;
+                      _country = country(result.title);
+                    });
                   }
               )
             ],
             bottom: new TabBar(isScrollable: true,
               tabs: <Widget>[
                 new Tab(text: "World"),
-                new Tab(text: "USA"),
-                new Tab(text: "India"),
+                new Tab(text: _countryName + "'s Top News"),
                 new Tab(text: "Buisness"),
                 new Tab(text: "Technology"),
                 new Tab(text: "Entertainment"),
@@ -50,20 +68,15 @@ class NewsTabs extends StatelessWidget {
                 url: _urlString + "language=en&apiKey=" +
                     _apiKey,),
               new HomePage(
-                  url: _urlString + "country=" + _country +
-                      "&language=en&apiKey=" +
-                      _apiKey),
-              new HomePage(
-                  url: _urlString + "country=" + _country +
-                      "&language=en&apiKey=" +
+                  url: _urlString + "country=" + _country + "&apiKey=" +
                       _apiKey),
               new HomePage(
                   url: _urlString + "country=" + _country +
                       "&category=business&apiKey=" +
                       _apiKey),
               new HomePage(
-                  url: "https://newsapi.org/v2/top-headlines?category=technology&country=" +
-                      _country + "&apiKey=" +
+                  url: _urlString + "country=" + _country +
+                      "&category=technology&apiKey=" +
                       _apiKey),
               new HomePage(
                   url: _urlString + "category=entertainment&country=" +
@@ -87,6 +100,43 @@ class NewsTabs extends StatelessWidget {
       ),
     );
   }
+}
+
+String country(String country) {
+  String _countryCode;
+  switch (country) {
+    case 'India':
+      _countryCode = "in";
+      break;
+    case 'USA':
+      _countryCode = "us";
+      break;
+    case 'China':
+      _countryCode = "cn";
+      break;
+    case 'Australia':
+      _countryCode = "au";
+      break;
+    case 'Ireland':
+      _countryCode = "ie";
+      break;
+    case 'Netherland':
+      _countryCode = "nl";
+      break;
+    case 'New Zealand':
+      _countryCode = "nz";
+      break;
+    case 'United Kingdom':
+      _countryCode = "gb";
+      break;
+    case 'Japan':
+      _countryCode = "jp";
+      break;
+    case 'Israel':
+      _countryCode = "il";
+      break;
+  }
+  return _countryCode;
 }
 
 class Choice {
