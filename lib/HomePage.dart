@@ -7,6 +7,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
 
+
 class HomePage extends StatefulWidget {
 
   final String url;
@@ -20,8 +21,8 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
 
   List data;
-  final Map<int, List> _saved = new Map();
-
+  int _currentIndex = 0;
+  Map<int, List> _saved = new Map();
 
   Future<String> getData() async {
     try {
@@ -59,7 +60,6 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return new Scaffold(
         body: new Container(child: new ListView.builder(
             padding: EdgeInsets.all(8.0),
@@ -99,11 +99,39 @@ class HomePageState extends State<HomePage> {
                                     height: 16.0),
 
                                 data[index]["urlToImage"] == null
-                                    ? new Image(
-                                    image: new AssetImage('assets/news.jpg'))
-                                    : new Image.network(
-                                    data[index]["urlToImage"],
-                                    fit: BoxFit.cover),
+                                    ? new Container(
+                                    height: 250.0,
+                                    decoration: new BoxDecoration(
+                                      image: new DecorationImage(
+                                          image: new AssetImage(
+                                              'assets/news.jpg'),
+                                          fit: BoxFit.fitWidth),
+                                      borderRadius: new BorderRadius.all(
+                                          new Radius.circular(16.0)),
+                                      border: new Border.all(
+                                        color: Colors.pinkAccent,
+                                        width: 2.0,
+                                      ),
+                                    ))
+
+                                    : new Container(
+//                                    height: 250.0,
+                                  decoration: new BoxDecoration(
+                                    image: new DecorationImage(
+                                      image: new NetworkImage(
+                                          data[index]["urlToImage"]),
+                                      fit: BoxFit.fill,
+                                    ),
+                                    borderRadius: new BorderRadius.all(
+                                        new Radius.circular(16.0)),
+                                  ),
+                                  constraints: BoxConstraints(
+                                      maxHeight: 250.0,
+                                      minHeight: 100.0,
+                                      minWidth: 300.0
+                                  ),
+                                ),
+
                                 new Container(
                                   height: 20.0,
                                 ),
@@ -148,10 +176,15 @@ class HomePageState extends State<HomePage> {
 
                           ),
                         ),
+                        new Container(
+                          height: 16.0,
+                        ),
+
 //                        new Container(
 //                            child: Row(
 //                                mainAxisAlignment: MainAxisAlignment
 //                                    .spaceEvenly,
+//
 //                                children: [
 //                                  new Icon(Icons.share),
 //                                  new InkWell(
@@ -159,14 +192,10 @@ class HomePageState extends State<HomePage> {
 //                                      setState(() {
 //                                        if (_saved.containsKey(index)) {
 //                                          _saved.remove(index);
-//
 //                                          print(data[index]["url" +
 //                                              "was  there"]);
 //                                        } else {
-//                                          _saved[index] =
-//                                          data[index]; //  _alreadySaved[index] = true;
-//                                          print(data[index]["url"] +
-//                                              ' new added');
+//                                          _saved[index] = data[index][""]; //  _alreadySaved[index] = true;
 //                                        }
 //                                      });
 //                                    },
@@ -181,16 +210,56 @@ class HomePageState extends State<HomePage> {
 //                                  )
 //                                ]
 //                            )
-//                        )
+//                        ),
+                        new Container(
+                          height: 16.0,
+                        )
                       ]
                   )
 
               );
             }
-        )
-        )
+        )),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (newIndex) =>
+            setState(() {
+              _currentIndex = newIndex;
+              //  _navigatePage(_currentIndex, context,_saved);
+            }),
+        items: [
+          BottomNavigationBarItem(
+              icon: new Icon(Icons.home),
+              title: new Text('News'),
+              backgroundColor: Colors.blue
+          ),
+          BottomNavigationBarItem(
+              icon: new Icon(Icons.search),
+              title: new Text('Search'),
+              backgroundColor: Colors.blue
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.event),
+              title: Text('Events'),
+              backgroundColor: Colors.blue
+
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.headset),
+              title: Text('Podcast'),
+              backgroundColor: Colors.blue
+
+          ),
+        ],
+      ),
+
     );
   }
-
-
+//  void _navigatePage(context,index,saved){
+//    switch(index){
+//      case 0: new FavoritePage(saveFavorite: saved);
+//      break;
+//    }
+//  }
 }
