@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/DetailNews.dart';
-import 'package:flutter_news_app/NewsTabs.dart';
+import 'package:flutter_news_app/EventsTabs.dart';
 
 
 void main() {
@@ -12,7 +12,7 @@ void main() {
     initialRoute: '/',
     routes: {
       // When we navigate to the "/" route, build the HomePage Widget
-      '/': (context) => NewsTabs(),
+      '/': (context) => EventsTabs(),
       // When we navigate to the "/second" route, build the DetailNews Widget
       '/second': (context) => DetailNews(),
     },

@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/HomePage.dart';
-
-import 'HomePage.dart';
+import 'package:flutter_news_app/EventsPage.dart';
 
 
-class NewsTabs extends StatefulWidget {
+class EventsTabs extends StatefulWidget {
   @override
-  NewsPageState createState() => new NewsPageState();
+  EventsPageState createState() => new EventsPageState();
 }
 
-class NewsPageState extends State<NewsTabs> {
+class EventsPageState extends State<EventsTabs> {
 
-  String _apiKey = "";
-  String _country = "us";
-  String _countryName = "USA";
-  String _urlStringTopHeadlines = "https://newsapi.org/v2/top-headlines?";
+  String _tokenKey = "";
+  String _locationAddress = "Mountain+View+CA";
+  String _urlStringEvents = "https://www.eventbriteapi.com/v3/events/search/?";
 
 
   @override
@@ -27,7 +24,7 @@ class NewsPageState extends State<NewsTabs> {
     return MaterialApp(
         debugShowMaterialGrid: false,
         home: DefaultTabController(
-          length: 8,
+          length: 11,
           child: Scaffold(
             appBar: AppBar(
               actions: <Widget>[
@@ -44,63 +41,67 @@ class NewsPageState extends State<NewsTabs> {
                     },
                     onSelected: (Choice result) {
                       setState(() {
-                        _countryName = result.title;
-                        _country = country(result.title);
+                        _locationAddress = result.title;
+                        //  _country = country(result.title);
                       });
                     }
                 )
               ],
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
-                  new Tab(text: "World"),
-                  new Tab(text: _countryName + "'s Top News"),
-                  new Tab(text: "Buisness"),
-                  new Tab(text: "Technology"),
-                  new Tab(text: "Entertainment"),
-                  new Tab(text: "Sports"),
-                  new Tab(text: "Science",),
-                  new Tab(text: "Health",)
+
+                  new Tab(text: "Free Events"),
+                  new Tab(text: "Music"),
+                  new Tab(text: "Family&Education"),
+                  new Tab(text: "Business&Professional"),
+                  new Tab(text: "Science&Technology"),
+                  new Tab(text: "Sports&Fitness"),
+                  new Tab(text: "Health&Wellness",),
+                  new Tab(text: "Travel&Outdoor",),
+                  new Tab(text: "Film,Media&Entertainment",),
+                  new Tab(text: "Charity&Causes",),
+                  new Tab(text: "School Activities",)
                 ],
               ),
-              title: Text("Today's News"),
+              title: Text(_locationAddress + "'s Events"),
             ),
             body: TabBarView(
               children: [
                 new HomePage(
-                  url: _urlStringTopHeadlines + "language=en&apiKey=" +
-                      _apiKey,),
+                  url: _urlStringEvents + "q=free+events&location.address=" +
+                      _locationAddress + "&token=" +
+                      _tokenKey,),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "country=" + _country +
-                        "&apiKey=" +
-                        _apiKey),
+                    url: _urlStringEvents + "q=music&token=" +
+                        _tokenKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "country=" + _country +
-                        "&category=business&apiKey=" +
-                        _apiKey),
+                    url: _urlStringEvents + "q=family+education&token=" +
+                        _tokenKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "country=" + _country +
-                        "&category=technology&apiKey=" +
-                        _apiKey),
+                    url: _urlStringEvents + "q=business+professional&token=" +
+                        _tokenKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines +
-                        "category=entertainment&country=" +
-                        _country + "&apiKey=" +
-                        _apiKey),
+                    url: _urlStringEvents + "q=science+technology&token=" +
+                        _tokenKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "category=sports&country=" +
-                        _country +
-                        "&apiKey=" +
-                        _apiKey),
+                    url: _urlStringEvents + "q=sports+fitness&token=" +
+                        _tokenKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "category=science&country=" +
-                        _country +
-                        "&apiKey=" +
-                        _apiKey),
+                    url: _urlStringEvents + "q=health+wellness&token&token=" +
+                        _tokenKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "category=health&country=" +
-                        _country +
-                        "&apiKey=" +
-                        _apiKey),
+                    url: _urlStringEvents + "q=travel+outdoor&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents +
+                        "q=film+media+entertainment&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents + "q=charity+causes7token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents + "q=school+activities&token=" +
+                        _tokenKey)
               ],
             ),
 

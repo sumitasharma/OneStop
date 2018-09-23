@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/HomePage.dart';
+import 'package:flutter_news_app/NewsPage.dart';
 
-import 'HomePage.dart';
 
 
 class NewsTabs extends StatefulWidget {
