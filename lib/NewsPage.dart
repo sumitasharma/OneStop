@@ -229,15 +229,9 @@ class HomePageState extends State<HomePage> {
             }),
         items: [
           BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text('News'),
-              backgroundColor: Colors.blue
-          ),
-          BottomNavigationBarItem(
               icon: new Icon(Icons.search),
               title: new Text('Search'),
               backgroundColor: Colors.blue
-
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.event),

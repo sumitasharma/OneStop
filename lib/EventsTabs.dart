@@ -10,6 +10,7 @@ class EventsTabs extends StatefulWidget {
 class EventsPageState extends State<EventsTabs> {
 
   String _tokenKey = "";
+  String _location = " Mountain View, CA";
   String _locationAddress = "Mountain+View+CA";
   String _urlStringEvents = "https://www.eventbriteapi.com/v3/events/search/?";
 
@@ -63,7 +64,7 @@ class EventsPageState extends State<EventsTabs> {
                   new Tab(text: "School Activities",)
                 ],
               ),
-              title: Text(_locationAddress + "'s Events"),
+              title: Text(_location + "'s Events"),
             ),
             body: TabBarView(
               children: [

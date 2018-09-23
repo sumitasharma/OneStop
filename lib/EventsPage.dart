@@ -7,6 +7,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
 
+
 class HomePage extends StatefulWidget {
 
   final String url;
@@ -29,8 +30,8 @@ class HomePageState extends State<HomePage> {
       this.setState(() {
         print(widget.url);
         Map decoded = json.decode(response.body);
-        data = decoded['articles'];
-        print(data[0]["url"]);
+        data = decoded['events'];
+        //  print(data[0]["url"]);
       });
       return "Success!";
     }
@@ -80,9 +81,9 @@ class HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(builder: (context) =>
                                   new WebviewScaffold(url:
-                                  (data[index]["url"]),
+                                  (data[index]['url']),
                                     appBar: new AppBar(title: new Text(
-                                        data[index]["title"])),
+                                        data[index]['name']["text"])),
                                   ))
                               ),
                           child: new Wrap(
@@ -97,77 +98,79 @@ class HomePageState extends State<HomePage> {
                               new Container(
                                   height: 16.0),
 
-                              data[index]["urlToImage"] == null
-                                  ? new Container(
-                                  height: 250.0,
-                                  decoration: new BoxDecoration(
-                                    image: new DecorationImage(
-                                        image: new AssetImage(
-                                            'assets/news.jpg'),
-                                        fit: BoxFit.fitWidth),
-                                    borderRadius: new BorderRadius.all(
-                                        new Radius.circular(16.0)),
-                                    border: new Border.all(
-                                      color: Colors.pinkAccent,
-                                      width: 2.0,
-                                    ),
-                                  ))
+                              new Text(data[index]["name"]["text"])
 
-                                  : new Container(
-//                                    height: 250.0,
-                                decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                    image: new NetworkImage(
-                                        data[index]["urlToImage"]),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  borderRadius: new BorderRadius.all(
-                                      new Radius.circular(16.0)),
-                                ),
-                                constraints: BoxConstraints(
-                                    maxHeight: 250.0,
-                                    minHeight: 100.0,
-                                    minWidth: 300.0
-                                ),
-                              ),
-
-                              new Container(
-                                height: 20.0,
-                              ),
-
-                              data[index]["title"] == null
-                                  ? new Text("Missing Title")
-                                  : new Container(
-                                  height: 80.0,
-                                  child: new Text(data[index]["title"],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16.0
-                                      ),
-                                      textAlign: TextAlign.left)),
-
-                              data[index]["description"] == null
-                                  ? new Text("")
-                                  : new Container(
-                                  height: 100.0,
-                                  child: new Text(data[index]["description"],
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.normal))
-                              ),
-                              data[index]["source"]["name"] == null
-                                  ? new Text("")
-                                  : new Container(
-                                  height: 20.0,
-                                  child: new Text(
-                                      data[index]["source"]["name"],
-                                      style
-                                          : TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic,
-                                        color: Colors.lightGreen,
-                                      ),
-                                      textAlign: TextAlign.center)),
+//                              data[index]["original"]["url"] == null
+//                                  ? new Container(
+//                                  height: 250.0,
+//                                  decoration: new BoxDecoration(
+//                                    image: new DecorationImage(
+//                                        image: new AssetImage(
+//                                            'assets/news.jpg'),
+//                                        fit: BoxFit.fitWidth),
+//                                    borderRadius: new BorderRadius.all(
+//                                        new Radius.circular(16.0)),
+//                                    border: new Border.all(
+//                                      color: Colors.pinkAccent,
+//                                      width: 2.0,
+//                                    ),
+//                                  ))
+//
+//                                  : new Container(
+////                                    height: 250.0,
+//                                decoration: new BoxDecoration(
+//                                  image: new DecorationImage(
+//                                    image: new NetworkImage(
+//                                        data[index]["original"]["url"]),
+//                                    fit: BoxFit.fill,
+//                                  ),
+//                                  borderRadius: new BorderRadius.all(
+//                                      new Radius.circular(16.0)),
+//                                ),
+//                                constraints: BoxConstraints(
+//                                    maxHeight: 250.0,
+//                                    minHeight: 100.0,
+//                                    minWidth: 300.0
+//                                ),
+//                              ),
+//
+//                              new Container(
+//                                height: 20.0,
+//                              ),
+//
+//                              data[index]["title"] == null
+//                                  ? new Text("Missing Title")
+//                                  : new Container(
+//                                  height: 80.0,
+//                                  child: new Text(data[index]["title"],
+//                                      style: TextStyle(
+//                                          fontWeight: FontWeight.bold,
+//                                          fontStyle: FontStyle.normal,
+//                                          fontSize: 16.0
+//                                      ),
+//                                      textAlign: TextAlign.left)),
+//
+//                              data[index]["description"] == null
+//                                  ? new Text("")
+//                                  : new Container(
+//                                  height: 100.0,
+//                                  child: new Text(data[index]["description"],
+//                                      style: TextStyle(
+//                                          fontStyle: FontStyle.normal))
+//                              ),
+//                              data[index]["source"]["name"] == null
+//                                  ? new Text("")
+//                                  : new Container(
+//                                  height: 20.0,
+//                                  child: new Text(
+//                                      data[index]["source"]["name"],
+//                                      style
+//                                          : TextStyle(
+//                                        fontWeight: FontWeight.bold,
+//                                        fontStyle: FontStyle.italic,
+//                                        color: Colors.lightGreen,
+//                                      ),
+//                                      textAlign: TextAlign.center)),
 
                             ],
 
@@ -228,21 +231,16 @@ class HomePageState extends State<HomePage> {
             }),
         items: [
           BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text('News'),
-              backgroundColor: Colors.blue
-          ),
-          BottomNavigationBarItem(
               icon: new Icon(Icons.search),
               title: new Text('Search'),
               backgroundColor: Colors.blue
 
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.event),
-              title: Text('Events'),
-              backgroundColor: Colors.blue
 
+          BottomNavigationBarItem(
+              icon: new Icon(Icons.book),
+              title: new Text('News'),
+              backgroundColor: Colors.blue
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.headset),
