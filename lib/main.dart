@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/DetailNews.dart';
 import 'package:flutter_news_app/EventsTabs.dart';
+
+import 'FirstPage.dart';
+import 'NewsTabs.dart';
 
 
 void main() {
@@ -9,12 +11,13 @@ void main() {
     theme: new ThemeData(primaryColor: Color.fromRGBO(58, 66, 86, 1.0)),
     // Start the app with the "/" named route. In our case, the app will start
     // on the FirstScreen Widget
+    home: new FirstPage(),
     initialRoute: '/',
     routes: {
-      // When we navigate to the "/" route, build the HomePage Widget
-      '/': (context) => EventsTabs(),
+
+      '/NewsTab': (context) => new NewsTabs(),
       // When we navigate to the "/second" route, build the DetailNews Widget
-      '/second': (context) => DetailNews(),
+      '/EventsTab': (context) => new EventsTabs(),
     },
   ));
 }

@@ -3,6 +3,7 @@ import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/EventsTabs.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
@@ -61,124 +62,124 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        body: new Container(child: new ListView.builder(
-            padding: EdgeInsets.all(8.0),
-            itemCount: data == null ? 0 : data.length,
-            itemBuilder: (BuildContext context, int index) {
-              return new Card(
-                  margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16.0),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)),
-                  elevation: 4.0,
-                  child: new Column(
-                      children: <Widget>[
-                        new Container(
-                          padding: new EdgeInsets.only(
-                              left: 16.0, right: 16.0, bottom: 8.0),
-                          child: new InkWell(
-                            onTap: () =>
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) =>
-                                    new WebviewScaffold(url:
-                                    (data[index]["url"]),
-                                      appBar: new AppBar(title: new Text(
-                                          data[index]["title"])),
-                                    ))
-                                ),
-                            child: new Wrap(
-                              spacing: 8.0,
-                              // gap between adjacent chips
-                              runSpacing: 4.0,
-                              // gap between lines
-                              direction: Axis.horizontal,
-                              // main axis (rows or columns)
+      body: new Container(child: new ListView.builder(
+          padding: EdgeInsets.all(8.0),
+          itemCount: data == null ? 0 : data.length,
+          itemBuilder: (BuildContext context, int index) {
+            return new Card(
+                margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16.0),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0)),
+                elevation: 4.0,
+                child: new Column(
+                    children: <Widget>[
+                      new Container(
+                        padding: new EdgeInsets.only(
+                            left: 16.0, right: 16.0, bottom: 8.0),
+                        child: new InkWell(
+                          onTap: () =>
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) =>
+                                  new WebviewScaffold(url:
+                                  (data[index]["url"]),
+                                    appBar: new AppBar(title: new Text(
+                                        data[index]["title"])),
+                                  ))
+                              ),
+                          child: new Wrap(
+                            spacing: 8.0,
+                            // gap between adjacent chips
+                            runSpacing: 4.0,
+                            // gap between lines
+                            direction: Axis.horizontal,
+                            // main axis (rows or columns)
 
-                              children: <Widget>[
-                                new Container(
-                                    height: 16.0),
+                            children: <Widget>[
+                              new Container(
+                                  height: 16.0),
 
-                                data[index]["urlToImage"] == null
-                                    ? new Container(
-                                    height: 250.0,
-                                    decoration: new BoxDecoration(
-                                      image: new DecorationImage(
-                                          image: new AssetImage(
-                                              'assets/news.jpg'),
-                                          fit: BoxFit.fitWidth),
-                                      borderRadius: new BorderRadius.all(
-                                          new Radius.circular(16.0)),
-                                      border: new Border.all(
-                                        color: Colors.pinkAccent,
-                                        width: 2.0,
-                                      ),
-                                    ))
-
-                                    : new Container(
-//                                    height: 250.0,
+                              data[index]["urlToImage"] == null
+                                  ? new Container(
+                                  height: 250.0,
                                   decoration: new BoxDecoration(
                                     image: new DecorationImage(
-                                      image: new NetworkImage(
-                                          data[index]["urlToImage"]),
-                                      fit: BoxFit.fill,
-                                    ),
+                                        image: new AssetImage(
+                                            'assets/news.jpg'),
+                                        fit: BoxFit.fitWidth),
                                     borderRadius: new BorderRadius.all(
                                         new Radius.circular(16.0)),
+                                    border: new Border.all(
+                                      color: Colors.pinkAccent,
+                                      width: 2.0,
+                                    ),
+                                  ))
+
+                                  : new Container(
+//                                    height: 250.0,
+                                decoration: new BoxDecoration(
+                                  image: new DecorationImage(
+                                    image: new NetworkImage(
+                                        data[index]["urlToImage"]),
+                                    fit: BoxFit.fill,
                                   ),
-                                  constraints: BoxConstraints(
-                                      maxHeight: 250.0,
-                                      minHeight: 100.0,
-                                      minWidth: 300.0
-                                  ),
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(16.0)),
                                 ),
-
-                                new Container(
-                                  height: 20.0,
+                                constraints: BoxConstraints(
+                                    maxHeight: 250.0,
+                                    minHeight: 100.0,
+                                    minWidth: 300.0
                                 ),
+                              ),
 
-                                data[index]["title"] == null
-                                    ? new Text("Missing Title")
-                                    : new Container(
-                                    height: 80.0,
-                                    child: new Text(data[index]["title"],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle: FontStyle.normal,
-                                            fontSize: 16.0
-                                        ),
-                                        textAlign: TextAlign.left)),
+                              new Container(
+                                height: 20.0,
+                              ),
 
-                                data[index]["description"] == null
-                                    ? new Text("")
-                                    : new Container(
-                                    height: 100.0,
-                                    child: new Text(data[index]["description"],
-                                        style: TextStyle(
-                                            fontStyle: FontStyle.normal))
-                                ),
-                                data[index]["source"]["name"] == null
-                                    ? new Text("")
-                                    : new Container(
-                                    height: 20.0,
-                                    child: new Text(
-                                        data[index]["source"]["name"],
-                                        style
-                                            : TextStyle(
+                              data[index]["title"] == null
+                                  ? new Text("Missing Title")
+                                  : new Container(
+                                  height: 80.0,
+                                  child: new Text(data[index]["title"],
+                                      style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.italic,
-                                          color: Colors.lightGreen,
-                                        ),
-                                        textAlign: TextAlign.center)),
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.0
+                                      ),
+                                      textAlign: TextAlign.left)),
 
-                              ],
+                              data[index]["description"] == null
+                                  ? new Text("")
+                                  : new Container(
+                                  height: 100.0,
+                                  child: new Text(data[index]["description"],
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.normal))
+                              ),
+                              data[index]["source"]["name"] == null
+                                  ? new Text("")
+                                  : new Container(
+                                  height: 20.0,
+                                  child: new Text(
+                                      data[index]["source"]["name"],
+                                      style
+                                          : TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.lightGreen,
+                                      ),
+                                      textAlign: TextAlign.center)),
 
-                            ),
+                            ],
 
                           ),
+
                         ),
-                        new Container(
-                          height: 16.0,
-                        ),
+                      ),
+                      new Container(
+                        height: 16.0,
+                      ),
 
 //                        new Container(
 //                            child: Row(
@@ -211,21 +212,32 @@ class HomePageState extends State<HomePage> {
 //                                ]
 //                            )
 //                        ),
-                        new Container(
-                          height: 16.0,
-                        )
-                      ]
-                  )
+                      new Container(
+                        height: 16.0,
+                      )
+                    ]
+                )
 
-              );
-            }
-        )),
+            );
+          }
+      )),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (newIndex) =>
             setState(() {
               _currentIndex = newIndex;
-              //  _navigatePage(_currentIndex, context,_saved);
+              switch (_currentIndex) {
+                case 0:
+                  null;
+                  break;
+                case 1:
+                  print("In the newstabs");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventsTabs()),
+                  );
+                  break;
+              }
             }),
         items: [
           BottomNavigationBarItem(
@@ -250,10 +262,8 @@ class HomePageState extends State<HomePage> {
 
     );
   }
-//  void _navigatePage(context,index,saved){
-//    switch(index){
-//      case 0: new FavoritePage(saveFavorite: saved);
-//      break;
-//    }
-//  }
+
+  void _navigatePage(context, index, saved) {
+
+  }
 }

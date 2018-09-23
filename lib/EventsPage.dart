@@ -3,6 +3,7 @@ import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/NewsTabs.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,7 +23,8 @@ class HomePageState extends State<HomePage> {
 
   List data;
   int _currentIndex = 0;
-  Map<int, List> _saved = new Map();
+
+  //Map<int, List> _saved = new Map();
 
   Future<String> getData() async {
     try {
@@ -83,7 +85,7 @@ class HomePageState extends State<HomePage> {
                                   new WebviewScaffold(url:
                                   (data[index]['url']),
                                     appBar: new AppBar(title: new Text(
-                                        data[index]['name']["text"])),
+                                        data[index]["name"]["text"])),
                                   ))
                               ),
                           child: new Wrap(
@@ -98,79 +100,80 @@ class HomePageState extends State<HomePage> {
                               new Container(
                                   height: 16.0),
 
-                              new Text(data[index]["name"]["text"])
+                              new Text(data[index]["name"]["text"]),
 
-//                              data[index]["original"]["url"] == null
-//                                  ? new Container(
-//                                  height: 250.0,
-//                                  decoration: new BoxDecoration(
-//                                    image: new DecorationImage(
-//                                        image: new AssetImage(
-//                                            'assets/news.jpg'),
-//                                        fit: BoxFit.fitWidth),
-//                                    borderRadius: new BorderRadius.all(
-//                                        new Radius.circular(16.0)),
-//                                    border: new Border.all(
-//                                      color: Colors.pinkAccent,
-//                                      width: 2.0,
-//                                    ),
-//                                  ))
-//
-//                                  : new Container(
-////                                    height: 250.0,
-//                                decoration: new BoxDecoration(
-//                                  image: new DecorationImage(
-//                                    image: new NetworkImage(
-//                                        data[index]["original"]["url"]),
-//                                    fit: BoxFit.fill,
-//                                  ),
-//                                  borderRadius: new BorderRadius.all(
-//                                      new Radius.circular(16.0)),
-//                                ),
-//                                constraints: BoxConstraints(
-//                                    maxHeight: 250.0,
-//                                    minHeight: 100.0,
-//                                    minWidth: 300.0
-//                                ),
-//                              ),
-//
-//                              new Container(
-//                                height: 20.0,
-//                              ),
-//
-//                              data[index]["title"] == null
-//                                  ? new Text("Missing Title")
-//                                  : new Container(
-//                                  height: 80.0,
-//                                  child: new Text(data[index]["title"],
-//                                      style: TextStyle(
-//                                          fontWeight: FontWeight.bold,
-//                                          fontStyle: FontStyle.normal,
-//                                          fontSize: 16.0
-//                                      ),
-//                                      textAlign: TextAlign.left)),
-//
-//                              data[index]["description"] == null
-//                                  ? new Text("")
-//                                  : new Container(
-//                                  height: 100.0,
-//                                  child: new Text(data[index]["description"],
-//                                      style: TextStyle(
-//                                          fontStyle: FontStyle.normal))
-//                              ),
-//                              data[index]["source"]["name"] == null
-//                                  ? new Text("")
-//                                  : new Container(
-//                                  height: 20.0,
-//                                  child: new Text(
-//                                      data[index]["source"]["name"],
-//                                      style
-//                                          : TextStyle(
-//                                        fontWeight: FontWeight.bold,
-//                                        fontStyle: FontStyle.italic,
-//                                        color: Colors.lightGreen,
-//                                      ),
-//                                      textAlign: TextAlign.center)),
+                              data[index]["logo"]["url"] == null
+                                  ? new Container(
+                                  height: 250.0,
+                                  decoration: new BoxDecoration(
+                                    image: new DecorationImage(
+                                        image: new AssetImage(
+                                            'assets/news.jpg'),
+                                        fit: BoxFit.fitWidth),
+                                    borderRadius: new BorderRadius.all(
+                                        new Radius.circular(16.0)),
+                                    border: new Border.all(
+                                      color: Colors.pinkAccent,
+                                      width: 2.0,
+                                    ),
+                                  ))
+
+                                  : new Container(
+//                                    height: 250.0,
+                                decoration: new BoxDecoration(
+                                  image: new DecorationImage(
+                                    image: new NetworkImage(
+                                        data[index]["logo"]["url"]),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(16.0)),
+                                ),
+                                constraints: BoxConstraints(
+                                    maxHeight: 250.0,
+                                    minHeight: 100.0,
+                                    minWidth: 300.0
+                                ),
+                              ),
+
+                              new Container(
+                                height: 20.0,
+                              ),
+
+                              data[index]["description"]["text"] == null
+                                  ? new Text("Missing Description")
+                                  : new Container(
+                                  height: 80.0,
+                                  child: new Text(
+                                      data[index]["description"]["text"],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.0
+                                      ),
+                                      textAlign: TextAlign.left)),
+
+                              data[index]["venue"] == null
+                                  ? new Text("")
+                                  : new Container(
+                                  height: 100.0,
+                                  child: new Text(data[index]["venue"],
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.normal))
+                              ),
+                              data[index]["status"] == null
+                                  ? new Text("")
+                                  : new Container(
+                                  height: 20.0,
+                                  child: new Text(
+                                      data[index]["status"],
+                                      style
+                                          : TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.lightGreen,
+                                      ),
+                                      textAlign: TextAlign.center)),
 
                             ],
 
@@ -227,7 +230,19 @@ class HomePageState extends State<HomePage> {
         onTap: (newIndex) =>
             setState(() {
               _currentIndex = newIndex;
-              //  _navigatePage(_currentIndex, context,_saved);
+              switch (_currentIndex) {
+                case 0:
+                  null;
+                  break;
+                case 1:
+                  print("In the newstabs");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewsTabs()),
+                  );
+                  break;
+              }
+              print(_currentIndex);
             }),
         items: [
           BottomNavigationBarItem(
@@ -253,10 +268,8 @@ class HomePageState extends State<HomePage> {
 
     );
   }
-//  void _navigatePage(context,index,saved){
-//    switch(index){
-//      case 0: new FavoritePage(saveFavorite: saved);
-//      break;
-//    }
-//  }
+
+  void _navigatePage(context, index) {
+
+  }
 }
