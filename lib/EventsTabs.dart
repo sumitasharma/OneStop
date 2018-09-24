@@ -23,7 +23,7 @@ class EventsPageState extends State<EventsTabs> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowMaterialGrid: false,
+        debugShowCheckedModeBanner: false,
         home: DefaultTabController(
           length: 11,
           child: Scaffold(

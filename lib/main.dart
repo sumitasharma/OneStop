@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventsTabs.dart';
+import 'package:flutter_news_app/page_view.dart';
 
-import 'FirstPage.dart';
 import 'NewsTabs.dart';
 
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: 'News',
     theme: new ThemeData(primaryColor: Color.fromRGBO(58, 66, 86, 1.0)),
     // Start the app with the "/" named route. In our case, the app will start
     // on the FirstScreen Widget
-    home: new FirstPage(),
+    home: new IntroPageView(),
     initialRoute: '/',
     routes: {
 

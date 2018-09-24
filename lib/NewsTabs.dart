@@ -25,7 +25,7 @@ class NewsPageState extends State<NewsTabs> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-        debugShowMaterialGrid: false,
+        debugShowCheckedModeBanner: false,
         home: DefaultTabController(
           length: 8,
           child: Scaffold(
