@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 
-/// A function that builds a [PageView] lazily.
 typedef PageView PageViewBuilder(BuildContext context,
     PageVisibilityResolver visibilityResolver);
 
-/// A class that can be used to compute visibility information about
-/// the current page.
 class PageVisibilityResolver {
   PageVisibilityResolver({
     ScrollMetrics metrics,
@@ -19,9 +16,6 @@ class PageVisibilityResolver {
   final ScrollMetrics _pageMetrics;
   final double _viewPortFraction;
 
-  /// Calculates visibility information for the page at [pageIndex].
-  /// Used inside PageViews' itemBuilder, but can be also used in a
-  /// simple PageView that simply has an array of children passed to it.
   PageVisibility resolvePageVisibility(int pageIndex) {
     final double pagePosition = _calculatePagePosition(pageIndex);
     final double visiblePageFraction =

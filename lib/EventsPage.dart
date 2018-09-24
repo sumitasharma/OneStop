@@ -33,7 +33,6 @@ class HomePageState extends State<HomePage> {
         print(widget.url);
         Map decoded = json.decode(response.body);
         data = decoded['events'];
-        //  print(data[0]["url"]);
       });
       return "Success!";
     }
@@ -100,7 +99,9 @@ class HomePageState extends State<HomePage> {
                               new Container(
                                   height: 16.0),
 
-                              new Text(data[index]["name"]["text"]),
+                              new Text(data[index]["name"]["text"],
+                                style: new TextStyle(
+                                    fontWeight: FontWeight.bold),),
 
                               data[index]["logo"]["url"] == null
                                   ? new Container(
@@ -108,7 +109,7 @@ class HomePageState extends State<HomePage> {
                                   decoration: new BoxDecoration(
                                     image: new DecorationImage(
                                         image: new AssetImage(
-                                            'assets/news.jpg'),
+                                            'assets/events.jpg'),
                                         fit: BoxFit.fitWidth),
                                     borderRadius: new BorderRadius.all(
                                         new Radius.circular(16.0)),
@@ -137,19 +138,67 @@ class HomePageState extends State<HomePage> {
                               ),
 
                               new Container(
-                                height: 20.0,
+                                height: 16.0,
                               ),
 
-                              data[index]["description"]["text"] == null
-                                  ? new Text("Missing Description")
+                              data[index]["start"]["local"] == null
+                                  ? new Text("Start Date : ")
                                   : new Container(
-                                  height: 80.0,
-                                  child: new Text(
-                                      data[index]["description"]["text"],
+                                // height: 300.0,
+                                  child: new Text("Start Date : " +
+                                      DateTime
+                                          .parse(data[index]["start"]["local"])
+                                          .day
+                                          .toString() + "/" +
+                                      DateTime
+                                          .parse(data[index]["start"]["local"])
+                                          .month
+                                          .toString() + "/" +
+                                      DateTime
+                                          .parse(data[index]["start"]["local"])
+                                          .year
+                                          .toString() + "   Time : " +
+                                      DateTime
+                                          .parse(data[index]["start"]["local"])
+                                          .hour
+                                          .toString() + ":" +
+                                      DateTime
+                                          .parse(data[index]["start"]["local"])
+                                          .minute
+                                          .toString(),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontStyle: FontStyle.normal,
-                                          fontSize: 16.0
+                                      ),
+                                      textAlign: TextAlign.left)),
+                              data[index]["end"]["local"] == null
+                                  ? new Text("End Date : ")
+                                  : new Container(
+                                // height: 300.0,
+                                  child: new Text("End Date   : " +
+                                      DateTime
+                                          .parse(data[index]["end"]["local"])
+                                          .day
+                                          .toString() + "/" +
+                                      DateTime
+                                          .parse(data[index]["end"]["local"])
+                                          .month
+                                          .toString() + "/" +
+                                      DateTime
+                                          .parse(data[index]["end"]["local"])
+                                          .year
+                                          .toString() + "   Time : " +
+                                      DateTime
+                                          .parse(data[index]["end"]["local"])
+                                          .hour
+                                          .toString() + ":" +
+                                      DateTime
+                                          .parse(data[index]["end"]["local"])
+                                          .minute
+                                          .toString(),
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontStyle: FontStyle.normal,
                                       ),
                                       textAlign: TextAlign.left)),
 
@@ -161,6 +210,7 @@ class HomePageState extends State<HomePage> {
                                       style: TextStyle(
                                           fontStyle: FontStyle.normal))
                               ),
+
                               data[index]["status"] == null
                                   ? new Text("")
                                   : new Container(
@@ -173,7 +223,7 @@ class HomePageState extends State<HomePage> {
                                         fontStyle: FontStyle.italic,
                                         color: Colors.lightGreen,
                                       ),
-                                      textAlign: TextAlign.center)),
+                                      textAlign: TextAlign.end)),
 
                             ],
 
