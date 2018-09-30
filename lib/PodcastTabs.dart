@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/EventsPage.dart';
+import 'package:flutter_news_app/PodcastPage.dart';
 
 
 class PodcastTabs extends StatefulWidget {
@@ -66,7 +66,7 @@ class PodcastPageState extends State<PodcastTabs> {
                   new Tab(text: "Arts",)
                 ],
               ),
-              title: Text(_search),
+              // title: Text(_search),
             ),
             body: TabBarView(
               children: [
