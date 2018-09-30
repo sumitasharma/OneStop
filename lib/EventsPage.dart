@@ -7,6 +7,8 @@ import 'package:flutter_news_app/NewsTabs.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
+import 'PodcastTabs.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -289,6 +291,13 @@ class HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => NewsTabs()),
+                  );
+                  break;
+                case 2:
+                  print("In the newstabs");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PodcastTabs()),
                   );
                   break;
               }

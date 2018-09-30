@@ -3,6 +3,7 @@ import 'package:flutter_news_app/EventsTabs.dart';
 import 'package:flutter_news_app/page_view.dart';
 
 import 'NewsTabs.dart';
+import 'PodcastTabs.dart';
 
 
 void main() {
@@ -19,6 +20,7 @@ void main() {
       '/NewsTab': (context) => new NewsTabs(),
       // When we navigate to the "/second" route, build the DetailNews Widget
       '/EventsTab': (context) => new EventsTabs(),
+      '/PodcastTab': (context) => new PodcastTabs()
     },
   ));
 }

@@ -26,5 +26,5 @@ final sampleItems = <IntroItem>[
   new IntroItem(title: 'Listening to the best podcast!',
       category: 'PODCAST',
       imageUrl: 'assets/podcastImage.jpg',
-      navigationTab: 'NewsTabs'),
+      navigationTab: 'PodcastsTabs'),
 ];

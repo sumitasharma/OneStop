@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 
 import 'EventsTabs.dart';
 import 'NewsTabs.dart';
+import 'PodcastTabs.dart';
 import 'dart.dart';
 import 'page_transformer.dart';
 
@@ -142,6 +143,11 @@ class IntroPageItem extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => EventsTabs()));
+        break;
+      case 'PodcastsTabs' :
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => PodcastTabs()));
         break;
     }
   }

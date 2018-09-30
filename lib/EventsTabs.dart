@@ -28,26 +28,26 @@ class EventsPageState extends State<EventsTabs> {
           length: 11,
           child: Scaffold(
             appBar: AppBar(
-              actions: <Widget>[
-                // overflow menu
-                PopupMenuButton<Choice>(
-                    itemBuilder: (BuildContext context) {
-                      return choices.map((Choice choice) {
-                        return PopupMenuItem<Choice>(
-                          value: choice,
-                          child: Text(choice.title),
-                        );
-                      }
-                      ).toList();
-                    },
-                    onSelected: (Choice result) {
-                      setState(() {
-                        _locationAddress = result.title;
-                        //  _country = country(result.title);
-                      });
-                    }
-                )
-              ],
+//              actions: <Widget>[
+//                // overflow menu
+//                PopupMenuButton<Choice>(
+//                    itemBuilder: (BuildContext context) {
+//                      return choices.map((Choice choice) {
+//                        return PopupMenuItem<Choice>(
+//                          value: choice,
+//                          child: Text(choice.title),
+//                        );
+//                      }
+//                      ).toList();
+//                    },
+//                    onSelected: (Choice result) {
+//                      setState(() {
+//                        _locationAddress = result.title;
+//                        //  _country = country(result.title);
+//                      });
+//                    }
+//                )
+//              ],
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
 
@@ -112,62 +112,62 @@ class EventsPageState extends State<EventsTabs> {
     );
   }
 }
-
-String country(String country) {
-  String _countryCode;
-  switch (country) {
-    case 'India':
-      _countryCode = "in";
-      break;
-    case 'USA':
-      _countryCode = "us";
-      break;
-    case 'China':
-      _countryCode = "cn";
-      break;
-    case 'Australia':
-      _countryCode = "au";
-      break;
-    case 'Ireland':
-      _countryCode = "ie";
-      break;
-    case 'Netherland':
-      _countryCode = "nl";
-      break;
-    case 'New Zealand':
-      _countryCode = "it";
-      break;
-    case 'United Kingdom':
-      _countryCode = "gb";
-      break;
-    case 'Japan':
-      _countryCode = "jp";
-      break;
-    case 'Israel':
-      _countryCode = "il";
-      break;
-  }
-  return _countryCode;
-}
-
-class Choice {
-  const Choice({this.title});
-
-  final String title;
-}
-
-const List<Choice> choices = const <Choice>[
-  const Choice(title: 'India'),
-  const Choice(title: 'USA'),
-  const Choice(title: 'China'),
-  const Choice(title: 'Australia'),
-  const Choice(title: 'Ireland'),
-  const Choice(title: 'Netherland'),
-  const Choice(title: 'Italy'),
-  const Choice(title: 'United Kingdom'),
-  const Choice(title: 'Japan'),
-  const Choice(title: 'Israel')
-];
+//
+//String country(String country) {
+//  String _countryCode;
+//  switch (country) {
+//    case 'India':
+//      _countryCode = "in";
+//      break;
+//    case 'USA':
+//      _countryCode = "us";
+//      break;
+//    case 'China':
+//      _countryCode = "cn";
+//      break;
+//    case 'Australia':
+//      _countryCode = "au";
+//      break;
+//    case 'Ireland':
+//      _countryCode = "ie";
+//      break;
+//    case 'Netherland':
+//      _countryCode = "nl";
+//      break;
+//    case 'New Zealand':
+//      _countryCode = "it";
+//      break;
+//    case 'United Kingdom':
+//      _countryCode = "gb";
+//      break;
+//    case 'Japan':
+//      _countryCode = "jp";
+//      break;
+//    case 'Israel':
+//      _countryCode = "il";
+//      break;
+//  }
+//  return _countryCode;
+//}
+//
+//class Choice {
+//  const Choice({this.title});
+//
+//  final String title;
+//}
+//
+//const List<Choice> choices = const <Choice>[
+//  const Choice(title: 'India'),
+//  const Choice(title: 'USA'),
+//  const Choice(title: 'China'),
+//  const Choice(title: 'Australia'),
+//  const Choice(title: 'Ireland'),
+//  const Choice(title: 'Netherland'),
+//  const Choice(title: 'Italy'),
+//  const Choice(title: 'United Kingdom'),
+//  const Choice(title: 'Japan'),
+//  const Choice(title: 'Israel')
+//];
 
 
 
