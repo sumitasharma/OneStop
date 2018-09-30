@@ -133,7 +133,7 @@ String country(String country) {
       _countryCode = "nl";
       break;
     case 'New Zealand':
-      _countryCode = "it";
+      _countryCode = "nz";
       break;
     case 'United Kingdom':
       _countryCode = "gb";
@@ -161,7 +161,7 @@ const List<Choice> choices = const <Choice>[
   const Choice(title: 'Australia'),
   const Choice(title: 'Ireland'),
   const Choice(title: 'Netherland'),
-  const Choice(title: 'Italy'),
+  const Choice(title: 'New Zealand'),
   const Choice(title: 'United Kingdom'),
   const Choice(title: 'Japan'),
   const Choice(title: 'Israel')
