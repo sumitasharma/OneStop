@@ -10,7 +10,7 @@ class PodcastTabs extends StatefulWidget {
 class PodcastPageState extends State<PodcastTabs> {
 
   String _podcastApi = "";
-  String _urlStringPodcast = "http://api.digitalpodcast.com/v2r/search/?appid=";
+  String _urlStringPodcast = "http://api.digitalpodcast.com/v2r/search/?format=json&appid=";
   String _keyword = "&keywords=";
   String _search;
 

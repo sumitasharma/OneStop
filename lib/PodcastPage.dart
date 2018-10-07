@@ -33,7 +33,7 @@ class HomePageState extends State<HomePage> {
       this.setState(() {
         print(widget.url);
         Map decoded = json.decode(response.body);
-        data = decoded['events'];
+        data = decoded['feeds'];
       });
       return "Success!";
     }
@@ -83,9 +83,9 @@ class HomePageState extends State<HomePage> {
                                   context,
                                   MaterialPageRoute(builder: (context) =>
                                   new WebviewScaffold(url:
-                                  (data[index]['url']),
+                                  (data[index]['feed']['url']),
                                     appBar: new AppBar(title: new Text(
-                                        data[index]["name"]["text"])),
+                                        data[index]["feed"]["title"])),
                                   ))
                               ),
                           child: new Wrap(
@@ -100,11 +100,11 @@ class HomePageState extends State<HomePage> {
                               new Container(
                                   height: 16.0),
 
-                              new Text(data[index]["name"]["text"],
+                              new Text(data[index]['feed']["title"],
                                 style: new TextStyle(
                                     fontWeight: FontWeight.bold),),
 
-                              data[index]["logo"]["url"] == null
+                              data[index]["feed"]["url"] == null
                                   ? new Container(
                                   height: 250.0,
                                   decoration: new BoxDecoration(
@@ -125,7 +125,7 @@ class HomePageState extends State<HomePage> {
                                 decoration: new BoxDecoration(
                                   image: new DecorationImage(
                                     image: new NetworkImage(
-                                        data[index]["logo"]["url"]),
+                                        data[index]["feed"]["url"]),
                                     fit: BoxFit.fill,
                                   ),
                                   borderRadius: new BorderRadius.all(
@@ -142,82 +142,13 @@ class HomePageState extends State<HomePage> {
                                 height: 16.0,
                               ),
 
-                              data[index]["start"]["local"] == null
-                                  ? new Text("Start Date : ")
-                                  : new Container(
-                                // height: 300.0,
-                                  child: new Text("Start Date : " +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .day
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .month
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .year
-                                          .toString() + "   Time : " +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .hour
-                                          .toString() + ":" +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .minute
-                                          .toString(),
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.normal,
-                                      ),
-                                      textAlign: TextAlign.left)),
-                              data[index]["end"]["local"] == null
-                                  ? new Text("End Date : ")
-                                  : new Container(
-                                // height: 300.0,
-                                  child: new Text("End Date   : " +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .day
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .month
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .year
-                                          .toString() + "   Time : " +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .hour
-                                          .toString() + ":" +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .minute
-                                          .toString(),
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.normal,
-                                      ),
-                                      textAlign: TextAlign.left)),
-
-                              data[index]["venue"] == null
-                                  ? new Text("")
-                                  : new Container(
-                                  height: 100.0,
-                                  child: new Text(data[index]["venue"],
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.normal))
-                              ),
-
-                              data[index]["status"] == null
+                              data[index]["feed"]['small_feed_image_url'] ==
+                                  null
                                   ? new Text("")
                                   : new Container(
                                   height: 20.0,
                                   child: new Text(
-                                      data[index]["status"],
+                                      data[index]["feed"]['small_feed_image_url'],
                                       style
                                           : TextStyle(
                                         fontWeight: FontWeight.bold,
