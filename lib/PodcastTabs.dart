@@ -161,26 +161,3 @@ String searchKeyword(String searchCode) {
   return _searchCode;
 }
 
-//class Choice {
-//  const Choice({this.title});
-//
-//  final String title;
-//}
-//
-//const List<Choice> choices = const <Choice>[
-//  const Choice(title: 'India'),
-//  const Choice(title: 'USA'),
-//  const Choice(title: 'China'),
-//  const Choice(title: 'Australia'),
-//  const Choice(title: 'Ireland'),
-//  const Choice(title: 'Netherland'),
-//  const Choice(title: 'Italy'),
-//  const Choice(title: 'United Kingdom'),
-//  const Choice(title: 'Japan'),
-//  const Choice(title: 'Israel')
-//];
-//
-//
-//
-//
-//
