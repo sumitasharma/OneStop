@@ -28,26 +28,6 @@ class EventsPageState extends State<EventsTabs> {
           length: 11,
           child: Scaffold(
             appBar: AppBar(
-//              actions: <Widget>[
-//                // overflow menu
-//                PopupMenuButton<Choice>(
-//                    itemBuilder: (BuildContext context) {
-//                      return choices.map((Choice choice) {
-//                        return PopupMenuItem<Choice>(
-//                          value: choice,
-//                          child: Text(choice.title),
-//                        );
-//                      }
-//                      ).toList();
-//                    },
-//                    onSelected: (Choice result) {
-//                      setState(() {
-//                        _locationAddress = result.title;
-//                        //  _country = country(result.title);
-//                      });
-//                    }
-//                )
-//              ],
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
 

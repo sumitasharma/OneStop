@@ -151,7 +151,7 @@ class HomePageState extends State<HomePage> {
                                       DateTime
                                           .parse(data[index]["start"]["local"])
                                           .day
-                                          .toString() + "/" +
+                                          .toString() + " " +
                                       DateTime
                                           .parse(data[index]["start"]["local"])
                                           .month
@@ -166,6 +166,14 @@ class HomePageState extends State<HomePage> {
                                           .toString() + ":" +
                                       DateTime
                                           .parse(data[index]["start"]["local"])
+                                          .minute
+                                          .toString() + " to " +
+                                      DateTime
+                                          .parse(data[index]["end"]["local"])
+                                          .hour
+                                          .toString() + ":" +
+                                      DateTime
+                                          .parse(data[index]["end"]["local"])
                                           .minute
                                           .toString(),
                                       style: TextStyle(
@@ -173,36 +181,36 @@ class HomePageState extends State<HomePage> {
                                           fontStyle: FontStyle.normal,
                                       ),
                                       textAlign: TextAlign.left)),
-                              data[index]["end"]["local"] == null
-                                  ? new Text("End Date : ")
-                                  : new Container(
-                                // height: 300.0,
-                                  child: new Text("End Date   : " +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .day
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .month
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .year
-                                          .toString() + "   Time : " +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .hour
-                                          .toString() + ":" +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .minute
-                                          .toString(),
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.normal,
-                                      ),
-                                      textAlign: TextAlign.left)),
+//                              data[index]["end"]["local"] == null
+//                                  ? new Text("End Date : ")
+//                                  : new Container(
+//                                // height: 300.0,
+//                                  child: new Text("End Date   : " +
+//                                      DateTime
+//                                          .parse(data[index]["end"]["local"])
+//                                          .day
+//                                          .toString() + "/" +
+//                                      DateTime
+//                                          .parse(data[index]["end"]["local"])
+//                                          .month
+//                                          .toString() + "/" +
+//                                      DateTime
+//                                          .parse(data[index]["end"]["local"])
+//                                          .year
+//                                          .toString() + "   Time : " +
+//                                      DateTime
+//                                          .parse(data[index]["end"]["local"])
+//                                          .hour
+//                                          .toString() + ":" +
+//                                      DateTime
+//                                          .parse(data[index]["end"]["local"])
+//                                          .minute
+//                                          .toString(),
+//                                      style: TextStyle(
+//                                        fontWeight: FontWeight.bold,
+//                                        fontStyle: FontStyle.normal,
+//                                      ),
+//                                      textAlign: TextAlign.left)),
 
                               data[index]["venue"] == null
                                   ? new Text("")
@@ -236,41 +244,6 @@ class HomePageState extends State<HomePage> {
                       new Container(
                         height: 16.0,
                       ),
-
-//                        new Container(
-//                            child: Row(
-//                                mainAxisAlignment: MainAxisAlignment
-//                                    .spaceEvenly,
-//
-//                                children: [
-//                                  new Icon(Icons.share),
-//                                  new InkWell(
-//                                    onTap: () {
-//                                      setState(() {
-//                                        if (_saved.containsKey(index)) {
-//                                          _saved.remove(index);
-//                                          print(data[index]["url" +
-//                                              "was  there"]);
-//                                        } else {
-//                                          _saved[index] = data[index][""]; //  _alreadySaved[index] = true;
-//                                        }
-//                                      });
-//                                    },
-//                                    child: new Icon(
-//                                      _saved.containsKey(index)
-//                                          ? Icons.favorite
-//                                          : Icons
-//                                          .favorite_border,
-//                                      color: _saved.containsKey(index) ? Colors
-//                                          .red : null,),
-//
-//                                  )
-//                                ]
-//                            )
-//                        ),
-                      new Container(
-                        height: 16.0,
-                      )
                     ]
                 )
 
