@@ -104,43 +104,44 @@ class HomePageState extends State<HomePage> {
                                 style: new TextStyle(
                                     fontWeight: FontWeight.bold),),
 
-//                              data[index]["feed"]["small_feed_image_url"] == null
-//                                  ? new Container(
-//                                  height: 250.0,
-//                                  decoration: new BoxDecoration(
-//                                    image: new DecorationImage(
-//                                        image: new AssetImage(
-//                                            'assets/podcast.jpg'),
-//                                        fit: BoxFit.fitWidth),
-//                                    borderRadius: new BorderRadius.all(
-//                                        new Radius.circular(16.0)),
-//                                    border: new Border.all(
-//                                      color: Colors.pinkAccent,
-//                                      width: 2.0,
-//                                    ),
-//                                  ))
-//
-//                                  : new Container(
-////                                    height: 250.0,
-//                                decoration: new BoxDecoration(
-//                                  image: new DecorationImage(
-//                                    image: new NetworkImage(
-//                                        data[index]["feed"]["small_feed_image_url"]),
-//                                    fit: BoxFit.fill,
-//                                  ),
-//                                  borderRadius: new BorderRadius.all(
-//                                      new Radius.circular(16.0)),
-//                                ),
-//                                constraints: BoxConstraints(
-//                                    maxHeight: 250.0,
-//                                    minHeight: 100.0,
-//                                    minWidth: 300.0
-//                                ),
-//                              ),
-//
-//                              new Container(
-//                                height: 16.0,
-//                              ),
+                              data[index]["feed"]["small_feed_image_url"] ==
+                                  null
+                                  ? new Container(
+                                  height: 250.0,
+                                  decoration: new BoxDecoration(
+                                    image: new DecorationImage(
+                                        image: new AssetImage(
+                                            'assets/podcast.jpg'),
+                                        fit: BoxFit.fitWidth),
+                                    borderRadius: new BorderRadius.all(
+                                        new Radius.circular(16.0)),
+                                    border: new Border.all(
+                                      color: Colors.pinkAccent,
+                                      width: 2.0,
+                                    ),
+                                  ))
+
+                                  : new Container(
+//                                    height: 250.0,
+                                decoration: new BoxDecoration(
+                                  image: new DecorationImage(
+                                    image: new NetworkImage(
+                                        data[index]["feed"]["small_feed_image_url"]),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  borderRadius: new BorderRadius.all(
+                                      new Radius.circular(16.0)),
+                                ),
+                                constraints: BoxConstraints(
+                                    maxHeight: 250.0,
+                                    minHeight: 100.0,
+                                    minWidth: 300.0
+                                ),
+                              ),
+
+                              new Container(
+                                height: 16.0,
+                              ),
 
 //                              data[index]["feed"]["small_feed_image_url"] == null
 //                                  ? new Container(
