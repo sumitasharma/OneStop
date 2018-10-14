@@ -1,6 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventsPage.dart';
-
+import 'package:location/location.dart';
 
 class EventsTabs extends StatefulWidget {
   @override
@@ -10,15 +12,75 @@ class EventsTabs extends StatefulWidget {
 class EventsPageState extends State<EventsTabs> {
 
   String _tokenKey = "";
-  String _location = " Mountain View, CA";
-  String _locationAddress = "Mountain+View+CA";
+
+  //String _location = " Mountain View, CA";
+  String _locationAddress;
   String _urlStringEvents = "https://www.eventbriteapi.com/v3/events/search/?";
 
+  Map<String, double> _startLocation;
+  Map<String, double> _currentLocation;
+  StreamSubscription<Map<String, double>> _locationSubscription;
+
+  Location _location = new Location();
+  bool _permission = false;
+  String error;
+  var addresses;
+
+  bool currentWidget = true;
+
+  Image image1;
 
   @override
   void initState() {
     super.initState();
+
+    initPlatformState();
+
+    _locationSubscription =
+        _location.onLocationChanged().listen((Map<String, double> result) {
+          setState(() {
+            _currentLocation = result;
+          });
+        });
   }
+
+  // Platform messages are asynchronous, so we initialize in an async method.
+  initPlatformState() async {
+    Map<String, double> location;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+
+    try {
+      _permission = await _location.hasPermission();
+      location = await _location.getLocation();
+      _startLocation = location;
+      error = null;
+    } catch (e) {
+      if (e.code == 'PERMISSION_DENIED') {
+        error = 'Permission denied';
+      } else if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
+        error =
+        'Permission denied - please ask the user to enable it from the app settings';
+      }
+
+      location = null;
+    }
+
+
+    // If the widget was removed from the tree while the asynchronous platform
+    // message was in flight, we want to discard the reply rather than calling
+    // setState to update our non-existent appearance.
+    //if (!mounted) return;
+
+    setState(() {
+      _startLocation = location;
+
+      print("_startlocation : " + _startLocation.toString());
+    });
+//    final coordinates = new Coordinates(_startLocation["latitude"],_startLocation["longitude"]);
+//    addresses = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,44 +106,84 @@ class EventsPageState extends State<EventsTabs> {
                   new Tab(text: "School Activities",)
                 ],
               ),
-              title: Text(_location + "'s Events"),
+              title: Text(_startLocation.toString() + "'s Events"),
             ),
             body: TabBarView(
               children: [
                 new HomePage(
-                  url: _urlStringEvents + "q=free+events&location.address=" +
-                      _locationAddress + "&token=" +
+                  url: _urlStringEvents + "q=free+events&location.latitude=" +
+                      _startLocation["latitude"].toString() +
+                      "&location.longitude=" +
+                      _startLocation["longitude"].toString() + "&token=" +
                       _tokenKey,),
                 new HomePage(
-                    url: _urlStringEvents + "q=music&token=" +
-                        _tokenKey),
-                new HomePage(
-                    url: _urlStringEvents + "q=family+education&token=" +
-                        _tokenKey),
-                new HomePage(
-                    url: _urlStringEvents + "q=business+professional&token=" +
-                        _tokenKey),
-                new HomePage(
-                    url: _urlStringEvents + "q=science+technology&token=" +
-                        _tokenKey),
-                new HomePage(
-                    url: _urlStringEvents + "q=sports+fitness&token=" +
-                        _tokenKey),
-                new HomePage(
-                    url: _urlStringEvents + "q=health+wellness&token&token=" +
-                        _tokenKey),
-                new HomePage(
-                    url: _urlStringEvents + "q=travel+outdoor&token=" +
+                    url: _urlStringEvents + "q=musiclocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=film+media+entertainment&token=" +
+                        "q=family+education&location.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
-                    url: _urlStringEvents + "q=charity+causes7token=" +
+                    url: _urlStringEvents +
+                        "q=business+professionallocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
-                    url: _urlStringEvents + "q=school+activities&token=" +
+                    url: _urlStringEvents +
+                        "q=science+technologylocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents +
+                        "q=sports+fitnesslocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents +
+                        "q=health+wellness&tokenlocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents +
+                        "q=travel+outdoorlocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents +
+                        "q=film+media+entertainmentlocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents +
+                        "q=charity+causeslocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
+                        _tokenKey),
+                new HomePage(
+                    url: _urlStringEvents +
+                        "q=school+activitieslocation.latitude=" +
+                        _startLocation["latitude"].toString() +
+                        "&location.longitude=" +
+                        _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey)
               ],
             ),

@@ -11,26 +11,17 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'News',
     theme: new ThemeData(primaryColor: Color.fromRGBO(58, 66, 86, 1.0)),
-    // Start the app with the "/" named route. In our case, the app will start
-    // on the FirstScreen Widget
     home: new IntroPageView(),
     initialRoute: '/',
     routes: {
 
       '/NewsTab': (context) => new NewsTabs(),
-      // When we navigate to the "/second" route, build the DetailNews Widget
       '/EventsTab': (context) => new EventsTabs(),
       '/PodcastTab': (context) => new PodcastTabs()
     },
   ));
 }
 
-
-//void main() {
-//  runApp(new MaterialApp(
-//    home: new HomePage(),
-//  ));
-//}
 
 
 
