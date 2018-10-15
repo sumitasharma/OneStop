@@ -28,26 +28,7 @@ class PodcastPageState extends State<PodcastTabs> {
           length: 13,
           child: Scaffold(
             appBar: AppBar(
-//              actions: <Widget>[
-//                // overflow menu
-//                PopupMenuButton<Choice>(
-//                    itemBuilder: (BuildContext context) {
-//                      return choices.map((Choice choice) {
-//                        return PopupMenuItem<Choice>(
-//                          value: choice,
-//                          child: Text(choice.title),
-//                        );
-//                      }
-//                      ).toList();
-//                    },
-//                    onSelected: (Choice result) {
-//                      setState(() {
-//                        //_search = result.title;
-//                        _search = searchKeyword(result.title);
-//                      });
-//                    }
-//                )
-//              ],
+
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
 
@@ -66,8 +47,7 @@ class PodcastPageState extends State<PodcastTabs> {
                   new Tab(text: "Arts",)
                 ],
               ),
-              // title: Text(_search),
-            ),
+              title: Text("Podcast"),),
             body: TabBarView(
               children: [
                 new HomePage(
