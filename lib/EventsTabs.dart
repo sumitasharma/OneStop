@@ -106,7 +106,7 @@ class EventsPageState extends State<EventsTabs> {
                   new Tab(text: "School Activities",)
                 ],
               ),
-              title: Text(_startLocation.toString() + "'s Events"),
+              title: Text("Events near your area"),
             ),
             body: TabBarView(
               children: [
@@ -117,7 +117,7 @@ class EventsPageState extends State<EventsTabs> {
                       _startLocation["longitude"].toString() + "&token=" +
                       _tokenKey,),
                 new HomePage(
-                    url: _urlStringEvents + "q=musiclocation.latitude=" +
+                    url: _urlStringEvents + "q=music&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
@@ -131,56 +131,56 @@ class EventsPageState extends State<EventsTabs> {
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=business+professionallocation.latitude=" +
+                        "q=business&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=science+technologylocation.latitude=" +
+                        "q=science+technology&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=sports+fitnesslocation.latitude=" +
+                        "q=sports&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=health+wellness&tokenlocation.latitude=" +
+                        "q=health&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=travel+outdoorlocation.latitude=" +
+                        "q=travel&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=film+media+entertainmentlocation.latitude=" +
+                        "q=film+media+entertainment&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=charity+causeslocation.latitude=" +
+                        "q=charity+causes&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=school+activitieslocation.latitude=" +
+                        "q=school+activities&location.latitude=" +
                         _startLocation["latitude"].toString() +
                         "&location.longitude=" +
                         _startLocation["longitude"].toString() + "&token=" +
