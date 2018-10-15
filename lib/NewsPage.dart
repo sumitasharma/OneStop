@@ -68,7 +68,7 @@ class HomePageState extends State<HomePage> {
           itemCount: data == null ? 0 : data.length,
           itemBuilder: (BuildContext context, int index) {
             return new Card(
-                margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16.0),
+                margin: EdgeInsets.only(left: 4.0, right: 4.0, bottom: 16.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0)),
                 elevation: 4.0,
@@ -146,7 +146,7 @@ class HomePageState extends State<HomePage> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontStyle: FontStyle.normal,
-                                          fontSize: 16.0
+                                          fontSize: 24.0
                                       ),
                                       textAlign: TextAlign.left)),
 
@@ -156,7 +156,8 @@ class HomePageState extends State<HomePage> {
                                   height: 100.0,
                                   child: new Text(data[index]["description"],
                                       style: TextStyle(
-                                          fontStyle: FontStyle.normal))
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.0))
                               ),
                               data[index]["source"]["name"] == null
                                   ? new Text("")

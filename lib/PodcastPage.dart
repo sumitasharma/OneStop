@@ -25,8 +25,6 @@ class HomePageState extends State<HomePage> {
   List data;
   int _currentIndex = 0;
 
-  //Map<int, List> _saved = new Map();
-
   Future<String> getData() async {
     try {
       var response = await http.get(widget.url);
@@ -68,7 +66,7 @@ class HomePageState extends State<HomePage> {
           itemCount: data == null ? 0 : data.length,
           itemBuilder: (BuildContext context, int index) {
             return new Card(
-                margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16.0),
+                margin: EdgeInsets.only(left: 4.0, right: 4.0, bottom: 16.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0)),
                 elevation: 4.0,
@@ -145,7 +143,8 @@ class HomePageState extends State<HomePage> {
 
                               new Text(data[index]['feed']["description"],
                                 style: new TextStyle(
-                                    fontWeight: FontWeight.bold),),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0),),
 
                             ],
 
@@ -157,37 +156,6 @@ class HomePageState extends State<HomePage> {
                         height: 16.0,
                       ),
 
-//                        new Container(
-//                            child: Row(
-//                                mainAxisAlignment: MainAxisAlignment
-//                                    .spaceEvenly,
-//
-//                                children: [
-//                                  new Icon(Icons.share),
-//                                  new InkWell(
-//                                    onTap: () {
-//                                      setState(() {
-//                                        if (_saved.containsKey(index)) {
-//                                          _saved.remove(index);
-//                                          print(data[index]["url" +
-//                                              "was  there"]);
-//                                        } else {
-//                                          _saved[index] = data[index][""]; //  _alreadySaved[index] = true;
-//                                        }
-//                                      });
-//                                    },
-//                                    child: new Icon(
-//                                      _saved.containsKey(index)
-//                                          ? Icons.favorite
-//                                          : Icons
-//                                          .favorite_border,
-//                                      color: _saved.containsKey(index) ? Colors
-//                                          .red : null,),
-//
-//                                  )
-//                                ]
-//                            )
-//                        ),
                       new Container(
                         height: 16.0,
                       )

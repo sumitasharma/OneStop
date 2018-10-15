@@ -69,7 +69,7 @@ class HomePageState extends State<HomePage> {
           itemCount: data == null ? 0 : data.length,
           itemBuilder: (BuildContext context, int index) {
             return new Card(
-                margin: EdgeInsets.only(left: 8.0, right: 8.0, bottom: 16.0),
+                margin: EdgeInsets.only(left: 4.0, right: 4.0, bottom: 16.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0)),
                 elevation: 4.0,
@@ -100,10 +100,6 @@ class HomePageState extends State<HomePage> {
                             children: <Widget>[
                               new Container(
                                   height: 16.0),
-
-                              new Text(data[index]["name"]["text"],
-                                style: new TextStyle(
-                                    fontWeight: FontWeight.bold),),
 
                               data[index]["logo"]["url"] == null
                                   ? new Container(
@@ -143,6 +139,13 @@ class HomePageState extends State<HomePage> {
                                 height: 16.0,
                               ),
 
+                              new Text(data[index]["name"]["text"],
+                                style: new TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0),),
+                              new Container(
+                                height: 16.0,
+                              ),
                               data[index]["start"]["local"] == null
                                   ? new Text("Start Date : ")
                                   : new Container(
@@ -179,38 +182,9 @@ class HomePageState extends State<HomePage> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontStyle: FontStyle.normal,
+                                          fontSize: 16.0
                                       ),
                                       textAlign: TextAlign.left)),
-//                              data[index]["end"]["local"] == null
-//                                  ? new Text("End Date : ")
-//                                  : new Container(
-//                                // height: 300.0,
-//                                  child: new Text("End Date   : " +
-//                                      DateTime
-//                                          .parse(data[index]["end"]["local"])
-//                                          .day
-//                                          .toString() + "/" +
-//                                      DateTime
-//                                          .parse(data[index]["end"]["local"])
-//                                          .month
-//                                          .toString() + "/" +
-//                                      DateTime
-//                                          .parse(data[index]["end"]["local"])
-//                                          .year
-//                                          .toString() + "   Time : " +
-//                                      DateTime
-//                                          .parse(data[index]["end"]["local"])
-//                                          .hour
-//                                          .toString() + ":" +
-//                                      DateTime
-//                                          .parse(data[index]["end"]["local"])
-//                                          .minute
-//                                          .toString(),
-//                                      style: TextStyle(
-//                                        fontWeight: FontWeight.bold,
-//                                        fontStyle: FontStyle.normal,
-//                                      ),
-//                                      textAlign: TextAlign.left)),
 
                               data[index]["venue"] == null
                                   ? new Text("")
@@ -218,7 +192,8 @@ class HomePageState extends State<HomePage> {
                                   height: 100.0,
                                   child: new Text(data[index]["venue"],
                                       style: TextStyle(
-                                          fontStyle: FontStyle.normal))
+                                          fontStyle: FontStyle.normal,
+                                          fontSize: 16.0))
                               ),
 
                               data[index]["status"] == null
