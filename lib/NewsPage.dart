@@ -102,7 +102,7 @@ class HomePageState extends State<HomePage> {
 
                               data[index]["urlToImage"] == null
                                   ? new Container(
-                                  height: 250.0,
+                                  height: 200.0,
                                   decoration: new BoxDecoration(
                                     image: new DecorationImage(
                                         image: new AssetImage(
@@ -128,7 +128,7 @@ class HomePageState extends State<HomePage> {
                                       new Radius.circular(16.0)),
                                 ),
                                 constraints: BoxConstraints(
-                                    maxHeight: 250.0,
+                                    maxHeight: 200.0,
                                     minHeight: 100.0,
                                     minWidth: 300.0
                                 ),
