@@ -7,8 +7,7 @@ import 'package:flutter_news_app/NewsTabs.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
-import 'EventsTabs.dart';
-
+import 'EventMainPage.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -185,7 +184,7 @@ class HomePageState extends State<HomePage> {
                   print("In the eventstabs");
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EventsTabs()),
+                    MaterialPageRoute(builder: (context) => EventsMainPage()),
                   );
                   break;
               }

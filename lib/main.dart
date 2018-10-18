@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/EventsTabs.dart';
 import 'package:flutter_news_app/page_view.dart';
 
+import 'EventMainPage.dart';
 import 'NewsTabs.dart';
 import 'PodcastTabs.dart';
 
@@ -16,7 +16,7 @@ void main() {
     routes: {
 
       '/NewsTab': (context) => new NewsTabs(),
-      '/EventsTab': (context) => new EventsTabs(),
+      '/EventsTab': (context) => new EventsMainPage(),
       '/PodcastTab': (context) => new PodcastTabs()
     },
   ));

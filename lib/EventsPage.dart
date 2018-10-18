@@ -90,7 +90,7 @@ class HomePageState extends State<HomePage> {
                                   ))
                               ),
                           child: new Wrap(
-                            spacing: 8.0,
+                            spacing: 4.0,
                             // gap between adjacent chips
                             runSpacing: 4.0,
                             // gap between lines
@@ -185,6 +185,9 @@ class HomePageState extends State<HomePage> {
                                           fontSize: 16.0
                                       ),
                                       textAlign: TextAlign.left)),
+                              new Container(
+                                height: 16.0,
+                              ),
 
                               data[index]["venue"] == null
                                   ? new Text("")

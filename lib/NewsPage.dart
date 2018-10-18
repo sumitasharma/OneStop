@@ -3,12 +3,11 @@ import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/EventsTabs.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
+import 'EventMainPage.dart';
 import 'PodcastTabs.dart';
-
 
 class HomePage extends StatefulWidget {
 
@@ -89,7 +88,7 @@ class HomePageState extends State<HomePage> {
                                   ))
                               ),
                           child: new Wrap(
-                            spacing: 8.0,
+                            spacing: 4.0,
                             // gap between adjacent chips
                             runSpacing: 4.0,
                             // gap between lines
@@ -141,7 +140,7 @@ class HomePageState extends State<HomePage> {
                               data[index]["title"] == null
                                   ? new Text("Missing Title")
                                   : new Container(
-                                  height: 80.0,
+                                // height: 100.0,
                                   child: new Text(data[index]["title"],
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -150,14 +149,21 @@ class HomePageState extends State<HomePage> {
                                       ),
                                       textAlign: TextAlign.left)),
 
+                              new Container(
+                                height: 16.0,
+                              ),
+
                               data[index]["description"] == null
                                   ? new Text("")
                                   : new Container(
-                                  height: 100.0,
+                                // height: 100.0,
                                   child: new Text(data[index]["description"],
                                       style: TextStyle(
                                           fontStyle: FontStyle.normal,
                                           fontSize: 16.0))
+                              ),
+                              new Container(
+                                height: 16.0,
                               ),
                               data[index]["source"]["name"] == null
                                   ? new Text("")
@@ -183,40 +189,6 @@ class HomePageState extends State<HomePage> {
                         height: 16.0,
                       ),
 
-//                        new Container(
-//                            child: Row(
-//                                mainAxisAlignment: MainAxisAlignment
-//                                    .spaceEvenly,
-//
-//                                children: [
-//                                  new Icon(Icons.share),
-//                                  new InkWell(
-//                                    onTap: () {
-//                                      setState(() {
-//                                        if (_saved.containsKey(index)) {
-//                                          _saved.remove(index);
-//                                          print(data[index]["url" +
-//                                              "was  there"]);
-//                                        } else {
-//                                          _saved[index] = data[index][""]; //  _alreadySaved[index] = true;
-//                                        }
-//                                      });
-//                                    },
-//                                    child: new Icon(
-//                                      _saved.containsKey(index)
-//                                          ? Icons.favorite
-//                                          : Icons
-//                                          .favorite_border,
-//                                      color: _saved.containsKey(index) ? Colors
-//                                          .red : null,),
-//
-//                                  )
-//                                ]
-//                            )
-//                        ),
-                      new Container(
-                        height: 16.0,
-                      )
                     ]
                 )
 
@@ -236,7 +208,7 @@ class HomePageState extends State<HomePage> {
                   print("In the eventstabs");
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EventsTabs()),
+                    MaterialPageRoute(builder: (context) => EventsMainPage()),
                   );
                   break;
                 case 2:
