@@ -28,7 +28,11 @@ class PodcastPageState extends State<PodcastTabs> {
           length: 13,
           child: Scaffold(
             appBar: AppBar(
-
+                leading: new IconButton(
+                    icon: new Icon(Icons.home),
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    }),
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
 
@@ -47,7 +51,7 @@ class PodcastPageState extends State<PodcastTabs> {
                   new Tab(text: "Arts",)
                 ],
               ),
-              title: Text("Podcast"),),
+                title: Text("Podcast")),
             body: TabBarView(
               children: [
                 new HomePage(

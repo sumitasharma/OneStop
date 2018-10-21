@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/NewsPage.dart';
+import 'package:flutter_news_app/SearchNews.dart';
 
 
 
@@ -14,6 +15,10 @@ class NewsPageState extends State<NewsTabs> {
   String _country = "us";
   String _countryName = "USA";
   String _urlStringTopHeadlines = "https://newsapi.org/v2/top-headlines?";
+  String _urlStringSearchNews = "https://newsapi.org/v2/everything?";
+  Icon actionIcon = new Icon(Icons.search);
+  Widget appBarTitle = new Text("News Today");
+  final TextEditingController _searchQuery = new TextEditingController();
 
 
   @override
@@ -30,7 +35,45 @@ class NewsPageState extends State<NewsTabs> {
           length: 8,
           child: Scaffold(
             appBar: AppBar(
+              centerTitle: true,
+              title: appBarTitle,
+
               actions: <Widget>[
+                new IconButton(icon: actionIcon, onPressed: () {
+                  setState(() {
+                    if (this.actionIcon.icon == Icons.search) {
+                      this.actionIcon = new Icon(Icons.close);
+                      this.appBarTitle = new TextField(
+                        controller: _searchQuery,
+                        style: new TextStyle(
+                          color: Colors.white,
+                        ),
+                        decoration: new InputDecoration(
+                            prefixIcon: new Icon(
+                                Icons.search, color: Colors.white),
+                            hintText: "Search...",
+                            hintStyle: new TextStyle(color: Colors.white)
+                        ),
+                        onSubmitted: (String str) {
+                          setState(() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>
+                                new SearchNews(
+                                    url: _urlStringSearchNews + "q=" + str +
+                                        "&apiKey=" + _apiKey, query: str))
+                            );
+                          }
+                          );
+                        },
+                      );
+                    }
+                    else {
+                      this.actionIcon = new Icon(Icons.search);
+                      this.appBarTitle = new Text("News Today");
+                    }
+                  });
+                },),
                 // overflow menu
                 PopupMenuButton<Choice>(
                     itemBuilder: (BuildContext context) {
@@ -50,6 +93,31 @@ class NewsPageState extends State<NewsTabs> {
                     }
                 )
               ],
+              leading: new IconButton(
+                  icon: new Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  }),
+//              actions: <Widget>[
+//                // overflow menu
+//                PopupMenuButton<Choice>(
+//                    itemBuilder: (BuildContext context) {
+//                      return choices.map((Choice choice) {
+//                        return PopupMenuItem<Choice>(
+//                          value: choice,
+//                          child: Text(choice.title),
+//                        );
+//                      }
+//                      ).toList();
+//                    },
+//                    onSelected: (Choice result) {
+//                      setState(() {
+//                        _countryName = result.title;
+//                        _country = country(result.title);
+//                      });
+//                    }
+//                )
+//              ],
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
                   new Tab(text: "World"),
@@ -62,7 +130,6 @@ class NewsPageState extends State<NewsTabs> {
                   new Tab(text: "Health",)
                 ],
               ),
-              title: Text("Today's News"),
             ),
             body: TabBarView(
               children: [

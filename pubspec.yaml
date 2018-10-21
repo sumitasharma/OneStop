@@ -18,6 +18,7 @@ dependencies:
   audioplayers: ^0.7.7
   location: ^1.4.1
   geocoder: ^0.1.1
+  geolocator: ^2.1.0
 
 dev_dependencies:
   flutter_test:

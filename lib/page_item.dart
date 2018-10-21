@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'EventMainPage.dart';
+import 'EventLocation.dart';
 import 'NewsTabs.dart';
 import 'PodcastTabs.dart';
 import 'dart.dart';
 import 'page_transformer.dart';
-
 class IntroPageItem extends StatelessWidget {
   IntroPageItem({
     @required this.item,
@@ -142,7 +141,7 @@ class IntroPageItem extends StatelessWidget {
       case 'EventsTabs' :
         Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => EventsMainPage()));
+            MaterialPageRoute(builder: (context) => EventLocation()));
         break;
       case 'PodcastsTabs' :
         Navigator.push(

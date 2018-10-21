@@ -3,11 +3,10 @@ import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/EventLocation.dart';
 import 'package:flutter_news_app/NewsTabs.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
-
-import 'EventMainPage.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -171,33 +170,23 @@ class HomePageState extends State<HomePage> {
               _currentIndex = newIndex;
               switch (_currentIndex) {
                 case 0:
-                  null;
-                  break;
-                case 1:
                   print("In the newstabs");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => NewsTabs()),
                   );
                   break;
-                case 2:
+                case 1:
                   print("In the eventstabs");
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EventsMainPage()),
+                    MaterialPageRoute(builder: (context) => EventLocation()),
                   );
                   break;
               }
               print(_currentIndex);
             }),
         items: [
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.search),
-              title: new Text('Search'),
-              backgroundColor: Colors.blue
-
-          ),
-
           BottomNavigationBarItem(
               icon: new Icon(Icons.book),
               title: new Text('News'),
@@ -213,9 +202,5 @@ class HomePageState extends State<HomePage> {
       ),
 
     );
-  }
-
-  void _navigatePage(context, index) {
-
   }
 }

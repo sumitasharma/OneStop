@@ -5,8 +5,13 @@ import 'EventsTabsAddress.dart';
 
 class EventsTabs extends StatefulWidget {
 
-  final Map<String, double> location;
-  const EventsTabs({Key key, this.location}) : super(key: key);
+  final double latitude;
+  final double longitude;
+
+  const EventsTabs({Key key, this.latitude, this.longitude}) : super(key: key);
+
+  // final Map<String, double> location;
+  // const EventsTabs({Key key, this.location}) : super(key: key);
 
   @override
   EventsPageState createState() => new EventsPageState();
@@ -24,7 +29,7 @@ class EventsPageState extends State<EventsTabs> {
   @override
   void initState() {
     super.initState();
-    print("location is :" + widget.location.toString());
+    //print("location is :" + widget.location.toString());
   }
 
   @override
@@ -35,8 +40,10 @@ class EventsPageState extends State<EventsTabs> {
           length: 11,
           child: Scaffold(
             appBar: AppBar(
+
               centerTitle: true,
               title: appBarTitle,
+
               actions: <Widget>[
                 new IconButton(icon: actionIcon, onPressed: () {
                   setState(() {
@@ -72,6 +79,11 @@ class EventsPageState extends State<EventsTabs> {
                   });
                 },),
               ],
+              leading: new IconButton(
+                  icon: new Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  }),
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
 
@@ -91,82 +103,80 @@ class EventsPageState extends State<EventsTabs> {
             ),
             body: TabBarView(
               children: [
-                widget.location.toString() == null ? new Text(
-                    "No Acces to Location yet")
-                    : new HomePage(
-                  url: _urlStringEvents + "q=free+events&location.latitude=" +
-                      widget.location["latitude"].toString() +
+                new HomePage(
+                  url: _urlStringEvents + "q=free&location.latitude=" +
+                      widget.latitude.toString() +
                       "&location.longitude=" +
-                      widget.location["longitude"].toString() + "&token=" +
+                      widget.longitude.toString() + "&token=" +
                       _tokenKey,),
                 new HomePage(
                     url: _urlStringEvents + "q=music&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=family+education&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=business&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=science+technology&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=sports&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=health&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=travel&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=film+media+entertainment&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=charity+causes&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
                         "q=school+activities&location.latitude=" +
-                        widget.location["latitude"].toString() +
+                        widget.latitude.toString() +
                         "&location.longitude=" +
-                        widget.location["longitude"].toString() + "&token=" +
+                        widget.longitude.toString() + "&token=" +
                         _tokenKey)
               ],
             ),
