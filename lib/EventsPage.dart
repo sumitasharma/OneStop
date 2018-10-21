@@ -235,16 +235,13 @@ class HomePageState extends State<HomePage> {
               _currentIndex = newIndex;
               switch (_currentIndex) {
                 case 0:
-                  null;
-                  break;
-                case 1:
                   print("In the newstabs");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => NewsTabs()),
                   );
                   break;
-                case 2:
+                case 1:
                   print("In the newstabs");
                   Navigator.push(
                     context,
@@ -255,13 +252,6 @@ class HomePageState extends State<HomePage> {
               print(_currentIndex);
             }),
         items: [
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.search),
-              title: new Text('Search'),
-              backgroundColor: Colors.blue
-
-          ),
-
           BottomNavigationBarItem(
               icon: new Icon(Icons.book),
               title: new Text('News'),

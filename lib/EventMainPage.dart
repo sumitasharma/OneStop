@@ -93,10 +93,22 @@ class EventsMainPageState extends State<EventsMainPage> {
               child: new Center(
                   child: new Column(
                     children: <Widget>[
-                      new Text("Enter the location for the events :"),
+                      new InkWell(
+                          onTap: () =>
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      new EventsTabs(
+                                          location: _startLocation))
+                              ),
+                          child: new Text("Check the events in this location",
+                              style: new TextStyle(fontSize: 24.0,
+                                  fontStyle: FontStyle.italic))),
+                      new Text("OR"),
                       new TextFormField(
                           decoration: InputDecoration(
-                              labelText: 'Enter your username'
+                              labelText: 'Enter address'
                           ),
                           onFieldSubmitted: (String str) {
                             setState(() {
@@ -109,17 +121,7 @@ class EventsMainPageState extends State<EventsMainPage> {
                             );
                           }
                       ),
-                      new InkWell(
-                          onTap: () =>
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                      new EventsTabs(
-                                          location: _startLocation))
-                              ),
-                          child: new Text("Check the events in this location")
-                      )
+
 
                     ],)))
 

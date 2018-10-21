@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventsPage.dart';
 
+import 'EventsTabsAddress.dart';
+
 class EventsTabs extends StatefulWidget {
 
   final Map<String, double> location;
-
   const EventsTabs({Key key, this.location}) : super(key: key);
 
   @override
@@ -15,6 +16,10 @@ class EventsPageState extends State<EventsTabs> {
 
   String _tokenKey = "";
   String _urlStringEvents = "https://www.eventbriteapi.com/v3/events/search/?";
+  Icon actionIcon = new Icon(Icons.search);
+  Widget appBarTitle = new Text("Local Events");
+  final TextEditingController _searchQuery = new TextEditingController();
+
 
   @override
   void initState() {
@@ -30,6 +35,43 @@ class EventsPageState extends State<EventsTabs> {
           length: 11,
           child: Scaffold(
             appBar: AppBar(
+              centerTitle: true,
+              title: appBarTitle,
+              actions: <Widget>[
+                new IconButton(icon: actionIcon, onPressed: () {
+                  setState(() {
+                    if (this.actionIcon.icon == Icons.search) {
+                      this.actionIcon = new Icon(Icons.close);
+                      this.appBarTitle = new TextField(
+                        controller: _searchQuery,
+                        style: new TextStyle(
+                          color: Colors.white,
+                        ),
+                        decoration: new InputDecoration(
+                            prefixIcon: new Icon(
+                                Icons.search, color: Colors.white),
+                            hintText: "Search...",
+                            hintStyle: new TextStyle(color: Colors.white)
+                        ),
+                        onSubmitted: (String str) {
+                          setState(() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>
+                                new EventsTabsAddress(add: str))
+                            );
+                          }
+                          );
+                        },
+                      );
+                    }
+                    else {
+                      this.actionIcon = new Icon(Icons.search);
+                      this.appBarTitle = new Text("Local Events");
+                    }
+                  });
+                },),
+              ],
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
 
@@ -46,7 +88,6 @@ class EventsPageState extends State<EventsTabs> {
                   new Tab(text: "School Activities",)
                 ],
               ),
-              title: Text("Events near your area"),
             ),
             body: TabBarView(
               children: [
@@ -135,6 +176,17 @@ class EventsPageState extends State<EventsTabs> {
 
     );
   }
+
+  void _handleSearchStart() {
+    setState(() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) =>
+          new EventsTabsAddress(add: _searchQuery.text))
+      );
+    });
+  }
+
 }
 
 

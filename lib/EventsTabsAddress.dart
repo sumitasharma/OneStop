@@ -4,7 +4,6 @@ import 'package:flutter_news_app/EventsPage.dart';
 class EventsTabsAddress extends StatefulWidget {
 
   final String add;
-
   const EventsTabsAddress({Key key, this.add}) : super(key: key);
 
   @override
