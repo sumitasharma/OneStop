@@ -10,7 +10,6 @@ import 'package:http/http.dart' as http;
 import 'PodcastTabs.dart';
 
 
-
 class HomePage extends StatefulWidget {
 
   final String url;
@@ -34,7 +33,9 @@ class HomePageState extends State<HomePage> {
       this.setState(() {
         print(widget.url);
         Map decoded = json.decode(response.body);
-        data = decoded['events'];
+        print('Response : ' + response.body);
+        data = decoded["events"];
+        print("Data :" + data[0]["name"]["text"]);
       });
       return "Success!";
     }
@@ -101,23 +102,8 @@ class HomePageState extends State<HomePage> {
                               new Container(
                                   height: 16.0),
 
-                              data[index]["logo"]["url"] == null
+                              (data[index]["logo"] != null)
                                   ? new Container(
-                                  height: 200.0,
-                                  decoration: new BoxDecoration(
-                                    image: new DecorationImage(
-                                        image: new AssetImage(
-                                            'assets/events.jpg'),
-                                        fit: BoxFit.fitWidth),
-                                    borderRadius: new BorderRadius.all(
-                                        new Radius.circular(16.0)),
-                                    border: new Border.all(
-                                      color: Colors.pinkAccent,
-                                      width: 2.0,
-                                    ),
-                                  ))
-
-                                  : new Container(
 //                                    height: 250.0,
                                 decoration: new BoxDecoration(
                                   image: new DecorationImage(
@@ -133,7 +119,21 @@ class HomePageState extends State<HomePage> {
                                     minHeight: 100.0,
                                     minWidth: 300.0
                                 ),
-                              ),
+                              )
+                                  : new Container(
+                                  height: 200.0,
+                                  decoration: new BoxDecoration(
+                                    image: new DecorationImage(
+                                        image: new AssetImage(
+                                            'assets/podcast.jpg'),
+                                        fit: BoxFit.fitWidth),
+                                    borderRadius: new BorderRadius.all(
+                                        new Radius.circular(16.0)),
+                                    border: new Border.all(
+                                      color: Colors.pinkAccent,
+                                      width: 2.0,
+                                    ),
+                                  )),
 
                               new Container(
                                 height: 16.0,

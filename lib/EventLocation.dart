@@ -97,13 +97,21 @@ class EventLocationState extends State<EventLocation> {
         body:
         new InkWell(
           onTap: () {
+            _currentLocation["latitude"] != null ?
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
                     new EventsTabs(
                         latitude: _currentLocation["latitude"],
-                        longitude: _currentLocation["longitude"])));
+                        longitude: _currentLocation["longitude"])))
+                : Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                    new EventsTabs(
+                        latitude: 37.3861,
+                        longitude: 122.0839)));
           },
           child:
           new Container(

@@ -104,7 +104,7 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=family education&location.address=" + widget.add +
+                        "q=family+education&location.address=" + widget.add +
                         "&token=" +
                         _tokenKey),
                 new HomePage(
@@ -136,7 +136,7 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=charity+causes&location.address=" + widget.add +
+                        "q=charity&location.address=" + widget.add +
                         "&token=" +
                         _tokenKey),
                 new HomePage(
