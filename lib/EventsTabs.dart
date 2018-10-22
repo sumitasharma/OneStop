@@ -29,7 +29,7 @@ class EventsPageState extends State<EventsTabs> {
   @override
   void initState() {
     super.initState();
-    //print("location is :" + widget.location.toString());
+    //print("location is ::" + widget.location.toString());
   }
 
   @override
