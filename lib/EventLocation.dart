@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_news_app/EventsTabs.dart';
-import 'package:flutter_news_app/EventsTabsAddress.dart';
-import 'package:location/location.dart';
+import 'package:geolocator/geolocator.dart';
 
 
 class EventLocation extends StatefulWidget {
@@ -13,15 +12,19 @@ class EventLocation extends StatefulWidget {
 }
 
 class EventLocationState extends State<EventLocation> {
+
   Map<String, double> _startLocation;
-  Map<String, double> _currentLocation;
 
-  StreamSubscription<Map<String, double>> _locationSubscription;
+//  Map<String, double> _currentLocation;
+//
+//  StreamSubscription<Map<String, double>> _locationSubscription;
+//
+//  Location _location = new Location();
+//  bool _permission = false;
+//  String error;
 
-  Location _location = new Location();
-  bool _permission = false;
-  String error;
 
+  Position position;
   bool currentWidget = true;
 
   Image image1;
@@ -32,54 +35,68 @@ class EventLocationState extends State<EventLocation> {
 
     initPlatformState();
 
-    _locationSubscription =
-        _location.onLocationChanged().listen((Map<String, double> result) {
-          setState(() {
-            _currentLocation = result;
-          });
-        });
+//    _locationSubscription =
+//        _location.onLocationChanged().listen((Map<String, double> result) {
+//          setState(() {
+//            _currentLocation = result;
+//          });
+//        });
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
-  initPlatformState() async {
-    Map<String, double> location;
-    // Platform messages may fail, so we use a try/catch PlatformException.
+  Future<Null> initPlatformState() async {
 
     try {
-      _permission = await _location.hasPermission();
-      location = await _location.getLocation();
-
-
-      error = null;
+      GeolocationStatus geolocationStatus = await Geolocator()
+          .checkGeolocationPermissionStatus();
+      position = await Geolocator().getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.low);
     } on PlatformException catch (e) {
-      if (e.code == 'PERMISSION_DENIED') {
-        error = 'Permission denied';
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                new EventsTabsAddress(add: "Mountain View, CA",)
-            )
-        );
-      } else if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
-        error =
-        'Permission denied - please ask the user to enable it from the app settings';
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                new EventsTabsAddress(add: "Mountain View, CA",)
-            )
-        );
+      if (e.code == 'PERMISSION_DENIED' ||
+          e.code == 'PERMISSION_DENIED_NEVER_ASK') {
+        position = null;
       }
-
-      location = null;
     }
 
-    setState(() {
-      _startLocation = location;
-    });
+//    Map<String, double> location;
+//    // Platform messages may fail, so we use a try/catch PlatformException.
+//
+//    try {
+//      _permission = await _location.hasPermission();
+//      location = await _location.getLocation();
+//      await new Future.delayed(new Duration(milliseconds: 100));
+//
+//      error = null;
+//    } on PlatformException catch (e) {
+//      if (e.code == 'PERMISSION_DENIED') {
+//        error = 'Permission denied';
+//        Navigator.push(
+//            context,
+//            MaterialPageRoute(
+//                builder: (context) =>
+//                new EventsTabsAddress(add: "Mountain View, CA",)
+//            )
+//        );
+//      } else if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
+//        error =
+//        'Permission denied - please ask the user to enable it from the app settings';
+//        Navigator.push(
+//            context,
+//            MaterialPageRoute(
+//                builder: (context) =>
+//                new EventsTabsAddress(add: "Mountain View, CA",)
+//            )
+//        );
+//      }
+
+    //   _startLocation=location;
   }
+
+//
+//    setState(() {
+//      _startLocation = location;
+//    });
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,14 +114,14 @@ class EventLocationState extends State<EventLocation> {
         body:
         new InkWell(
           onTap: () {
-            _currentLocation["latitude"] != null ?
+            position != null ?
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
                     new EventsTabs(
-                        latitude: _currentLocation["latitude"],
-                        longitude: _currentLocation["longitude"])))
+                        latitude: position.latitude,
+                        longitude: position.longitude)))
                 : Navigator.push(
                 context,
                 MaterialPageRoute(
