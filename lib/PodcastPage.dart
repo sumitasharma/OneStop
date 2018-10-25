@@ -213,8 +213,13 @@ class HomePageState extends State<HomePage> {
               backgroundColor: Colors.blue
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.event),
-              title: Text('Events'),
+              icon: new Icon(Icons.event),
+              title: new Text('Events'),
+              backgroundColor: Colors.blue
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.headset),
+              title: Text('Podcast'),
               backgroundColor: Colors.blue
 
           ),

@@ -214,14 +214,14 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => IntroPageView()),
                   );
                   break;
-                case 1:
+                case 2:
                   print("In the eventstabs");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => EventLocation()),
                   );
                   break;
-                case 2:
+                case 3:
                   print("In the podcasttabs");
                   Navigator.push(
                     context,
@@ -232,16 +232,19 @@ class HomePageState extends State<HomePage> {
             }),
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
+              icon: new Icon(Icons.home),
+              title: new Text('Home'),
               backgroundColor: Colors.blue
-
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.event),
-              title: Text('Events'),
+              icon: new Icon(Icons.book),
+              title: new Text('News'),
               backgroundColor: Colors.blue
-
+          ),
+          BottomNavigationBarItem(
+              icon: new Icon(Icons.event),
+              title: new Text('Events'),
+              backgroundColor: Colors.blue
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.headset),

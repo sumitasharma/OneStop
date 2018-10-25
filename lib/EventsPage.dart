@@ -259,8 +259,8 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => NewsTabs()),
                   );
                   break;
-                case 2:
-                  print("In the newstabs");
+                case 3:
+                  print("In the podcasttabs");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => PodcastTabs()),
@@ -278,6 +278,11 @@ class HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: new Icon(Icons.book),
               title: new Text('News'),
+              backgroundColor: Colors.blue
+          ),
+          BottomNavigationBarItem(
+              icon: new Icon(Icons.event),
+              title: new Text('Events'),
               backgroundColor: Colors.blue
           ),
           BottomNavigationBarItem(
