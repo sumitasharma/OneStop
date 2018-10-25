@@ -187,16 +187,6 @@ class EventsPageState extends State<EventsTabs> {
     );
   }
 
-  void _handleSearchStart() {
-    setState(() {
-      Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) =>
-          new EventsTabsAddress(add: _searchQuery.text))
-      );
-    });
-  }
-
 }
 
 

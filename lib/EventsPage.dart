@@ -13,7 +13,6 @@ import 'PodcastTabs.dart';
 class HomePage extends StatefulWidget {
 
   final String url;
-
   const HomePage({Key key, this.url}) : super(key: key);
 
   @override
@@ -21,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
   int _currentIndex = 0;
 
@@ -40,9 +39,17 @@ class HomePageState extends State<HomePage> {
       return "Success!";
     }
     catch (e) {
+      _scaffoldKey.currentState
+          .showSnackBar(new SnackBar(
+        content: new Text("Kindly Check the Internet Connection"),
+        backgroundColor: Colors.blue,));
+
       return "No Internet";
       //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
+    setState(() {
+
+    });
   }
 
   bool isInternetConnectivity() {
@@ -65,7 +72,10 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Container(child: new ListView.builder(
+      key: _scaffoldKey,
+      body: data == null
+          ? Center(child: CircularProgressIndicator())
+          : new Container(child: new ListView.builder(
           padding: EdgeInsets.all(8.0),
           itemCount: data == null ? 0 : data.length,
           itemBuilder: (BuildContext context, int index) {
@@ -154,7 +164,7 @@ class HomePageState extends State<HomePage> {
                                       DateTime
                                           .parse(data[index]["start"]["local"])
                                           .day
-                                          .toString() + " " +
+                                          .toString() + "/" +
                                       DateTime
                                           .parse(data[index]["start"]["local"])
                                           .month
@@ -267,9 +277,5 @@ class HomePageState extends State<HomePage> {
       ),
 
     );
-  }
-
-  void _navigatePage(context, index) {
-
   }
 }

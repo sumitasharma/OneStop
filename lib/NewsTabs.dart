@@ -11,6 +11,7 @@ class NewsTabs extends StatefulWidget {
 
 class NewsPageState extends State<NewsTabs> {
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String _apiKey = "";
   String _country = "us";
   String _countryName = "USA";
@@ -28,12 +29,12 @@ class NewsPageState extends State<NewsTabs> {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
           length: 8,
           child: Scaffold(
+            key: _scaffoldKey,
             appBar: AppBar(
               centerTitle: true,
               title: appBarTitle,
@@ -89,7 +90,12 @@ class NewsPageState extends State<NewsTabs> {
                       setState(() {
                         _countryName = result.title;
                         _country = country(result.title);
-                      });
+                        _scaffoldKey.currentState
+                            .showSnackBar(new SnackBar(
+                          content: new Text("Click on new tab to refresh"),
+                          backgroundColor: Colors.blue,));
+                      }
+                      );
                     }
                 )
               ],
@@ -98,26 +104,7 @@ class NewsPageState extends State<NewsTabs> {
                   onPressed: () {
                     Navigator.pop(context, true);
                   }),
-//              actions: <Widget>[
-//                // overflow menu
-//                PopupMenuButton<Choice>(
-//                    itemBuilder: (BuildContext context) {
-//                      return choices.map((Choice choice) {
-//                        return PopupMenuItem<Choice>(
-//                          value: choice,
-//                          child: Text(choice.title),
-//                        );
-//                      }
-//                      ).toList();
-//                    },
-//                    onSelected: (Choice result) {
-//                      setState(() {
-//                        _countryName = result.title;
-//                        _country = country(result.title);
-//                      });
-//                    }
-//                )
-//              ],
+
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
                   new Tab(text: "World"),

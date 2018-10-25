@@ -74,7 +74,7 @@ class IntroPageItem extends StatelessWidget {
     );
 
     return Positioned(
-      bottom: 100.0,
+      bottom: 250.0,
       left: 32.0,
       right: 32.0,
       child: Column(
