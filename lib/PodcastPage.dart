@@ -5,6 +5,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventLocation.dart';
 import 'package:flutter_news_app/NewsTabs.dart';
+import 'package:flutter_news_app/page_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
@@ -180,10 +181,17 @@ class HomePageState extends State<HomePage> {
                   print("In the newstabs");
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewsTabs()),
+                    MaterialPageRoute(builder: (context) => IntroPageView()),
                   );
                   break;
                 case 1:
+                  print("In the newstabs");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewsTabs()),
+                  );
+                  break;
+                case 2:
                   print("In the eventstabs");
                   Navigator.push(
                     context,
@@ -194,6 +202,11 @@ class HomePageState extends State<HomePage> {
               print(_currentIndex);
             }),
         items: [
+          BottomNavigationBarItem(
+              icon: new Icon(Icons.home),
+              title: new Text('Home'),
+              backgroundColor: Colors.blue
+          ),
           BottomNavigationBarItem(
               icon: new Icon(Icons.book),
               title: new Text('News'),

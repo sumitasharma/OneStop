@@ -14,7 +14,7 @@ void main() {
     home: new IntroPageView(),
     initialRoute: '/',
     routes: {
-
+      '/IntroPageView': (context) => IntroPageView(),
       '/NewsTab': (context) => new NewsTabs(),
       '/EventsTab': (context) => new EventLocation(),
       '/PodcastTab': (context) => new PodcastTabs()

@@ -29,7 +29,7 @@ class PodcastPageState extends State<PodcastTabs> {
           child: Scaffold(
             appBar: AppBar(
                 leading: new IconButton(
-                    icon: new Icon(Icons.home),
+                    icon: new Icon(Icons.arrow_back),
                     onPressed: () {
                       Navigator.pop(context, true);
                     }),

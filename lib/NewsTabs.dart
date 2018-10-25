@@ -92,7 +92,7 @@ class NewsPageState extends State<NewsTabs> {
                         _country = country(result.title);
                         _scaffoldKey.currentState
                             .showSnackBar(new SnackBar(
-                          content: new Text("Click on new tab to refresh"),
+                          content: new Text("Click on New Tab to refresh"),
                           backgroundColor: Colors.blue,));
                       }
                       );
@@ -100,7 +100,7 @@ class NewsPageState extends State<NewsTabs> {
                 )
               ],
               leading: new IconButton(
-                  icon: new Icon(Icons.home),
+                  icon: new Icon(Icons.arrow_back),
                   onPressed: () {
                     Navigator.pop(context, true);
                   }),

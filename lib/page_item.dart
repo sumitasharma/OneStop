@@ -15,6 +15,7 @@ class IntroPageItem extends StatelessWidget {
   final IntroItem item;
   final PageVisibility pageVisibility;
 
+
   Widget _applyTextEffects({
     @required double translationFactor,
     @required Widget child,

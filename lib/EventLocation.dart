@@ -105,7 +105,7 @@ class EventLocationState extends State<EventLocation> {
       home: new Scaffold(
         appBar: new AppBar(
           leading: new IconButton(
-              icon: new Icon(Icons.home),
+              icon: new Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context, true);
               }),

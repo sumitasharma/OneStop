@@ -4,6 +4,7 @@ import 'dart:convert' show json;
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventLocation.dart';
+import 'package:flutter_news_app/page_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
@@ -207,13 +208,20 @@ class HomePageState extends State<HomePage> {
               _currentIndex = newIndex;
               switch (_currentIndex) {
                 case 0:
+                  print("In the newstabs");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => IntroPageView()),
+                  );
+                  break;
+                case 1:
                   print("In the eventstabs");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => EventLocation()),
                   );
                   break;
-                case 1:
+                case 2:
                   print("In the podcasttabs");
                   Navigator.push(
                     context,
@@ -223,6 +231,12 @@ class HomePageState extends State<HomePage> {
               }
             }),
         items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+              backgroundColor: Colors.blue
+
+          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.event),
               title: Text('Events'),
