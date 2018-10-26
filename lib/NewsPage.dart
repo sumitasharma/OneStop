@@ -105,7 +105,6 @@ class HomePageState extends State<HomePage> {
                             children: <Widget>[
                               new Container(
                                   height: 16.0),
-
                               data[index]["urlToImage"] == null
                                   ? new Container(
                                   height: 200.0,

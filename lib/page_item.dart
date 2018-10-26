@@ -41,7 +41,7 @@ class IntroPageItem extends StatelessWidget {
         .of(context)
         .textTheme;
     var categoryText = _applyTextEffects(
-        translationFactor: 300.0,
+        translationFactor: 500.0,
         child: new InkWell(
           onTap: () => navigationTab(context),
           child: Text(
@@ -50,7 +50,7 @@ class IntroPageItem extends StatelessWidget {
               color: Colors.white70,
               fontWeight: FontWeight.bold,
               letterSpacing: 3.0,
-              fontSize: 24.0,
+              fontSize: 30.0,
             ),
             textAlign: TextAlign.center,
           ),
@@ -58,7 +58,7 @@ class IntroPageItem extends StatelessWidget {
     );
 
     var titleText = _applyTextEffects(
-      translationFactor: 200.0,
+      translationFactor: 500.0,
       child: Padding(
           padding: const EdgeInsets.only(top: 16.0),
           child: new InkWell(
@@ -67,7 +67,9 @@ class IntroPageItem extends StatelessWidget {
             child: Text(
               item.title,
               style: textTheme.title
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  .copyWith(color: Colors.white,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 24.0),
               textAlign: TextAlign.center,
             ),
           )
@@ -75,7 +77,7 @@ class IntroPageItem extends StatelessWidget {
     );
 
     return Positioned(
-      bottom: 250.0,
+      bottom: 150.0,
       left: 32.0,
       right: 32.0,
       child: Column(
