@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news_app/NewsPage.dart';
 import 'package:flutter_news_app/SearchNews.dart';
 
+import 'util.dart';
 
 class NewsTabs extends StatefulWidget {
   final String country;
@@ -15,7 +16,8 @@ class NewsTabs extends StatefulWidget {
 class NewsPageState extends State<NewsTabs> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  String _apiKey = "";
+  Util newUtil = new Util();
+  static String _apiKey;
   static String _countryName;
 
   //String _country='us';
@@ -28,8 +30,15 @@ class NewsPageState extends State<NewsTabs> {
   @override
   void initState() {
     super.initState();
+    _apiKey = newUtil.apiKey;
     _countryName = country(widget.country);
 
+  }
+
+  @override
+  void setState(fn) {
+    super.setState(fn);
+    _apiKey = newUtil.apiKey;
   }
 
   @override
@@ -81,7 +90,8 @@ class NewsPageState extends State<NewsTabs> {
                   });
                 },),
               ],
-              bottom: new TabBar(isScrollable: true,
+              bottom: new TabBar(
+                isScrollable: true,
                 tabs: <Widget>[
                   new Tab(text: "World"),
                   new Tab(text: _countryName + "'s Top News"),
@@ -140,8 +150,9 @@ class NewsPageState extends State<NewsTabs> {
                   Container(
                     height: 120.0,
                     child: DrawerHeader(
-                      child: Text('Country''s News',
-                        style: new TextStyle(fontSize: 24.0),),
+                      child: Text("Country's News",
+                        style: new TextStyle(
+                            fontSize: 24.0, fontStyle: FontStyle.italic),),
                       decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
                         color: Colors.blue,
@@ -149,7 +160,8 @@ class NewsPageState extends State<NewsTabs> {
                     ),
                   ),
                   ListTile(
-                    title: Text('India', style: new TextStyle(fontSize: 20.0),),
+                    title: Text('India', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic),),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -159,7 +171,8 @@ class NewsPageState extends State<NewsTabs> {
                   ),
                   ListTile(
                     title: Text('United States of America',
-                        style: new TextStyle(fontSize: 18.0)),
+                        style: new TextStyle(
+                            fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -168,7 +181,8 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
-                    title: Text('China', style: new TextStyle(fontSize: 18.0)),
+                    title: Text('China', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -178,7 +192,8 @@ class NewsPageState extends State<NewsTabs> {
                   ),
                   ListTile(
                     title: Text(
-                        'Australia', style: new TextStyle(fontSize: 18.0)),
+                        'Australia', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -188,7 +203,8 @@ class NewsPageState extends State<NewsTabs> {
                   ),
                   ListTile(
                     title: Text(
-                        'Ireland', style: new TextStyle(fontSize: 18.0)),
+                        'Ireland', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -198,7 +214,8 @@ class NewsPageState extends State<NewsTabs> {
                   ),
                   ListTile(
                     title: Text(
-                        'Netherland', style: new TextStyle(fontSize: 18.0)),
+                        'Netherland', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -208,7 +225,8 @@ class NewsPageState extends State<NewsTabs> {
                   ),
                   ListTile(
                     title: Text(
-                        'New Zealand', style: new TextStyle(fontSize: 18.0)),
+                        'New Zealand', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -218,7 +236,8 @@ class NewsPageState extends State<NewsTabs> {
                   ),
                   ListTile(
                     title: Text(
-                        'United Kingdom', style: new TextStyle(fontSize: 18.0)),
+                        'United Kingdom', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -227,7 +246,8 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
-                    title: Text('Japan', style: new TextStyle(fontSize: 18.0)),
+                    title: Text('Japan', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -236,7 +256,8 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
-                    title: Text('Israel', style: new TextStyle(fontSize: 18.0)),
+                    title: Text('Israel', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
                       Navigator.push(
                           context,

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventLocation.dart';
 import 'package:flutter_news_app/NewsTabs.dart';
@@ -38,7 +39,7 @@ class HomePageState extends State<HomePage> {
     catch (e) {
       _scaffoldKey.currentState.showSnackBar(new SnackBar(
         content: new Text("Kindly Check the Internet Connection"),
-        backgroundColor: Colors.blue,));
+          backgroundColor: Colors.red));
       return "No Internet";
       //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
@@ -178,7 +179,7 @@ class HomePageState extends State<HomePage> {
               _currentIndex = newIndex;
               switch (_currentIndex) {
                 case 0:
-                  print("In the newstabs");
+                  print("In the intropage");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => IntroPageView()),
@@ -206,22 +207,22 @@ class HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: new Icon(Icons.home),
               title: new Text('Home'),
-              backgroundColor: Colors.blue
+              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
           ),
           BottomNavigationBarItem(
               icon: new Icon(Icons.book),
               title: new Text('News'),
-              backgroundColor: Colors.blue
+              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
           ),
           BottomNavigationBarItem(
               icon: new Icon(Icons.event),
               title: new Text('Events'),
-              backgroundColor: Colors.blue
+              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.headset),
               title: Text('Podcast'),
-              backgroundColor: Colors.blue
+              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
 
           ),
         ],

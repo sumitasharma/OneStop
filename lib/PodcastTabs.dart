@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/PodcastPage.dart';
+import 'package:flutter_news_app/util.dart';
 
 
 class PodcastTabs extends StatefulWidget {
@@ -8,9 +9,9 @@ class PodcastTabs extends StatefulWidget {
 }
 
 class PodcastPageState extends State<PodcastTabs> {
-
-  String _podcastApi = "";
-  String _urlStringPodcast = "http://api.digitalpodcast.com/v2r/search/?format=json&appid=";
+  Util newUtil = new Util();
+  static String _podCastApi;
+  String _urlStringPodCast = "http://api.digitalpodcast.com/v2r/search/?format=json&appid=";
   String _keyword = "&keywords=";
   String _search;
 
@@ -18,6 +19,7 @@ class PodcastPageState extends State<PodcastTabs> {
   @override
   void initState() {
     super.initState();
+    _podCastApi = newUtil.podCastApi;
   }
 
   @override
@@ -28,67 +30,70 @@ class PodcastPageState extends State<PodcastTabs> {
           length: 13,
           child: Scaffold(
             appBar: AppBar(
+                backgroundColor: Color.fromRGBO(128, 0, 128, 50.0),
                 leading: new IconButton(
                     icon: new Icon(Icons.arrow_back),
                     onPressed: () {
                       Navigator.pop(context, true);
                     }),
-              bottom: new TabBar(isScrollable: true,
-                tabs: <Widget>[
+                bottom: new TabBar(
+                  isScrollable: true,
+                  indicatorColor: Color.fromRGBO(128, 0, 128, 50.0),
+                  tabs: <Widget>[
 
-                  new Tab(text: "Music"),
-                  new Tab(text: "Business"),
-                  new Tab(text: "Educational"),
-                  new Tab(text: "Comedy"),
-                  new Tab(text: "News & Politics",),
-                  new Tab(text: "Science & Medicine"),
-                  new Tab(text: "Sports"),
-                  new Tab(text: "Technology & Gadgets",),
-                  new Tab(text: "Television",),
-                  new Tab(text: "Film & Entertainment",),
-                  new Tab(text: "Charity & Causes",),
-                  new Tab(text: "Religion & Spirituality",),
-                  new Tab(text: "Arts",)
-                ],
-              ),
+                    new Tab(text: "Music"),
+                    new Tab(text: "Business"),
+                    new Tab(text: "Educational"),
+                    new Tab(text: "Comedy"),
+                    new Tab(text: "News & Politics",),
+                    new Tab(text: "Science & Medicine"),
+                    new Tab(text: "Sports"),
+                    new Tab(text: "Technology & Gadgets",),
+                    new Tab(text: "Television",),
+                    new Tab(text: "Film & Entertainment",),
+                    new Tab(text: "Charity & Causes",),
+                    new Tab(text: "Religion & Spirituality",),
+                    new Tab(text: "Arts",)
+                  ],
+                ),
                 title: Text("Podcast")),
             body: TabBarView(
               children: [
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword + "music"),
+                    url: _urlStringPodCast + _podCastApi + _keyword + "music"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "business"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "educational"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword + "comedy"),
+                    url: _urlStringPodCast + _podCastApi + _keyword + "comedy"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "news & politics"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "science & medicine"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword + "sports"),
+                    url: _urlStringPodCast + _podCastApi + _keyword + "sports"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "technology & gadgets"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "television"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "film & entertainment"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "charity & causes"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword +
+                    url: _urlStringPodCast + _podCastApi + _keyword +
                         "religion & spirituality"),
                 new HomePage(
-                    url: _urlStringPodcast + _podcastApi + _keyword + "arts")
+                    url: _urlStringPodCast + _podCastApi + _keyword + "arts")
               ],
             ),
 

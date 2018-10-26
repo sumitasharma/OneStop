@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventsPage.dart';
 
+import 'util.dart';
+
 class EventsTabsAddress extends StatefulWidget {
 
   final String add;
@@ -12,7 +14,8 @@ class EventsTabsAddress extends StatefulWidget {
 
 class EventsPageAddressState extends State<EventsTabsAddress> {
 
-  String _tokenKey = "";
+  Util newUtil = new Util();
+  static String _tokenKey;
   String _urlStringEvents = "https://www.eventbriteapi.com/v3/events/search/?";
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle;
@@ -22,6 +25,7 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _tokenKey = newUtil.tokenKey;
     this.appBarTitle = new Text("Events near " + widget.add);
   }
 
@@ -33,6 +37,7 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
           length: 11,
           child: Scaffold(
             appBar: AppBar(
+              backgroundColor: Color.fromRGBO(205, 92, 92, 50.0),
               centerTitle: true,
               title: appBarTitle,
               actions: <Widget>[
@@ -76,6 +81,7 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                     Navigator.pop(context, true);
                   }),
               bottom: new TabBar(isScrollable: true,
+                indicatorColor: Color.fromRGBO(205, 92, 92, 50.0),
                 tabs: <Widget>[
 
                   new Tab(text: "Free Events"),

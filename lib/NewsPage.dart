@@ -39,7 +39,7 @@ class HomePageState extends State<HomePage> {
     catch (e) {
       _scaffoldKey.currentState.showSnackBar(new SnackBar(
         content: new Text("Kindly Check the Internet Connection"),
-        backgroundColor: Colors.blue,));
+        backgroundColor: Colors.red,));
       return "No Internet";
       //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
@@ -209,7 +209,7 @@ class HomePageState extends State<HomePage> {
               _currentIndex = newIndex;
               switch (_currentIndex) {
                 case 0:
-                  print("In the newstabs");
+                  print("In the intropage");
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => IntroPageView()),

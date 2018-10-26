@@ -57,46 +57,8 @@ class EventLocationState extends State<EventLocation> {
         position = null;
       }
     }
-
-//    Map<String, double> location;
-//    // Platform messages may fail, so we use a try/catch PlatformException.
-//
-//    try {
-//      _permission = await _location.hasPermission();
-//      location = await _location.getLocation();
-//      await new Future.delayed(new Duration(milliseconds: 100));
-//
-//      error = null;
-//    } on PlatformException catch (e) {
-//      if (e.code == 'PERMISSION_DENIED') {
-//        error = 'Permission denied';
-//        Navigator.push(
-//            context,
-//            MaterialPageRoute(
-//                builder: (context) =>
-//                new EventsTabsAddress(add: "Mountain View, CA",)
-//            )
-//        );
-//      } else if (e.code == 'PERMISSION_DENIED_NEVER_ASK') {
-//        error =
-//        'Permission denied - please ask the user to enable it from the app settings';
-//        Navigator.push(
-//            context,
-//            MaterialPageRoute(
-//                builder: (context) =>
-//                new EventsTabsAddress(add: "Mountain View, CA",)
-//            )
-//        );
-//      }
-
-    //   _startLocation=location;
   }
 
-//
-//    setState(() {
-//      _startLocation = location;
-//    });
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,6 +66,7 @@ class EventLocationState extends State<EventLocation> {
       debugShowCheckedModeBanner: false,
       home: new Scaffold(
         appBar: new AppBar(
+          backgroundColor: Color.fromRGBO(205, 92, 92, 50.0),
           leading: new IconButton(
               icon: new Icon(Icons.arrow_back),
               onPressed: () {
