@@ -93,8 +93,8 @@ class NewsPageState extends State<NewsTabs> {
               bottom: new TabBar(
                 isScrollable: true,
                 tabs: <Widget>[
-                  new Tab(text: "World"),
                   new Tab(text: _countryName + "'s Top News"),
+                  new Tab(text: "World"),
                   new Tab(text: "Buisness"),
                   new Tab(text: "Technology"),
                   new Tab(text: "Entertainment"),
@@ -107,12 +107,12 @@ class NewsPageState extends State<NewsTabs> {
             body: TabBarView(
               children: [
                 new HomePage(
-                  url: _urlStringTopHeadlines + "language=en&apiKey=" +
-                      _apiKey,),
-                new HomePage(
                     url: _urlStringTopHeadlines + "country=" + widget.country +
                         "&apiKey=" +
                         _apiKey),
+                new HomePage(
+                  url: _urlStringTopHeadlines + "language=en&apiKey=" +
+                      _apiKey,),
                 new HomePage(
                     url: _urlStringTopHeadlines + "country=" + widget.country +
                         "&category=business&apiKey=" +
