@@ -43,7 +43,7 @@ class HomePageState extends State<HomePage> {
       _scaffoldKey.currentState
           .showSnackBar(new SnackBar(
         content: new Text("Kindly Check and Allow the Internet Connection"),
-        backgroundColor: Colors.red,));
+          backgroundColor: Colors.blueAccent));
 
       return "No Internet";
       //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
