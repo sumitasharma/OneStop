@@ -66,7 +66,8 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
-      body: data == null
+      body:
+      data == null
           ? Center(child: CircularProgressIndicator())
           : new Container(child: new ListView.builder(
           padding: EdgeInsets.all(8.0),

@@ -137,7 +137,7 @@ class IntroPageItem extends StatelessWidget {
       case 'NewsTabs':
         Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => NewsTabs()));
+            MaterialPageRoute(builder: (context) => NewsTabs(country: 'us')));
         break;
       case 'EventsTabs' :
         Navigator.push(

@@ -188,7 +188,8 @@ class HomePageState extends State<HomePage> {
                   print("In the newstabs");
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewsTabs()),
+                    MaterialPageRoute(
+                        builder: (context) => NewsTabs(country: 'us',)),
                   );
                   break;
                 case 2:

@@ -3,8 +3,11 @@ import 'package:flutter_news_app/NewsPage.dart';
 import 'package:flutter_news_app/SearchNews.dart';
 
 
-
 class NewsTabs extends StatefulWidget {
+  final String country;
+
+  const NewsTabs({Key key, this.country}) : super(key: key);
+
   @override
   NewsPageState createState() => new NewsPageState();
 }
@@ -13,18 +16,20 @@ class NewsPageState extends State<NewsTabs> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   String _apiKey = "";
-  String _country = "us";
-  String _countryName = "USA";
+  static String _countryName;
+
+  //String _country='us';
   String _urlStringTopHeadlines = "https://newsapi.org/v2/top-headlines?";
   String _urlStringSearchNews = "https://newsapi.org/v2/everything?";
   Icon actionIcon = new Icon(Icons.search);
   Widget appBarTitle = new Text("News Today");
   final TextEditingController _searchQuery = new TextEditingController();
 
-
   @override
   void initState() {
     super.initState();
+    _countryName = country(widget.country);
+
   }
 
   @override
@@ -34,11 +39,11 @@ class NewsPageState extends State<NewsTabs> {
         home: DefaultTabController(
           length: 8,
           child: Scaffold(
+
             key: _scaffoldKey,
             appBar: AppBar(
               centerTitle: true,
               title: appBarTitle,
-
               actions: <Widget>[
                 new IconButton(icon: actionIcon, onPressed: () {
                   setState(() {
@@ -75,36 +80,7 @@ class NewsPageState extends State<NewsTabs> {
                     }
                   });
                 },),
-                // overflow menu
-                PopupMenuButton<Choice>(
-                    itemBuilder: (BuildContext context) {
-                      return choices.map((Choice choice) {
-                        return PopupMenuItem<Choice>(
-                          value: choice,
-                          child: Text(choice.title),
-                        );
-                      }
-                      ).toList();
-                    },
-                    onSelected: (Choice result) {
-                      setState(() {
-                        _countryName = result.title;
-                        _country = country(result.title);
-                        _scaffoldKey.currentState
-                            .showSnackBar(new SnackBar(
-                          content: new Text("Click on New Tab to refresh"),
-                          backgroundColor: Colors.blue,));
-                      }
-                      );
-                    }
-                )
               ],
-              leading: new IconButton(
-                  icon: new Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  }),
-
               bottom: new TabBar(isScrollable: true,
                 tabs: <Widget>[
                   new Tab(text: "World"),
@@ -124,38 +100,152 @@ class NewsPageState extends State<NewsTabs> {
                   url: _urlStringTopHeadlines + "language=en&apiKey=" +
                       _apiKey,),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "country=" + _country +
+                    url: _urlStringTopHeadlines + "country=" + widget.country +
                         "&apiKey=" +
                         _apiKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "country=" + _country +
+                    url: _urlStringTopHeadlines + "country=" + widget.country +
                         "&category=business&apiKey=" +
                         _apiKey),
                 new HomePage(
-                    url: _urlStringTopHeadlines + "country=" + _country +
+                    url: _urlStringTopHeadlines + "country=" + widget.country +
                         "&category=technology&apiKey=" +
                         _apiKey),
                 new HomePage(
                     url: _urlStringTopHeadlines +
                         "category=entertainment&country=" +
-                        _country + "&apiKey=" +
+                        widget.country + "&apiKey=" +
                         _apiKey),
                 new HomePage(
                     url: _urlStringTopHeadlines + "category=sports&country=" +
-                        _country +
+                        widget.country +
                         "&apiKey=" +
                         _apiKey),
                 new HomePage(
                     url: _urlStringTopHeadlines + "category=science&country=" +
-                        _country +
+                        widget.country +
                         "&apiKey=" +
                         _apiKey),
                 new HomePage(
                     url: _urlStringTopHeadlines + "category=health&country=" +
-                        _country +
+                        widget.country +
                         "&apiKey=" +
                         _apiKey),
               ],
+            ),
+            drawer: Drawer(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: <Widget>[
+                  Container(
+                    height: 120.0,
+                    child: DrawerHeader(
+                      child: Text('Country''s News',
+                        style: new TextStyle(fontSize: 24.0),),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('India', style: new TextStyle(fontSize: 20.0),),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'in')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('United States of America',
+                        style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'us')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('China', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'cn')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                        'Australia', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'au')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                        'Ireland', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'ie')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                        'Netherland', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'nl')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                        'New Zealand', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'nz')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text(
+                        'United Kingdom', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'gb')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Japan', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'jp')));
+                    },
+                  ),
+                  ListTile(
+                    title: Text('Israel', style: new TextStyle(fontSize: 18.0)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'il')));
+                    },
+                  ),
+                ],
+              ),
             ),
 
           ),
@@ -168,35 +258,35 @@ class NewsPageState extends State<NewsTabs> {
 String country(String country) {
   String _countryCode;
   switch (country) {
-    case 'India':
-      _countryCode = "in";
+    case 'in':
+      _countryCode = "India";
       break;
-    case 'USA':
-      _countryCode = "us";
+    case 'us':
+      _countryCode = "USA";
       break;
-    case 'China':
-      _countryCode = "cn";
+    case 'cn':
+      _countryCode = "China";
       break;
-    case 'Australia':
-      _countryCode = "au";
+    case 'au':
+      _countryCode = "Australia";
       break;
-    case 'Ireland':
-      _countryCode = "ie";
+    case 'ie':
+      _countryCode = "Ireland";
       break;
-    case 'Netherland':
-      _countryCode = "nl";
+    case 'nl':
+      _countryCode = "Netherland";
       break;
-    case 'New Zealand':
-      _countryCode = "nz";
+    case 'nz':
+      _countryCode = "New Zealand";
       break;
-    case 'United Kingdom':
-      _countryCode = "gb";
+    case 'gb':
+      _countryCode = "United Kingdom";
       break;
-    case 'Japan':
-      _countryCode = "jp";
+    case 'jp':
+      _countryCode = "Japan";
       break;
-    case 'Israel':
-      _countryCode = "il";
+    case 'il':
+      _countryCode = "Israel";
       break;
   }
   return _countryCode;
