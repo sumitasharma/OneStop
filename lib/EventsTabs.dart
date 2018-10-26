@@ -60,8 +60,8 @@ class EventsPageState extends State<EventsTabs> {
                         decoration: new InputDecoration(
                             prefixIcon: new Icon(
                                 Icons.search, color: Colors.white),
-                            hintText: "Search...",
-                            hintStyle: new TextStyle(color: Colors.white)
+                          hintText: "Search events in location",
+                          hintStyle: new TextStyle(color: Colors.white),
                         ),
                         onSubmitted: (String str) {
                           setState(() {

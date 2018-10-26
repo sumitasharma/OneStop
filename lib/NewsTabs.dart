@@ -152,7 +152,9 @@ class NewsPageState extends State<NewsTabs> {
                     child: DrawerHeader(
                       child: Text("Country's News",
                         style: new TextStyle(
-                            fontSize: 24.0, fontStyle: FontStyle.italic),),
+                            fontSize: 24.0,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.white),),
                       decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
                         color: Colors.blue,

@@ -90,7 +90,10 @@ class HomePageState extends State<HomePage> {
                                   new WebviewScaffold(url:
                                   (data[index]['feed']['url']),
                                     appBar: new AppBar(title: new Text(
-                                        data[index]["feed"]["title"])),
+                                        data[index]["feed"]["title"]),
+                                        backgroundColor: Color.fromRGBO(
+                                            128, 0, 128, 50.0)
+                                    ),
                                   ))
                               ),
                           child: new Wrap(
