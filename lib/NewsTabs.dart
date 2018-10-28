@@ -44,7 +44,7 @@ class NewsPageState extends State<NewsTabs> {
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 2.0;
+    timeDilation = 1.0;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(

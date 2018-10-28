@@ -4,7 +4,7 @@ import 'dart:convert' show json;
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/EventLocation.dart';
+import 'package:flutter_news_app/EventsTabs.dart';
 import 'package:flutter_news_app/page_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
@@ -223,7 +223,7 @@ class HomePageState extends State<HomePage> {
                   Navigator.of(context, rootNavigator: true).push(
                     new CupertinoPageRoute<bool>(
                         fullscreenDialog: false,
-                        builder: (BuildContext context) => new EventLocation()),
+                        builder: (BuildContext context) => new EventsTabs()),
                   );
                   break;
                 case 3:

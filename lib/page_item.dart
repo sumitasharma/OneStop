@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/EventsTabs.dart';
 import 'package:meta/meta.dart';
 
-import 'EventLocation.dart';
 import 'NewsTabs.dart';
 import 'PodcastTabs.dart';
 import 'dart.dart';
@@ -148,7 +148,7 @@ class IntroPageItem extends StatelessWidget {
         Navigator.of(context, rootNavigator: true).push(
             new CupertinoPageRoute<bool>(
                 fullscreenDialog: false,
-                builder: (BuildContext context) => new EventLocation()));
+                builder: (BuildContext context) => new EventsTabs()));
         break;
       case 'PodcastsTabs' :
         Navigator.of(context, rootNavigator: true).push(
