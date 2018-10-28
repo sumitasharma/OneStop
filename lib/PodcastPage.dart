@@ -120,7 +120,7 @@ class HomePageState extends State<HomePage> {
                                   decoration: new BoxDecoration(
                                     image: new DecorationImage(
                                         image: new AssetImage(
-                                            'assets/podcastImage.jpg'),
+                                            'assets/podcast.jpg'),
                                         fit: BoxFit.fitWidth),
                                     borderRadius: new BorderRadius.all(
                                         new Radius.circular(16.0)),

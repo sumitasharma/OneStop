@@ -165,6 +165,21 @@ class NewsPageState extends State<NewsTabs> {
                     ),
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/indian_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text('India', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic),),
                     onTap: () {
@@ -175,6 +190,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/america_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text('United States of America',
                         style: new TextStyle(
                             fontSize: 18.0, fontStyle: FontStyle.italic)),
@@ -186,6 +216,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/china_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text('China', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
@@ -196,6 +241,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/australia_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text(
                         'Australia', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
@@ -207,6 +267,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/ireland_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text(
                         'Ireland', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
@@ -218,6 +293,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/netherlands_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text(
                         'Netherland', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
@@ -229,6 +319,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/new_zealand_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text(
                         'New Zealand', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
@@ -240,6 +345,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/uk_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text(
                         'United Kingdom', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
@@ -251,6 +371,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/japan_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text('Japan', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
@@ -261,6 +396,21 @@ class NewsPageState extends State<NewsTabs> {
                     },
                   ),
                   ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/israel_flag.jpg'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
                     title: Text('Israel', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
@@ -268,6 +418,231 @@ class NewsPageState extends State<NewsTabs> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => NewsTabs(country: 'il')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/canada_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('Canada', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'ca')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/dubai_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('UAE', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'ae')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/french_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('France', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'fr')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/germany_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('Germany', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'de')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/singapore_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('Singapore', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'sg')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/rusia_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('Russia', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'ru')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/south_korea_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('South Korea', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'kr')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/malaysia_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('Malaysia', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'my')));
+                    },
+                  ),
+                  ListTile(
+                    trailing: new Container(
+                        height: 50.0,
+                        width: 50.0,
+                        decoration: new BoxDecoration(
+                          image: new DecorationImage(
+                              image: new AssetImage(
+                                  'assets/thailand_flag.png'),
+                              fit: BoxFit.scaleDown),
+                          borderRadius: new BorderRadius.all(
+                              new Radius.circular(16.0)),
+                          border: new Border.all(
+                            color: Colors.white,
+                            width: 2.0,
+                          ),
+                        )),
+                    title: Text('Thailand', style: new TextStyle(
+                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewsTabs(country: 'th')));
                     },
                   ),
                 ],
@@ -314,6 +689,33 @@ String country(String country) {
     case 'il':
       _countryCode = "Israel";
       break;
+    case 'ca':
+      _countryCode = "Canada";
+      break;
+    case 'ae':
+      _countryCode = "UAE";
+      break;
+    case 'fr':
+      _countryCode = "France";
+      break;
+    case 'de':
+      _countryCode = "Germany";
+      break;
+    case 'sg':
+      _countryCode = "Singapore";
+      break;
+    case 'ru':
+      _countryCode = "Russia";
+      break;
+    case 'kr':
+      _countryCode = "South Korea";
+      break;
+    case 'my':
+      _countryCode = "Malaysia";
+      break;
+    case 'th':
+      _countryCode = "Thaiand";
+      break;
   }
   return _countryCode;
 }
@@ -334,7 +736,16 @@ const List<Choice> choices = const <Choice>[
   const Choice(title: 'New Zealand'),
   const Choice(title: 'United Kingdom'),
   const Choice(title: 'Japan'),
-  const Choice(title: 'Israel')
+  const Choice(title: 'Israel'),
+  const Choice(title: 'Canada'),
+  const Choice(title: 'UAE'),
+  const Choice(title: 'France'),
+  const Choice(title: 'Germany'),
+  const Choice(title: 'Singapore'),
+  const Choice(title: 'Russia'),
+  const Choice(title: 'South Korea'),
+  const Choice(title: 'Malaysia'),
+  const Choice(title: 'Thaiand'),
 ];
 
 

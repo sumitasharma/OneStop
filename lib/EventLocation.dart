@@ -72,7 +72,7 @@ class EventLocationState extends State<EventLocation> {
                     builder: (BuildContext context) =>
                     new EventsTabs(
                         latitude: 37.3861,
-                        longitude: 122.0839)));
+                        longitude: -122.0839)));
           },
           child:
           new Container(

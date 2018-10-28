@@ -47,6 +47,25 @@ flutter:
     - assets/eventsImage.jpg
     - assets/podcast.jpg
     - assets/podcastImage.jpg
+    - assets/indian_flag.png
+    - assets/america_flag.png
+    - assets/australia_flag.png
+    - assets/canada_flag.png
+    - assets/china_flag.png
+    - assets/dubai_flag.png
+    - assets/french_flag.png
+    - assets/germany_flag.png
+    - assets/ireland_flag.png
+    - assets/israel_flag.jpg
+    - assets/japan_flag.png
+    - assets/malaysia_flag.png
+    - assets/netherlands_flag.png
+    - assets/new_zealand_flag.png
+    - assets/rusia_flag.png
+    - assets/singapore_flag.png
+    - assets/south_korea_flag.png
+    - assets/thailand_flag.png
+    - assets/uk_flag.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

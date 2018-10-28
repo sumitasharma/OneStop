@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventLocation.dart';
+import 'package:flutter_news_app/page_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,7 +25,7 @@ class SearchNews extends StatefulWidget {
 class SearchNewsState extends State<SearchNews> {
 
   List data;
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   Map<int, List> _saved = new Map();
 
   Future<String> getData() async {
@@ -216,36 +218,48 @@ class SearchNewsState extends State<SearchNews> {
                   _currentIndex = newIndex;
                   switch (_currentIndex) {
                     case 0:
-                      null;
-                      break;
-                    case 1:
-                      print("In the eventstabs");
+                      print("In the intropage");
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => EventLocation()),
+                            builder: (context) => IntroPageView()),
                       );
                       break;
                     case 2:
+                      print("In the eventstabs");
+                      Navigator.of(context, rootNavigator: true).push(
+                        new CupertinoPageRoute<bool>(
+                            fullscreenDialog: false,
+                            builder: (
+                                BuildContext context) => new EventLocation()),
+                      );
+                      break;
+                    case 3:
                       print("In the podcasttabs");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PodcastTabs()),
+                      Navigator.of(context, rootNavigator: true).push(
+                        new CupertinoPageRoute<bool>(
+                            fullscreenDialog: false,
+                            builder: (
+                                BuildContext context) => new PodcastTabs()),
                       );
                       break;
                   }
                 }),
             items: [
               BottomNavigationBarItem(
-                  icon: new Icon(Icons.search),
-                  title: new Text('Search'),
+                  icon: new Icon(Icons.home),
+                  title: new Text('Home'),
                   backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.event),
-                  title: Text('Events'),
+                  icon: new Icon(Icons.book),
+                  title: new Text('News'),
                   backgroundColor: Colors.blue
-
+              ),
+              BottomNavigationBarItem(
+                  icon: new Icon(Icons.event),
+                  title: new Text('Events'),
+                  backgroundColor: Colors.blue
               ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.headset),
