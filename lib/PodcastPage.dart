@@ -24,7 +24,7 @@ class HomePageState extends State<HomePage> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
-  int _currentIndex = 0;
+  int _currentIndex = 3;
 
   Future<String> getData() async {
     try {
@@ -84,10 +84,11 @@ class HomePageState extends State<HomePage> {
                             left: 16.0, right: 16.0, bottom: 8.0),
                         child: new InkWell(
                           onTap: () =>
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) =>
-                                  new WebviewScaffold(url:
+                              Navigator.of(context, rootNavigator: true).push(
+                                  new CupertinoPageRoute<bool>(
+                                      fullscreenDialog: false,
+                                      builder: (BuildContext context) =>
+                                      new WebviewScaffold(url:
                                   (data[index]['feed']['url']),
                                     appBar: new AppBar(title: new Text(
                                         data[index]["feed"]["title"]),
@@ -190,17 +191,19 @@ class HomePageState extends State<HomePage> {
                   break;
                 case 1:
                   print("In the newstabs");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => NewsTabs(country: 'us',)),
+                  Navigator.of(context, rootNavigator: true).push(
+                    new CupertinoPageRoute<bool>(
+                        fullscreenDialog: false,
+                        builder: (BuildContext context) =>
+                        new NewsTabs(country: 'us',)),
                   );
                   break;
                 case 2:
                   print("In the eventstabs");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => EventLocation()),
+                  Navigator.of(context, rootNavigator: true).push(
+                    new CupertinoPageRoute<bool>(
+                        fullscreenDialog: false,
+                        builder: (BuildContext context) => new EventLocation()),
                   );
                   break;
               }

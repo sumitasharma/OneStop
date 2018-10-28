@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_news_app/PodcastPage.dart';
 import 'package:flutter_news_app/util.dart';
 
@@ -24,6 +25,7 @@ class PodcastPageState extends State<PodcastTabs> {
 
   @override
   Widget build(BuildContext context) {
+    timeDilation = 2.0;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(

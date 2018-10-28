@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_news_app/EventsPage.dart';
 
 import 'util.dart';
@@ -6,6 +8,7 @@ import 'util.dart';
 class EventsTabsAddress extends StatefulWidget {
 
   final String add;
+
   const EventsTabsAddress({Key key, this.add}) : super(key: key);
 
   @override
@@ -31,6 +34,7 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
 
   @override
   Widget build(BuildContext context) {
+    timeDilation = 2.0;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
@@ -53,15 +57,16 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                         decoration: new InputDecoration(
                             prefixIcon: new Icon(
                                 Icons.search, color: Colors.white),
-                            hintText: "Search...",
+                            hintText: "Search events in location...",
                             hintStyle: new TextStyle(color: Colors.white)
                         ),
                         onSubmitted: (String str) {
                           setState(() {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) =>
-                                new EventsTabsAddress(add: str))
+                            Navigator.of(context, rootNavigator: true).push(
+                                new CupertinoPageRoute<bool>(
+                                    fullscreenDialog: false,
+                                    builder: (BuildContext context) =>
+                                    new EventsTabsAddress(add: str))
                             );
                           }
                           );
@@ -102,7 +107,7 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
               children: [
                 new HomePage(
                     url: _urlStringEvents + "q=free&location.address=" +
-                      widget.add + "&token=" +
+                        widget.add + "&token=" +
                         _tokenKey),
                 new HomePage(
                     url: _urlStringEvents + "q=music&location.address=" +

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_news_app/NewsPage.dart';
 import 'package:flutter_news_app/SearchNews.dart';
 
@@ -32,7 +34,6 @@ class NewsPageState extends State<NewsTabs> {
     super.initState();
     _apiKey = newUtil.apiKey;
     _countryName = country(widget.country);
-
   }
 
   @override
@@ -43,6 +44,7 @@ class NewsPageState extends State<NewsTabs> {
 
   @override
   Widget build(BuildContext context) {
+    timeDilation = 2.0;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
@@ -71,12 +73,13 @@ class NewsPageState extends State<NewsTabs> {
                         ),
                         onSubmitted: (String str) {
                           setState(() {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) =>
-                                new SearchNews(
-                                    url: _urlStringSearchNews + "q=" + str +
-                                        "&apiKey=" + _apiKey, query: str))
+                            Navigator.of(context, rootNavigator: true).push(
+                                new CupertinoPageRoute<bool>(
+                                    fullscreenDialog: false,
+                                    builder: (BuildContext context) =>
+                                    new SearchNews(
+                                        url: _urlStringSearchNews + "q=" + str +
+                                            "&apiKey=" + _apiKey, query: str))
                             );
                           }
                           );

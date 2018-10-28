@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/NewsTabs.dart';
 import 'package:flutter_news_app/page_view.dart';
@@ -23,7 +24,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
-  int _currentIndex = 0;
+  int _currentIndex = 2;
 
   //Map<int, List> _saved = new Map();
 
@@ -42,7 +43,8 @@ class HomePageState extends State<HomePage> {
     catch (e) {
       _scaffoldKey.currentState
           .showSnackBar(new SnackBar(
-        content: new Text("Kindly Check and Allow the Internet Connection"),
+          content: new Text(
+              "Check and allow the Internet connection / No events found here. Search another location."),
           backgroundColor: Colors.blueAccent));
 
       return "No Internet";
@@ -92,10 +94,11 @@ class HomePageState extends State<HomePage> {
                             left: 16.0, right: 16.0, bottom: 8.0),
                         child: new InkWell(
                           onTap: () =>
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) =>
-                                  new WebviewScaffold(url:
+                              Navigator.of(context, rootNavigator: true).push(
+                                  new CupertinoPageRoute<bool>(
+                                      fullscreenDialog: false,
+                                      builder: (BuildContext context) =>
+                                      new WebviewScaffold(url:
                                   (data[index]['url']),
                                     appBar: new AppBar(title: new Text(
                                         data[index]["name"]["text"]),
@@ -139,7 +142,7 @@ class HomePageState extends State<HomePage> {
                                   decoration: new BoxDecoration(
                                     image: new DecorationImage(
                                         image: new AssetImage(
-                                            'assets/podcast.jpg'),
+                                            'assets/events.jpg'),
                                         fit: BoxFit.fitWidth),
                                     borderRadius: new BorderRadius.all(
                                         new Radius.circular(16.0)),
@@ -257,17 +260,19 @@ class HomePageState extends State<HomePage> {
                   break;
                 case 1:
                   print("In the newstabs");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => NewsTabs(country: 'us',)),
+                  Navigator.of(context, rootNavigator: true).push(
+                    new CupertinoPageRoute<bool>(
+                        fullscreenDialog: false,
+                        builder: (BuildContext context) =>
+                        new NewsTabs(country: 'us',)),
                   );
                   break;
                 case 3:
                   print("In the podcasttabs");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PodcastTabs()),
+                  Navigator.of(context, rootNavigator: true).push(
+                    new CupertinoPageRoute<bool>(
+                        fullscreenDialog: false,
+                        builder: (BuildContext context) => new PodcastTabs()),
                   );
                   break;
               }

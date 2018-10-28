@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_news_app/EventsTabs.dart';
@@ -13,37 +14,16 @@ class EventLocation extends StatefulWidget {
 
 class EventLocationState extends State<EventLocation> {
 
-  Map<String, double> _startLocation;
-
-//  Map<String, double> _currentLocation;
-//
-//  StreamSubscription<Map<String, double>> _locationSubscription;
-//
-//  Location _location = new Location();
-//  bool _permission = false;
-//  String error;
-
-
   Position position;
   bool currentWidget = true;
-
   Image image1;
 
   @override
   void initState() {
     super.initState();
-
     initPlatformState();
-
-//    _locationSubscription =
-//        _location.onLocationChanged().listen((Map<String, double> result) {
-//          setState(() {
-//            _currentLocation = result;
-//          });
-//        });
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
   Future<Null> initPlatformState() async {
 
     try {
@@ -78,17 +58,18 @@ class EventLocationState extends State<EventLocation> {
         new InkWell(
           onTap: () {
             position != null ?
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
+            Navigator.of(context, rootNavigator: true).push(
+                new CupertinoPageRoute<bool>(
+                    fullscreenDialog: false,
+                    builder: (BuildContext context) =>
                     new EventsTabs(
                         latitude: position.latitude,
                         longitude: position.longitude)))
-                : Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
+                :
+            Navigator.of(context, rootNavigator: true).push(
+                new CupertinoPageRoute<bool>(
+                    fullscreenDialog: false,
+                    builder: (BuildContext context) =>
                     new EventsTabs(
                         latitude: 37.3861,
                         longitude: 122.0839)));
@@ -98,11 +79,11 @@ class EventLocationState extends State<EventLocation> {
             decoration: new BoxDecoration(
               image: new DecorationImage(
                   image: new AssetImage("assets/events.jpg"),
-                  fit: BoxFit.scaleDown),
+                  fit: BoxFit.contain),
             ),
           ),
+        )
         ),
-      ),
     );
   }
 }

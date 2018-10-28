@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -137,19 +138,23 @@ class IntroPageItem extends StatelessWidget {
   void navigationTab(context) {
     switch (item.navigationTab) {
       case 'NewsTabs':
-        Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => NewsTabs(country: 'us')));
+        Navigator.of(context, rootNavigator: true).push(
+            new CupertinoPageRoute<bool>(
+                fullscreenDialog: false,
+                builder: (BuildContext context) =>
+                new NewsTabs(country: 'us')));
         break;
       case 'EventsTabs' :
-        Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => EventLocation()));
+        Navigator.of(context, rootNavigator: true).push(
+            new CupertinoPageRoute<bool>(
+                fullscreenDialog: false,
+                builder: (BuildContext context) => new EventLocation()));
         break;
       case 'PodcastsTabs' :
-        Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => PodcastTabs()));
+        Navigator.of(context, rootNavigator: true).push(
+            new CupertinoPageRoute<bool>(
+                fullscreenDialog: false,
+                builder: (BuildContext context) => new PodcastTabs()));
         break;
     }
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert' show json;
 
 import 'package:connectivity/connectivity.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/EventLocation.dart';
 import 'package:flutter_news_app/page_view.dart';
@@ -23,7 +24,7 @@ class HomePageState extends State<HomePage> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   Future<String> getData() async {
     try {
@@ -85,14 +86,17 @@ class HomePageState extends State<HomePage> {
                             left: 16.0, right: 16.0, bottom: 8.0),
                         child: new InkWell(
                           onTap: () =>
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) =>
-                                  new WebviewScaffold(url:
+                              Navigator.of(context, rootNavigator: true).push(
+                                  new CupertinoPageRoute<bool>(
+                                      fullscreenDialog: false,
+                                      builder: (BuildContext context) =>
+                                      new WebviewScaffold(url:
                                   (data[index]["url"]),
                                     appBar: new AppBar(title: new Text(
-                                        data[index]["title"])),
-                                  ))
+                                        data[index]["title"]),
+                                        backgroundColor: Colors.blue
+                                    ),
+                                      ))
                               ),
                           child: new Wrap(
                             spacing: 4.0,
@@ -216,16 +220,18 @@ class HomePageState extends State<HomePage> {
                   break;
                 case 2:
                   print("In the eventstabs");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => EventLocation()),
+                  Navigator.of(context, rootNavigator: true).push(
+                    new CupertinoPageRoute<bool>(
+                        fullscreenDialog: false,
+                        builder: (BuildContext context) => new EventLocation()),
                   );
                   break;
                 case 3:
                   print("In the podcasttabs");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PodcastTabs()),
+                  Navigator.of(context, rootNavigator: true).push(
+                    new CupertinoPageRoute<bool>(
+                        fullscreenDialog: false,
+                        builder: (BuildContext context) => new PodcastTabs()),
                   );
                   break;
               }
