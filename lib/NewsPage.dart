@@ -4,12 +4,8 @@ import 'dart:convert' show json;
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/EventsTabs.dart';
-import 'package:flutter_news_app/page_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
-
-import 'PodcastTabs.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -24,7 +20,6 @@ class HomePageState extends State<HomePage> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
-  int _currentIndex = 1;
 
   Future<String> getData() async {
     try {
@@ -204,63 +199,8 @@ class HomePageState extends State<HomePage> {
 
             );
           }
-      )),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (newIndex) =>
-            setState(() {
-              _currentIndex = newIndex;
-              switch (_currentIndex) {
-                case 0:
-                  print("In the intropage");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => IntroPageView()),
-                  );
-                  break;
-                case 2:
-                  print("In the eventstabs");
-                  Navigator.of(context, rootNavigator: true).push(
-                    new CupertinoPageRoute<bool>(
-                        fullscreenDialog: false,
-                        builder: (BuildContext context) => new EventsTabs()),
-                  );
-                  break;
-                case 3:
-                  print("In the podcasttabs");
-                  Navigator.of(context, rootNavigator: true).push(
-                    new CupertinoPageRoute<bool>(
-                        fullscreenDialog: false,
-                        builder: (BuildContext context) => new PodcastTabs()),
-                  );
-                  break;
-              }
-            }),
-        items: [
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text('Home'),
-              backgroundColor: Colors.blue
-          ),
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.book),
-              title: new Text('News'),
-              backgroundColor: Colors.blue
-          ),
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.event),
-              title: new Text('Events'),
-              backgroundColor: Colors.blue
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.headset),
-              title: Text('Podcast'),
-              backgroundColor: Colors.blue
-
-          ),
-        ],
+      )
       ),
-
     );
   }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_news_app/EventsTabs.dart';
 import 'package:flutter_news_app/NewsPage.dart';
+import 'package:flutter_news_app/PodcastTabs.dart';
 import 'package:flutter_news_app/SearchNews.dart';
+import 'package:flutter_news_app/page_view.dart';
 
 import 'util.dart';
 
@@ -21,7 +24,7 @@ class NewsPageState extends State<NewsTabs> {
   Util newUtil = new Util();
   static String _apiKey;
   static String _countryName;
-
+  int _currentIndex = 1;
   //String _country='us';
   String _urlStringTopHeadlines = "https://newsapi.org/v2/top-headlines?";
   String _urlStringSearchNews = "https://newsapi.org/v2/everything?";
@@ -144,6 +147,64 @@ class NewsPageState extends State<NewsTabs> {
                         widget.country +
                         "&apiKey=" +
                         _apiKey),
+              ],
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: (newIndex) =>
+                  setState(() {
+                    _currentIndex = newIndex;
+                    switch (_currentIndex) {
+                      case 0:
+                        print("In the intropage");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => IntroPageView()),
+                        );
+                        break;
+                      case 2:
+                        print("In the eventstabs");
+                        Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (
+                                  BuildContext context) => new EventsTabs()),
+                        );
+                        break;
+                      case 3:
+                        print("In the podcasttabs");
+                        Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (
+                                  BuildContext context) => new PodcastTabs()),
+                        );
+                        break;
+                    }
+                  }),
+              items: [
+                BottomNavigationBarItem(
+                    icon: new Icon(Icons.home),
+                    title: new Text('Home'),
+                    backgroundColor: Colors.blue
+                ),
+                BottomNavigationBarItem(
+                    icon: new Icon(Icons.book),
+                    title: new Text('News'),
+                    backgroundColor: Colors.blue
+                ),
+                BottomNavigationBarItem(
+                    icon: new Icon(Icons.event),
+                    title: new Text('Events'),
+                    backgroundColor: Colors.blue
+                ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.headset),
+                    title: Text('Podcast'),
+                    backgroundColor: Colors.blue
+
+                ),
               ],
             ),
             drawer: Drawer(

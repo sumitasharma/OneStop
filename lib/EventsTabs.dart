@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_news_app/EventsPage.dart';
+import 'package:flutter_news_app/NewsTabs.dart';
+import 'package:flutter_news_app/PodcastTabs.dart';
+import 'package:flutter_news_app/page_view.dart';
 import 'package:flutter_news_app/util.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -31,6 +34,8 @@ class EventsPageState extends State<EventsTabs> {
   double latitude = 37.3861;
   double longitude = -122.0839;
   Image image1;
+  int _currentIndex = 2;
+
 
   @override
   void initState() {
@@ -217,6 +222,65 @@ class EventsPageState extends State<EventsTabs> {
                         "&location.longitude=" +
                         longitude.toString() + "&token=" +
                         _tokenKey)
+              ],
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: (newIndex) =>
+                  setState(() {
+                    _currentIndex = newIndex;
+                    switch (_currentIndex) {
+                      case 0:
+                        print("In the intropage");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => IntroPageView()),
+                        );
+                        break;
+                      case 1:
+                        print("In the newstabs");
+                        Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'us',)),
+                        );
+                        break;
+                      case 3:
+                        print("In the podcasttabs");
+                        Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (
+                                  BuildContext context) => new PodcastTabs()),
+                        );
+                        break;
+                    }
+                    print(_currentIndex);
+                  }),
+              items: [
+                BottomNavigationBarItem(
+                  icon: new Icon(Icons.home),
+                  title: new Text('Home'),
+                  backgroundColor: Color.fromRGBO(205, 92, 92, 50.0),
+                ),
+                BottomNavigationBarItem(
+                  icon: new Icon(Icons.book),
+                  title: new Text('News'),
+                  backgroundColor: Color.fromRGBO(205, 92, 92, 50.0),
+                ),
+                BottomNavigationBarItem(
+                  icon: new Icon(Icons.event),
+                  title: new Text('Events'),
+                  backgroundColor: Color.fromRGBO(205, 92, 92, 50.0),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.headset),
+                  title: Text('Podcast'),
+                  backgroundColor: Color.fromRGBO(205, 92, 92, 50.0),
+
+                ),
               ],
             ),
 

@@ -4,9 +4,6 @@ import 'dart:convert' show json;
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_news_app/EventsTabs.dart';
-import 'package:flutter_news_app/NewsTabs.dart';
-import 'package:flutter_news_app/page_view.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,7 +21,6 @@ class HomePageState extends State<HomePage> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
-  int _currentIndex = 3;
 
   Future<String> getData() async {
     try {
@@ -175,65 +171,8 @@ class HomePageState extends State<HomePage> {
 
             );
           }
-      )),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (newIndex) =>
-            setState(() {
-              _currentIndex = newIndex;
-              switch (_currentIndex) {
-                case 0:
-                  print("In the intropage");
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => IntroPageView()),
-                  );
-                  break;
-                case 1:
-                  print("In the newstabs");
-                  Navigator.of(context, rootNavigator: true).push(
-                    new CupertinoPageRoute<bool>(
-                        fullscreenDialog: false,
-                        builder: (BuildContext context) =>
-                        new NewsTabs(country: 'us',)),
-                  );
-                  break;
-                case 2:
-                  print("In the eventstabs");
-                  Navigator.of(context, rootNavigator: true).push(
-                    new CupertinoPageRoute<bool>(
-                        fullscreenDialog: false,
-                        builder: (BuildContext context) => new EventsTabs()),
-                  );
-                  break;
-              }
-              print(_currentIndex);
-            }),
-        items: [
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.home),
-              title: new Text('Home'),
-              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
-          ),
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.book),
-              title: new Text('News'),
-              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
-          ),
-          BottomNavigationBarItem(
-              icon: new Icon(Icons.event),
-              title: new Text('Events'),
-              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.headset),
-              title: Text('Podcast'),
-              backgroundColor: Color.fromRGBO(128, 0, 128, 50.0)
-
-          ),
-        ],
+      )
       ),
-
     );
   }
 }
