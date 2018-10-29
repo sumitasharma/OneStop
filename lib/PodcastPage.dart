@@ -117,15 +117,14 @@ class HomePageState extends State<HomePage> {
                                     image: new DecorationImage(
                                         image: new AssetImage(
                                             'assets/podcast.jpg'),
-                                        fit: BoxFit.fitWidth),
+                                        fit: BoxFit.fill),
                                     borderRadius: new BorderRadius.all(
                                         new Radius.circular(16.0)),
                                     border: new Border.all(
-                                      color: Colors.pinkAccent,
+                                      color: Colors.orangeAccent,
                                       width: 2.0,
                                     ),
                                   ))
-
                                   : new Container(
 //                                    height: 250.0,
                                 decoration: new BoxDecoration(
@@ -163,9 +162,6 @@ class HomePageState extends State<HomePage> {
                         height: 16.0,
                       ),
 
-                      new Container(
-                        height: 16.0,
-                      )
                     ]
                 )
 

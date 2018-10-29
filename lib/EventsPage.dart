@@ -36,11 +36,16 @@ class HomePageState extends State<HomePage> {
       return "Success!";
     }
     catch (e) {
-      _scaffoldKey.currentState
-          .showSnackBar(new SnackBar(
-          content: new Text(
-              "Check and allow the Internet connection / No events found here. Search another location."),
-          backgroundColor: Colors.blueAccent));
+      try {
+        Scaffold.of(context).showSnackBar(new SnackBar(
+            content: new Text(
+                "Check and allow the Internet connection / No events found here. Search another location."),
+            backgroundColor: Colors.blueAccent));
+      }
+      catch (e) {
+        return "No Internet";
+      }
+
 
       return "No Internet";
       //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));

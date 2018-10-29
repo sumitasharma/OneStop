@@ -53,7 +53,6 @@ class NewsPageState extends State<NewsTabs> {
         home: DefaultTabController(
           length: 8,
           child: Scaffold(
-
             key: _scaffoldKey,
             appBar: AppBar(
               centerTitle: true,
@@ -244,10 +243,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('India', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic),),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'in')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'in')));
                     },
                   ),
                   ListTile(
@@ -270,10 +270,11 @@ class NewsPageState extends State<NewsTabs> {
                         style: new TextStyle(
                             fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'us')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'us')));
                     },
                   ),
                   ListTile(
@@ -295,10 +296,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('China', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'cn')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'cn')));
                     },
                   ),
                   ListTile(
@@ -321,10 +323,11 @@ class NewsPageState extends State<NewsTabs> {
                         'Australia', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'au')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'au')));
                     },
                   ),
                   ListTile(
@@ -347,10 +350,11 @@ class NewsPageState extends State<NewsTabs> {
                         'Ireland', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'ie')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'ie')));
                     },
                   ),
                   ListTile(
@@ -373,10 +377,11 @@ class NewsPageState extends State<NewsTabs> {
                         'Netherland', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'nl')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'nl')));
                     },
                   ),
                   ListTile(
@@ -399,10 +404,11 @@ class NewsPageState extends State<NewsTabs> {
                         'New Zealand', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'nz')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'nz')));
                     },
                   ),
                   ListTile(
@@ -425,10 +431,11 @@ class NewsPageState extends State<NewsTabs> {
                         'United Kingdom', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'gb')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'gb')));
                     },
                   ),
                   ListTile(
@@ -450,10 +457,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Japan', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'jp')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'jp')));
                     },
                   ),
                   ListTile(
@@ -475,10 +483,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Israel', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'il')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'il')));
                     },
                   ),
                   ListTile(
@@ -500,10 +509,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Canada', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'ca')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'ca')));
                     },
                   ),
                   ListTile(
@@ -525,10 +535,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('UAE', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'ae')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'ae')));
                     },
                   ),
                   ListTile(
@@ -550,10 +561,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('France', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'fr')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'fr')));
                     },
                   ),
                   ListTile(
@@ -575,10 +587,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Germany', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'de')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'de')));
                     },
                   ),
                   ListTile(
@@ -600,10 +613,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Singapore', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'sg')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'sg')));
                     },
                   ),
                   ListTile(
@@ -625,10 +639,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Russia', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'ru')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'ru')));
                     },
                   ),
                   ListTile(
@@ -650,14 +665,16 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('South Korea', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'kr')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'kr')));
                     },
                   ),
                   ListTile(
-                    trailing: new Container(
+                    trailing:
+                    new Container(
                         height: 50.0,
                         width: 50.0,
                         decoration: new BoxDecoration(
@@ -675,10 +692,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Malaysia', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'my')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'my')));
                     },
                   ),
                   ListTile(
@@ -700,10 +718,11 @@ class NewsPageState extends State<NewsTabs> {
                     title: Text('Thailand', style: new TextStyle(
                         fontSize: 18.0, fontStyle: FontStyle.italic)),
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => NewsTabs(country: 'th')));
+                      Navigator.of(context, rootNavigator: true).push(
+                          new CupertinoPageRoute<bool>(
+                              fullscreenDialog: false,
+                              builder: (BuildContext context) =>
+                              new NewsTabs(country: 'th')));
                     },
                   ),
                 ],

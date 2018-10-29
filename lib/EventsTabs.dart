@@ -35,6 +35,7 @@ class EventsPageState extends State<EventsTabs> {
   double longitude = -122.0839;
   Image image1;
   int _currentIndex = 2;
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
 
   @override
@@ -48,24 +49,29 @@ class EventsPageState extends State<EventsTabs> {
     try {
       GeolocationStatus geolocationStatus = await Geolocator()
           .checkGeolocationPermissionStatus();
+
       position = await Geolocator().getCurrentPosition(
           desiredAccuracy: LocationAccuracy.low);
       latitude = position.latitude;
       longitude = position.longitude;
+
     } catch (e) {
       if (e.code == 'PERMISSION_DENIED' ||
           e.code == 'PERMISSION_DENIED_NEVER_ASK') {
+        try {
+          _scaffoldKey.currentState
+              .showSnackBar(new SnackBar(
+              content: new Text(
+                  "Setting the events to Mountain View, CA"),
+              backgroundColor: Colors.blueAccent));
+        }
+        catch (e) {
+          return;
+        }
         position = null;
       }
     }
   }
-
-//  @override
-//  void initState() {
-//    super.initState();
-//    _tokenKey = newUtil.tokenKey;
-//  }
-
 
   @override
   void setState(fn) {
@@ -76,6 +82,7 @@ class EventsPageState extends State<EventsTabs> {
   Widget build(BuildContext context) {
     timeDilation = 1.0;
     return MaterialApp(
+        key: _scaffoldKey,
         debugShowCheckedModeBanner: false,
         home: DefaultTabController(
           length: 11,
@@ -252,8 +259,7 @@ class EventsPageState extends State<EventsTabs> {
                         Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
                               fullscreenDialog: false,
-                              builder: (
-                                  BuildContext context) => new PodcastTabs()),
+                              builder: (BuildContext context) => new PodcastTabs()),
                         );
                         break;
                     }
