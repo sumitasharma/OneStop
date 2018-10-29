@@ -30,7 +30,6 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _tokenKey = newUtil.tokenKey;
     this.appBarTitle = new Text("Events near " + widget.add);

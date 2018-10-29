@@ -48,7 +48,6 @@ class HomePageState extends State<HomePage> {
 
 
       return "No Internet";
-      //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
     setState(() {
 
