@@ -7,6 +7,7 @@ import 'NewsTabs.dart';
 import 'PodcastTabs.dart';
 import 'dart.dart';
 import 'page_transformer.dart';
+
 class IntroPageItem extends StatelessWidget {
   IntroPageItem({
     @required this.item,

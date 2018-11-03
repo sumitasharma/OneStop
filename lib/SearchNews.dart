@@ -41,7 +41,6 @@ class SearchNewsState extends State<SearchNews> {
     }
     catch (e) {
       return "No Internet";
-      //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
   }
 
@@ -102,7 +101,8 @@ class SearchNewsState extends State<SearchNews> {
                                       (data[index]["url"]),
                                         appBar: new AppBar(title: new Text(
                                             data[index]["title"])),
-                                      ))
+                                      )
+                                      )
                                   ),
                               child: new Wrap(
                                 spacing: 4.0,
@@ -130,10 +130,10 @@ class SearchNewsState extends State<SearchNews> {
                                           color: Colors.pinkAccent,
                                           width: 2.0,
                                         ),
-                                      ))
+                                      )
+                                  )
 
                                       : new Container(
-//                                    height: 250.0,
                                     decoration: new BoxDecoration(
                                       image: new DecorationImage(
                                         image: new NetworkImage(
@@ -157,7 +157,6 @@ class SearchNewsState extends State<SearchNews> {
                                   data[index]["title"] == null
                                       ? new Text("Missing Title")
                                       : new Container(
-                                    // height: 100.0,
                                       child: new Text(data[index]["title"],
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -173,7 +172,6 @@ class SearchNewsState extends State<SearchNews> {
                                   data[index]["description"] == null
                                       ? new Text("")
                                       : new Container(
-                                    // height: 100.0,
                                       child: new Text(
                                           data[index]["description"],
                                           style: TextStyle(
@@ -246,7 +244,8 @@ class SearchNewsState extends State<SearchNews> {
                       );
                       break;
                   }
-                }),
+                }
+                ),
             items: [
               BottomNavigationBarItem(
                   icon: new Icon(Icons.home),

@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 class HomePage extends StatefulWidget {
 
   final String url;
+
   const HomePage({Key key, this.url}) : super(key: key);
 
   @override
@@ -42,7 +43,6 @@ class HomePageState extends State<HomePage> {
       catch (e) {
         return "error";
       }
-      //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
   }
 
@@ -91,16 +91,16 @@ class HomePageState extends State<HomePage> {
                                       fullscreenDialog: false,
                                       builder: (BuildContext context) =>
                                       new WebviewScaffold(url:
-                                  (data[index]["url"]),
-                                    appBar: new AppBar(title: new Text(
-                                      data[index]["title"],
-                                      style: new TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Raleway',
-                                        fontSize: 22.0,
-                                      ),),
-                                        backgroundColor: Colors.blue
-                                    ),
+                                      (data[index]["url"]),
+                                        appBar: new AppBar(title: new Text(
+                                          data[index]["title"],
+                                          style: new TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Raleway',
+                                            fontSize: 22.0,
+                                          ),),
+                                            backgroundColor: Colors.blue
+                                        ),
                                       ))
                               ),
                           child: new Wrap(
@@ -166,7 +166,6 @@ class HomePageState extends State<HomePage> {
                               data[index]["description"] == null
                                   ? new Text("")
                                   : new Container(
-                                // height: 100.0,
                                   child: new Text(data[index]["description"],
                                       style: TextStyle(
                                           fontFamily: 'Raleway',
@@ -188,7 +187,6 @@ class HomePageState extends State<HomePage> {
                                         color: Colors.lightGreen,
                                       ),
                                       textAlign: TextAlign.center)),
-
                             ],
 
                           ),
@@ -201,7 +199,6 @@ class HomePageState extends State<HomePage> {
 
                     ]
                 )
-
             );
           }
       )

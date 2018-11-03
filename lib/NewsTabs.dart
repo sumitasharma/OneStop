@@ -25,8 +25,6 @@ class NewsPageState extends State<NewsTabs> {
   static String _apiKey;
   static String _countryName;
   int _currentIndex = 1;
-
-  //String _country='us';
   String _urlStringTopHeadlines = "https://newsapi.org/v2/top-headlines?";
   String _urlStringSearchNews = "https://newsapi.org/v2/everything?";
   Icon actionIcon = new Icon(Icons.search);
@@ -193,7 +191,8 @@ class NewsPageState extends State<NewsTabs> {
                         );
                         break;
                     }
-                  }),
+                  }
+                  ),
               items: [
                 BottomNavigationBarItem(
                     icon: new Icon(Icons.home),
@@ -233,7 +232,6 @@ class NewsPageState extends State<NewsTabs> {
                               fit: BoxFit.contain,
                             ),
                           ),
-                          //padding: EdgeInsets.only(top: 10.0),
                           child: new Row(
                             mainAxisAlignment: MainAxisAlignment
                                 .spaceBetween,
@@ -274,7 +272,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('India', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -305,7 +304,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('United States of America',
                         style: TextStyle(
                           fontFamily: 'Raleway',
@@ -337,7 +337,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('China', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -368,7 +369,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text(
                         'Australia', style: TextStyle(
                       fontFamily: 'Raleway',
@@ -590,7 +592,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('Canada', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -652,7 +655,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('France', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -683,7 +687,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('Germany', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -745,7 +750,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('Russia', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -776,7 +782,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('South Korea', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -808,7 +815,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('Malaysia', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,
@@ -839,7 +847,8 @@ class NewsPageState extends State<NewsTabs> {
                             color: Colors.white,
                             width: 2.0,
                           ),
-                        )),
+                        )
+                    ),
                     title: Text('Thailand', style: TextStyle(
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.bold,

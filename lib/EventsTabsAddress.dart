@@ -88,14 +88,11 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                       this.appBarTitle =
                       new Text("Events near " + widget.add);
                     }
-                  });
-                },),
+                  }
+                  );
+                },
+                ),
               ],
-//                leading: new IconButton(
-//                    icon: new Icon(Icons.arrow_back),
-//                    onPressed: () {
-//                      Navigator.pop(context, true);
-//                    }),
               bottom: new TabBar(isScrollable: true,
                 indicatorColor: Color.fromRGBO(205, 92, 92, 50.0),
                 tabs: <Widget>[

@@ -129,8 +129,10 @@ class EventsPageState extends State<EventsTabs> {
                         this.appBarTitle =
                         new Text("Events near " + _searchQuery.text);
                       }
-                    });
-                  },),
+                    }
+                    );
+                  },
+                  ),
                 ],
 
                 bottom: new TabBar(

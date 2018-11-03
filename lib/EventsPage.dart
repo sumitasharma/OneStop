@@ -23,8 +23,6 @@ class HomePageState extends State<HomePage> {
   List data;
   String _monthName;
 
-  //Map<int, List> _saved = new Map();
-
   Future<String> getData() async {
     try {
       var response = await http.get(widget.url);
@@ -114,7 +112,8 @@ class HomePageState extends State<HomePage> {
                                               backgroundColor: Color.fromRGBO(
                                                   205, 92, 92, 50.0),
                                             ),
-                                          ))
+                                          )
+                                      )
                                   ),
                               child: new Column(
                                 children: <Widget>[
@@ -149,7 +148,8 @@ class HomePageState extends State<HomePage> {
                                             fit: BoxFit.fitWidth),
                                         borderRadius: new BorderRadius.all(
                                             new Radius.circular(16.0)),
-                                      )),
+                                      )
+                                  ),
                                   new Container(
                                       height: 30.0),
 
@@ -251,7 +251,7 @@ class HomePageState extends State<HomePage> {
                                             ],
                                           )
                                       )
-                                ],
+                                    ],
 
                                   ),
                                 ],
@@ -264,7 +264,8 @@ class HomePageState extends State<HomePage> {
                     )
                 );
               }
-          )),
+          )
+      ),
 
     );
   }
