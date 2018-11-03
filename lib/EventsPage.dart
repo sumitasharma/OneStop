@@ -120,15 +120,6 @@ class HomePageState extends State<HomePage> {
                                 children: <Widget>[
 
                                   new Container(
-                                      height: 20.0),
-
-                                  new Text(data[index]["name"]["text"],
-                                    style: new TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Raleway',
-                                        fontSize: 20.0),),
-
-                                  new Container(
                                     height: 20.0,
                                   ),
 
@@ -158,85 +149,112 @@ class HomePageState extends State<HomePage> {
                                             fit: BoxFit.fitWidth),
                                         borderRadius: new BorderRadius.all(
                                             new Radius.circular(16.0)),
-                                        border: new Border.all(
-                                          color: Colors.pinkAccent,
-                                          width: 2.0,
-                                        ),
                                       )),
+                                  new Container(
+                                      height: 30.0),
+
+                                  new Text(data[index]["name"]["text"],
+                                    style: new TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Raleway',
+                                        fontSize: 20.0),),
+
                                   new Container(
                                     height: 20.0,
                                   ),
-                                  data[index]["start"]["local"] == null
-                                      ? new Text("Start Date : ")
-                                      : new Container(
-                                    child: new Text(month(DateTime
-                                        .parse(data[index]["start"]["local"],)
-                                        .month
-                                        .toString()) + " " +
-                                        DateTime
-                                            .parse(
-                                            data[index]["start"]["local"])
-                                            .day
-                                            .toString() + " " +
-                                        DateTime
-                                            .parse(
-                                            data[index]["start"]["local"])
-                                            .year
-                                            .toString(),
-                                      style: TextStyle(
-                                        fontFamily: 'RobotoMono',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24.0,
-                                      ),
-                                    ),
-                                  ),
-                                  new Container(
-                                    height: 16.0,
-                                  ),
-                                  data[index]["start"]["local"] == null
-                                      ? new Text("Start Date : ")
-                                      : new Container(
-                                    child: new Text(
-                                      "Time : " +
-                                          DateTime
-                                              .parse(
-                                              data[index]["start"]["local"])
-                                              .hour
-                                              .toString() + ":" +
-                                          DateTime
-                                              .parse(
-                                              data[index]["start"]["local"])
-                                              .minute
-                                              .toString() + " to " +
-                                          DateTime
-                                              .parse(
-                                              data[index]["end"]["local"])
-                                              .hour
-                                              .toString() + ":" +
-                                          DateTime
-                                              .parse(
-                                              data[index]["end"]["local"])
-                                              .minute
-                                              .toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic,
-                                        fontSize: 18.0,
-                                      ),
-                                    ),
-                                  ),
-
-                                  data[index]["venue"] == null
-                                      ? new Text("")
-                                      : new Container(
-                                      height: 100.0,
-                                      child: new Text(data[index]["venue"],
-                                          style: TextStyle(
-                                              fontStyle: FontStyle.normal,
-                                              fontSize: 16.0))
-                                  ),
+                                  new Row(
+                                    crossAxisAlignment: CrossAxisAlignment
+                                        .start,
+                                    children: <Widget>[
+                                      new Icon(Icons.date_range),
+                                      new Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 30.0),
+                                          child: new Column(
+                                            crossAxisAlignment: CrossAxisAlignment
+                                                .start,
+                                            children: <Widget>[
+                                              data[index]["start"]["local"] ==
+                                                  null
+                                                  ? new Text("Start Date : ")
+                                                  : new Container(
+                                                child: new Text(month(DateTime
+                                                    .parse(
+                                                  data[index]["start"]["local"],)
+                                                    .month
+                                                    .toString()) + " " +
+                                                    DateTime
+                                                        .parse(
+                                                        data[index]["start"]["local"])
+                                                        .day
+                                                        .toString() + " " +
+                                                    DateTime
+                                                        .parse(
+                                                        data[index]["start"]["local"])
+                                                        .year
+                                                        .toString(),
+                                                  style: TextStyle(
+                                                    fontFamily: 'RobotoMono',
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              new Container(
+                                                height: 8.0,
+                                              ),
+                                              data[index]["start"]["local"] ==
+                                                  null
+                                                  ? new Text("Start Date : ")
+                                                  : new Container(
+                                                child: new Text(
+                                                  "Time : " +
+                                                      DateTime
+                                                          .parse(
+                                                          data[index]["start"]["local"])
+                                                          .hour
+                                                          .toString() + ":" +
+                                                      DateTime
+                                                          .parse(
+                                                          data[index]["start"]["local"])
+                                                          .minute
+                                                          .toString() + " to " +
+                                                      DateTime
+                                                          .parse(
+                                                          data[index]["end"]["local"])
+                                                          .hour
+                                                          .toString() + ":" +
+                                                      DateTime
+                                                          .parse(
+                                                          data[index]["end"]["local"])
+                                                          .minute
+                                                          .toString(),
+                                                  style: TextStyle(
+                                                    fontFamily: 'RobotoMono',
+                                                    fontSize: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              new Container(
+                                                height: 8.0,
+                                              ),
+                                              data[index]["venue"] == null
+                                                  ? new Text("")
+                                                  : new Container(
+                                                  height: 100.0,
+                                                  child: new Text(
+                                                      data[index]["venue"],
+                                                      style: TextStyle(
+                                                          fontStyle: FontStyle
+                                                              .normal,
+                                                          fontSize: 16.0))
+                                              ),
+                                            ],
+                                          )
+                                      )
                                 ],
 
+                                  ),
+                                ],
                               ),
 
                             ),

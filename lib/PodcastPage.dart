@@ -134,7 +134,6 @@ class HomePageState extends State<HomePage> {
                                     data[index]["feed"]["small_feed_image_url"] ==
                                         null
                                         ? new Container(
-                                      //  height: 50.0,
                                         decoration: new BoxDecoration(
                                           image: new DecorationImage(
                                               image: new AssetImage(
@@ -148,7 +147,6 @@ class HomePageState extends State<HomePage> {
                                           ),
                                         ))
                                         : new Container(
-//                                    height: 250.0,
                                       decoration: new BoxDecoration(
                                         image: new DecorationImage(
                                           image: new NetworkImage(
