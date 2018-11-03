@@ -238,7 +238,7 @@ class NewsPageState extends State<NewsTabs> {
                             mainAxisAlignment: MainAxisAlignment
                                 .spaceBetween,
                             children: <Widget>[
-                              Text("Global",
+                              Text("News",
                                 style: TextStyle(
                                     fontFamily: 'DancingScriptOt',
                                     fontWeight: FontWeight.bold,
@@ -246,7 +246,7 @@ class NewsPageState extends State<NewsTabs> {
                                     color: Colors.white),
                                 textAlign: TextAlign.left,
                               ),
-                              Text("News",
+                              Text("Updates",
                                 style: TextStyle(
                                     fontFamily: 'DancingScriptOt',
                                     fontWeight: FontWeight.bold,

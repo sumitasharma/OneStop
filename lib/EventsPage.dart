@@ -126,7 +126,7 @@ class HomePageState extends State<HomePage> {
                                     style: new TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Raleway',
-                                        fontSize: 24.0),),
+                                        fontSize: 20.0),),
 
                                   new Container(
                                     height: 20.0,
