@@ -10,9 +10,9 @@ import 'util.dart';
 
 class EventsTabsAddress extends StatefulWidget {
 
-  final String add;
+  final String add, days;
 
-  const EventsTabsAddress({Key key, this.add}) : super(key: key);
+  const EventsTabsAddress({Key key, this.add, this.days}) : super(key: key);
 
   @override
   EventsPageAddressState createState() => new EventsPageAddressState();
@@ -32,7 +32,11 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
   void initState() {
     super.initState();
     _tokenKey = newUtil.tokenKey;
-    this.appBarTitle = new Text("Events near " + widget.add);
+    this.appBarTitle =
+    new Text("Events near " + widget.add, style: new TextStyle(
+        fontWeight: FontWeight.bold,
+        fontFamily: 'Raleway',
+        fontSize: 22.0));
   }
 
   @override
@@ -55,6 +59,9 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                       this.appBarTitle = new TextField(
                         controller: _searchQuery,
                         style: new TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Raleway',
+                          fontSize: 22.0,
                           color: Colors.white,
                         ),
                         decoration: new InputDecoration(
@@ -78,16 +85,17 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                     }
                     else {
                       this.actionIcon = new Icon(Icons.search);
-                      this.appBarTitle = new Text("Events near " + widget.add);
+                      this.appBarTitle =
+                      new Text("Events near " + widget.add);
                     }
                   });
                 },),
               ],
-              leading: new IconButton(
-                  icon: new Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  }),
+//                leading: new IconButton(
+//                    icon: new Icon(Icons.arrow_back),
+//                    onPressed: () {
+//                      Navigator.pop(context, true);
+//                    }),
               bottom: new TabBar(isScrollable: true,
                 indicatorColor: Color.fromRGBO(205, 92, 92, 50.0),
                 tabs: <Widget>[
@@ -104,59 +112,149 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
                   new Tab(text: "Charity & Causes",),
                   new Tab(text: "School Activities",)
                 ],
+                labelStyle: TextStyle(
+                  fontSize: 20.0, fontFamily: 'RobotoMono',),
+
               ),
             ),
             body: TabBarView(
               children: [
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents + "q=free&location.address=" +
-                        widget.add + "&token=" +
+                        widget.add + "&start_date.keyword=" +
+                        widget.days + "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents + "q=free&location.address=" +
+                        widget.add + "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents + "q=music&location.address=" +
-                        widget.add + "&token=" +
+                        widget.add + "&start_date.keyword=" +
+                        widget.days + "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents + "q=music&location.address=" +
+                        widget.add + "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
                         "q=family+education&location.address=" + widget.add +
-                        "&token=" +
+                        "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=family+education&location.address=" + widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
                         "q=business&location.address=" + widget.add +
-                        "&token=" +
+                        "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=business&location.address=" + widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=science+technology&location.address=" + widget.add +
-                        "&token=" +
+                        "q=science+technology&location.address=" +
+                        widget.add + "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=science+technology&location.address=" +
+                        widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=sports&location.address=" + widget.add + "&token=" +
+                        "q=sports&location.address=" + widget.add +
+                        "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=sports&location.address=" + widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=health&location.address=" + widget.add + "&token=" +
+                        "q=health&location.address=" + widget.add +
+                        "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=health&location.address=" + widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
-                        "q=travel&location.address=" + widget.add + "&token=" +
+                        "q=travel&location.address=" + widget.add +
+                        "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=travel&location.address=" + widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
                         "q=film+media+entertainment&location.address=" +
-                        widget.add + "&token=" +
+                        widget.add + "&start_date.keyword=" +
+                        widget.days + "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=film+media+entertainment&location.address=" +
+                        widget.add + "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
                         "q=charity&location.address=" + widget.add +
-                        "&token=" +
+                        "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=charity&location.address=" + widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey),
+                widget.days != null ?
                 new HomePage(
                     url: _urlStringEvents +
                         "q=school+activities&location.address=" + widget.add +
-                        "&token=" +
+                        "&start_date.keyword=" +
+                        widget.days +
+                        "&sort_by=date&token=" +
+                        _tokenKey)
+                    : new HomePage(
+                    url: _urlStringEvents +
+                        "q=school+activities&location.address=" + widget.add +
+                        "&sort_by=date&token=" +
                         _tokenKey)
               ],
             ),
@@ -218,6 +316,165 @@ class EventsPageAddressState extends State<EventsTabsAddress> {
 
                 ),
               ],
+            ),
+            drawer: Drawer(
+              elevation: 20.0,
+              child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: <Widget>[
+                    Container(
+                      color: Colors.black,
+                      height: 200.0,
+                      child: DrawerHeader(
+                        child: new Container(
+                          decoration: new BoxDecoration(
+                            image: new DecorationImage(
+                              image: new AssetImage(
+                                  "assets/eventsFireworks.jpg"),
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
+                          child: Text("Events",
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 35.0,
+                                color: Colors.white,),
+                              textAlign: TextAlign.center
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    ListTile(
+
+                      title: Text('Today', style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,)
+                      ),
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            new CupertinoPageRoute<bool>(
+                                fullscreenDialog: false,
+                                builder: (BuildContext context) =>
+                                new EventsTabsAddress(
+                                  days: "today", add: widget.add,)));
+                      },
+                    ),
+                    new Divider(
+                        height: 20.0, color: Color.fromRGBO(205, 92, 92, 50.0)),
+
+                    ListTile(
+
+                      title: Text('Tomorrow', style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,)
+                      ),
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            new CupertinoPageRoute<bool>(
+                                fullscreenDialog: false,
+                                builder: (BuildContext context) =>
+                                new EventsTabsAddress(
+                                  days: "tomorrow", add: widget.add,)));
+                      },
+                    ),
+                    new Divider(
+                        height: 20.0, color: Color.fromRGBO(205, 92, 92, 50.0)),
+
+                    ListTile(
+
+                      title: Text('This Week', style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,)
+                      ),
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            new CupertinoPageRoute<bool>(
+                                fullscreenDialog: false,
+                                builder: (BuildContext context) =>
+                                new EventsTabsAddress(
+                                    days: "this_week", add: widget.add)));
+                      },
+                    ),
+
+                    new Divider(
+                        height: 20.0, color: Color.fromRGBO(205, 92, 92, 50.0)),
+                    ListTile(
+
+                      title: Text('Next Week', style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,)
+                      ),
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            new CupertinoPageRoute<bool>(
+                                fullscreenDialog: false,
+                                builder: (BuildContext context) =>
+                                new EventsTabsAddress(
+                                    days: "next_week", add: widget.add)));
+                      },
+                    ),
+                    new Divider(
+                        height: 20.0, color: Color.fromRGBO(205, 92, 92, 50.0)),
+                    ListTile(
+
+                      title: Text('This Weekend', style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,)
+                      ),
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            new CupertinoPageRoute<bool>(
+                                fullscreenDialog: false,
+                                builder: (BuildContext context) =>
+                                new EventsTabsAddress(
+                                    days: "this_weekend", add: widget.add)));
+                      },
+                    ),
+                    new Divider(
+                        height: 20.0, color: Color.fromRGBO(205, 92, 92, 50.0)),
+                    ListTile(
+
+                      title: Text('This Month', style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,)
+                      ),
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            new CupertinoPageRoute<bool>(
+                                fullscreenDialog: false,
+                                builder: (BuildContext context) =>
+                                new EventsTabsAddress(
+                                  days: "this_month", add: widget.add,)));
+                      },
+                    ),
+                    new Divider(
+                        height: 20.0, color: Color.fromRGBO(205, 92, 92, 50.0)),
+                    ListTile(
+
+                      title: Text('Next Month', style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0,)
+                      ),
+                      onTap: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            new CupertinoPageRoute<bool>(
+                                fullscreenDialog: false,
+                                builder: (BuildContext context) =>
+                                new EventsTabsAddress(
+                                  days: "next_month", add: widget.add,)));
+                      },
+                    ),
+                  ]
+              ),
             ),
           ),
         )

@@ -19,7 +19,7 @@ final sampleItems = <IntroItem>[
       imageUrl: 'assets/newsImage.jpg',
       navigationTab: 'NewsTabs'),
   new IntroItem(
-      title: 'What events are takiing place in my neighbourhood!',
+      title: 'What events are taking place in my neighbourhood!',
       category: 'E.V.E.N.T.S',
       imageUrl: 'assets/eventsImage.jpg',
       navigationTab: 'EventsTabs'),

@@ -70,7 +70,8 @@ class IntroPageItem extends StatelessWidget {
               style: textTheme.title
                   .copyWith(color: Colors.white,
                   fontStyle: FontStyle.italic,
-                  fontSize: 24.0),
+                  fontFamily: 'DancingScriptOt',
+                  fontSize: 30.0),
               textAlign: TextAlign.center,
             ),
           )

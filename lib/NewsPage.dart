@@ -33,10 +33,15 @@ class HomePageState extends State<HomePage> {
       return "Success!";
     }
     catch (e) {
-      _scaffoldKey.currentState.showSnackBar(new SnackBar(
-        content: new Text("Kindly Check the Internet Connection"),
-        backgroundColor: Colors.red,));
-      return "No Internet";
+      try {
+        _scaffoldKey.currentState.showSnackBar(new SnackBar(
+          content: new Text("Kindly Check the Internet Connection"),
+          backgroundColor: Colors.red,));
+        return "No Internet";
+      }
+      catch (e) {
+        return "error";
+      }
       //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
   }
@@ -88,7 +93,12 @@ class HomePageState extends State<HomePage> {
                                       new WebviewScaffold(url:
                                   (data[index]["url"]),
                                     appBar: new AppBar(title: new Text(
-                                        data[index]["title"]),
+                                      data[index]["title"],
+                                      style: new TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Raleway',
+                                        fontSize: 22.0,
+                                      ),),
                                         backgroundColor: Colors.blue
                                     ),
                                       ))
@@ -147,10 +157,10 @@ class HomePageState extends State<HomePage> {
                                   : new Container(
                                 // height: 100.0,
                                   child: new Text(data[index]["title"],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 24.0
+                                      style: new TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Raleway',
+                                        fontSize: 22.0,
                                       ),
                                       textAlign: TextAlign.left)),
 
@@ -164,8 +174,8 @@ class HomePageState extends State<HomePage> {
                                 // height: 100.0,
                                   child: new Text(data[index]["description"],
                                       style: TextStyle(
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16.0))
+                                          fontFamily: 'Raleway',
+                                          fontSize: 18.0))
                               ),
                               new Container(
                                 height: 16.0,

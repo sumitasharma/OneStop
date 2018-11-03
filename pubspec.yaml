@@ -30,6 +30,24 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: fonts/Raleway-Regular.ttf
+        - asset: fonts/Raleway-Italic.ttf
+          style: italic
+    - family: RobotoMono
+      fonts:
+        - asset: fonts/Roboto-Regular.ttf
+        - asset: fonts/Roboto-Bold.ttf
+          weight: 700
+    - family: SourceSansPro
+      fonts:
+        - asset: fonts/SourceSansPro-ExtraLight.otf
+        - asset: fonts/SourceSansPro-It.otf
+    - family: DancingScriptOt
+      fonts:
+        - asset: fonts/DancingScript-Regular.otf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -66,6 +84,8 @@ flutter:
     - assets/south_korea_flag.png
     - assets/thailand_flag.png
     - assets/uk_flag.png
+    - assets/eventsFireworks.jpg
+    - assets/newsDisplay.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

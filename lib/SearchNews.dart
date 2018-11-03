@@ -76,7 +76,9 @@ class SearchNewsState extends State<SearchNews> {
             title: new Text('News on ' + widget.query),
           ),
 
-          body: new Container(child: new ListView.builder(
+          body: data == null
+              ? Center(child: CircularProgressIndicator())
+              : new Container(child: new ListView.builder(
               padding: EdgeInsets.all(8.0),
               itemCount: data == null ? 0 : data.length,
               itemBuilder: (BuildContext context, int index) {

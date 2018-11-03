@@ -34,7 +34,7 @@ class HomePageState extends State<HomePage> {
     }
     catch (e) {
       _scaffoldKey.currentState.showSnackBar(new SnackBar(
-        content: new Text("Kindly Check the Internet Connection"),
+          content: new Text("Kindly Check the Internet Connection"),
           backgroundColor: Colors.blueGrey));
       return "No Internet";
       //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
@@ -85,13 +85,18 @@ class HomePageState extends State<HomePage> {
                                       fullscreenDialog: false,
                                       builder: (BuildContext context) =>
                                       new WebviewScaffold(url:
-                                  (data[index]['feed']['url']),
-                                    appBar: new AppBar(title: new Text(
-                                        data[index]["feed"]["title"]),
-                                        backgroundColor: Color.fromRGBO(
-                                            128, 0, 128, 50.0)
-                                    ),
-                                  ))
+                                      (data[index]['feed']['url']),
+                                        appBar: new AppBar(title: new Text(
+                                          data[index]["feed"]["title"],
+                                          style: new TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'Raleway',
+                                            fontSize: 22.0,
+                                          ),),
+                                            backgroundColor: Color.fromRGBO(
+                                                128, 0, 128, 50.0)
+                                        ),
+                                      ))
                               ),
                           child: new Wrap(
                             spacing: 8.0,
@@ -104,53 +109,71 @@ class HomePageState extends State<HomePage> {
                             children: <Widget>[
                               new Container(
                                   height: 16.0),
-
-                              new Text(data[index]['feed']["title"],
-                                style: new TextStyle(
-                                    fontWeight: FontWeight.bold),),
-
-                              data[index]["feed"]["small_feed_image_url"] ==
-                                  null
-                                  ? new Container(
-                                //  height: 50.0,
-                                  decoration: new BoxDecoration(
-                                    image: new DecorationImage(
-                                        image: new AssetImage(
-                                            'assets/podcast.jpg'),
-                                        fit: BoxFit.fill),
-                                    borderRadius: new BorderRadius.all(
-                                        new Radius.circular(16.0)),
-                                    border: new Border.all(
-                                      color: Colors.orangeAccent,
-                                      width: 2.0,
+                              new Row(
+                                  mainAxisAlignment: MainAxisAlignment
+                                      .spaceBetween,
+                                  children: <Widget>[
+                                    new Container(
+                                      margin: const EdgeInsets.only(left: 30.0),
+                                      child: new Center(
+                                        child: new Text(
+                                          data[index]['feed']["title"],
+                                          style: new TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontFamily: 'DancingScriptOt',
+                                            fontSize: 30.0,
+                                          ),
+                                          softWrap: true,),
+                                      ),
+                                      constraints: BoxConstraints(
+                                          maxHeight: 200.0,
+                                          minHeight: 200.0,
+                                          maxWidth: 150.0
+                                      ),
                                     ),
-                                  ))
-                                  : new Container(
+                                    data[index]["feed"]["small_feed_image_url"] ==
+                                        null
+                                        ? new Container(
+                                      //  height: 50.0,
+                                        decoration: new BoxDecoration(
+                                          image: new DecorationImage(
+                                              image: new AssetImage(
+                                                  'assets/podcast.jpg'),
+                                              fit: BoxFit.fill),
+                                          borderRadius: new BorderRadius.all(
+                                              new Radius.circular(16.0)),
+                                          border: new Border.all(
+                                            color: Colors.orangeAccent,
+                                            width: 2.0,
+                                          ),
+                                        ))
+                                        : new Container(
 //                                    height: 250.0,
-                                decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                    image: new NetworkImage(
-                                        data[index]["feed"]["small_feed_image_url"]),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  borderRadius: new BorderRadius.all(
-                                      new Radius.circular(16.0)),
-                                ),
-                                constraints: BoxConstraints(
-                                    maxHeight: 200.0,
-                                    minHeight: 100.0,
-                                    minWidth: 300.0
-                                ),
+                                      decoration: new BoxDecoration(
+                                        image: new DecorationImage(
+                                          image: new NetworkImage(
+                                              data[index]["feed"]["small_feed_image_url"]),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        borderRadius: new BorderRadius.all(
+                                            new Radius.circular(16.0)),
+                                      ),
+                                      constraints: BoxConstraints(
+                                          maxHeight: 200.0,
+                                          minHeight: 150.0,
+                                          minWidth: 150.0
+                                      ),
+                                    ),
+                                  ]
                               ),
-
                               new Container(
                                 height: 16.0,
                               ),
 
                               new Text(data[index]['feed']["description"],
                                 style: new TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0),),
+                                    fontFamily: 'RobotoMono',
+                                    fontSize: 18.0),),
 
                             ],
 

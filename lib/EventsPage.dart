@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 class HomePage extends StatefulWidget {
 
   final String url;
+
   const HomePage({Key key, this.url}) : super(key: key);
 
   @override
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
+  String _monthName;
 
   //Map<int, List> _saved = new Map();
 
@@ -49,9 +51,6 @@ class HomePageState extends State<HomePage> {
 
       return "No Internet";
     }
-    setState(() {
-
-    });
   }
 
   bool isInternetConnectivity() {
@@ -75,175 +74,223 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       key: _scaffoldKey,
-      body: data == null
+      body:
+
+      data == null
           ? Center(child: CircularProgressIndicator())
-          : new Container(child: new ListView.builder(
-          padding: EdgeInsets.all(8.0),
-          itemCount: data == null ? 0 : data.length,
-          itemBuilder: (BuildContext context, int index) {
-            return new Card(
-                margin: EdgeInsets.only(left: 4.0, right: 4.0, bottom: 16.0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0)),
-                elevation: 4.0,
-                child: new Column(
-                    children: <Widget>[
-                      new Container(
-                        padding: new EdgeInsets.only(
-                            left: 16.0, right: 16.0, bottom: 8.0),
-                        child: new InkWell(
-                          onTap: () =>
-                              Navigator.of(context, rootNavigator: true).push(
-                                  new CupertinoPageRoute<bool>(
-                                      fullscreenDialog: false,
-                                      builder: (BuildContext context) =>
-                                      new WebviewScaffold(url:
-                                  (data[index]['url']),
-                                    appBar: new AppBar(title: new Text(
-                                        data[index]["name"]["text"]),
-                                      backgroundColor: Color.fromRGBO(
-                                          205, 92, 92, 50.0),
-                                    ),
-                                  ))
-                              ),
-                          child: new Wrap(
-                            spacing: 4.0,
-                            // gap between adjacent chips
-                            runSpacing: 4.0,
-                            // gap between lines
-                            direction: Axis.horizontal,
-                            // main axis (rows or columns)
-
-                            children: <Widget>[
-                              new Container(
-                                  height: 16.0),
-
-                              (data[index]["logo"] != null)
-                                  ? new Container(
-//                                    height: 250.0,
-                                decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                    image: new NetworkImage(
-                                        data[index]["logo"]["url"]),
-                                    fit: BoxFit.fill,
+          : new Container(
+          child: new ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              itemCount: data == null ? 0 : data.length,
+              itemBuilder: (BuildContext context, int index) {
+                return new Card(
+                    margin: EdgeInsets.only(
+                        left: 4.0, right: 4.0, bottom: 16.0),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0)),
+                    elevation: 4.0,
+                    child:
+                    new Column(
+                        children: <Widget>[
+                          new Container(
+                            padding: new EdgeInsets.only(
+                                left: 16.0, right: 16.0, bottom: 8.0),
+                            child: new InkWell(
+                              onTap: () =>
+                                  Navigator.of(context, rootNavigator: true)
+                                      .push(
+                                      new CupertinoPageRoute<bool>(
+                                          fullscreenDialog: false,
+                                          builder: (BuildContext context) =>
+                                          new WebviewScaffold(url:
+                                          (data[index]['url']),
+                                            appBar: new AppBar(title: new Text(
+                                              data[index]["name"]["text"],
+                                              style: new TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Raleway',
+                                                fontSize: 22.0,
+                                              ),),
+                                              backgroundColor: Color.fromRGBO(
+                                                  205, 92, 92, 50.0),
+                                            ),
+                                          ))
                                   ),
-                                  borderRadius: new BorderRadius.all(
-                                      new Radius.circular(16.0)),
-                                ),
-                                constraints: BoxConstraints(
-                                    maxHeight: 200.0,
-                                    minHeight: 100.0,
-                                    minWidth: 300.0
-                                ),
-                              )
-                                  : new Container(
-                                  height: 200.0,
-                                  decoration: new BoxDecoration(
-                                    image: new DecorationImage(
-                                        image: new AssetImage(
-                                            'assets/events.jpg'),
-                                        fit: BoxFit.fitWidth),
-                                    borderRadius: new BorderRadius.all(
-                                        new Radius.circular(16.0)),
-                                    border: new Border.all(
-                                      color: Colors.pinkAccent,
-                                      width: 2.0,
+                              child: new Column(
+                                children: <Widget>[
+
+                                  new Container(
+                                      height: 20.0),
+
+                                  new Text(data[index]["name"]["text"],
+                                    style: new TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Raleway',
+                                        fontSize: 24.0),),
+
+                                  new Container(
+                                    height: 20.0,
+                                  ),
+
+                                  (data[index]["logo"] != null)
+                                      ? new Container(
+                                    decoration: new BoxDecoration(
+                                      image: new DecorationImage(
+                                        image: new NetworkImage(
+                                            data[index]["logo"]["url"]),
+                                        fit: BoxFit.fill,
+                                      ),
+                                      borderRadius: new BorderRadius.all(
+                                          new Radius.circular(16.0)),
                                     ),
-                                  )),
-
-                              new Container(
-                                height: 16.0,
-                              ),
-
-                              new Text(data[index]["name"]["text"],
-                                style: new TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0),),
-                              new Container(
-                                height: 16.0,
-                              ),
-                              data[index]["start"]["local"] == null
-                                  ? new Text("Start Date : ")
-                                  : new Container(
-                                // height: 300.0,
-                                  child: new Text("Start Date : " +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .day
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .month
-                                          .toString() + "/" +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .year
-                                          .toString() + "   Time : " +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .hour
-                                          .toString() + ":" +
-                                      DateTime
-                                          .parse(data[index]["start"]["local"])
-                                          .minute
-                                          .toString() + " to " +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .hour
-                                          .toString() + ":" +
-                                      DateTime
-                                          .parse(data[index]["end"]["local"])
-                                          .minute
-                                          .toString(),
+                                    constraints: BoxConstraints(
+                                        maxHeight: 200.0,
+                                        minHeight: 100.0,
+                                        minWidth: 300.0
+                                    ),
+                                  )
+                                      : new Container(
+                                      height: 200.0,
+                                      decoration: new BoxDecoration(
+                                        image: new DecorationImage(
+                                            image: new AssetImage(
+                                                'assets/events.jpg'),
+                                            fit: BoxFit.fitWidth),
+                                        borderRadius: new BorderRadius.all(
+                                            new Radius.circular(16.0)),
+                                        border: new Border.all(
+                                          color: Colors.pinkAccent,
+                                          width: 2.0,
+                                        ),
+                                      )),
+                                  new Container(
+                                    height: 20.0,
+                                  ),
+                                  data[index]["start"]["local"] == null
+                                      ? new Text("Start Date : ")
+                                      : new Container(
+                                    child: new Text(month(DateTime
+                                        .parse(data[index]["start"]["local"],)
+                                        .month
+                                        .toString()) + " " +
+                                        DateTime
+                                            .parse(
+                                            data[index]["start"]["local"])
+                                            .day
+                                            .toString() + " " +
+                                        DateTime
+                                            .parse(
+                                            data[index]["start"]["local"])
+                                            .year
+                                            .toString(),
+                                      style: TextStyle(
+                                        fontFamily: 'RobotoMono',
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24.0,
+                                      ),
+                                    ),
+                                  ),
+                                  new Container(
+                                    height: 16.0,
+                                  ),
+                                  data[index]["start"]["local"] == null
+                                      ? new Text("Start Date : ")
+                                      : new Container(
+                                    child: new Text(
+                                      "Time : " +
+                                          DateTime
+                                              .parse(
+                                              data[index]["start"]["local"])
+                                              .hour
+                                              .toString() + ":" +
+                                          DateTime
+                                              .parse(
+                                              data[index]["start"]["local"])
+                                              .minute
+                                              .toString() + " to " +
+                                          DateTime
+                                              .parse(
+                                              data[index]["end"]["local"])
+                                              .hour
+                                              .toString() + ":" +
+                                          DateTime
+                                              .parse(
+                                              data[index]["end"]["local"])
+                                              .minute
+                                              .toString(),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16.0
-                                      ),
-                                      textAlign: TextAlign.left)),
-                              new Container(
-                                height: 16.0,
-                              ),
-
-                              data[index]["venue"] == null
-                                  ? new Text("")
-                                  : new Container(
-                                  height: 100.0,
-                                  child: new Text(data[index]["venue"],
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.normal,
-                                          fontSize: 16.0))
-                              ),
-
-                              data[index]["status"] == null
-                                  ? new Text("")
-                                  : new Container(
-                                  height: 20.0,
-                                  child: new Text(
-                                      data[index]["status"],
-                                      style
-                                          : TextStyle(
-                                        fontWeight: FontWeight.bold,
                                         fontStyle: FontStyle.italic,
-                                        color: Colors.lightGreen,
+                                        fontSize: 18.0,
                                       ),
-                                      textAlign: TextAlign.end)),
+                                    ),
+                                  ),
 
-                            ],
+                                  data[index]["venue"] == null
+                                      ? new Text("")
+                                      : new Container(
+                                      height: 100.0,
+                                      child: new Text(data[index]["venue"],
+                                          style: TextStyle(
+                                              fontStyle: FontStyle.normal,
+                                              fontSize: 16.0))
+                                  ),
+                                ],
+
+                              ),
+
+                            ),
 
                           ),
+                        ]
+                    )
+                );
+              }
+          )),
 
-                        ),
-                      ),
-                      new Container(
-                        height: 16.0,
-                      ),
-                    ]
-                )
-
-            );
-          }
-      )),
     );
+  }
+
+  String month(String month) {
+    String _month;
+    switch (month) {
+      case '1':
+        _month = "Januray";
+        break;
+      case '2':
+        _month = "Febrary";
+        break;
+      case '3':
+        _month = "March";
+        break;
+      case '4':
+        _month = "April";
+        break;
+      case '5':
+        _month = "May";
+        break;
+      case '6':
+        _month = "June";
+        break;
+      case '7':
+        _month = "July";
+        break;
+      case '8':
+        _month = "August";
+        break;
+      case '9':
+        _month = "September";
+        break;
+      case '10':
+        _month = "October";
+        break;
+      case '11':
+        _month = "November";
+        break;
+      case '12':
+        _month = "December";
+        break;
+    }
+    return _month;
   }
 }

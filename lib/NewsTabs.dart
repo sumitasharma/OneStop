@@ -25,11 +25,18 @@ class NewsPageState extends State<NewsTabs> {
   static String _apiKey;
   static String _countryName;
   int _currentIndex = 1;
+
   //String _country='us';
   String _urlStringTopHeadlines = "https://newsapi.org/v2/top-headlines?";
   String _urlStringSearchNews = "https://newsapi.org/v2/everything?";
   Icon actionIcon = new Icon(Icons.search);
-  Widget appBarTitle = new Text("News Today");
+  Widget appBarTitle = new Text("News Today", style: new TextStyle(
+    fontWeight: FontWeight.bold,
+    fontFamily: 'Raleway',
+    fontSize: 22.0,
+  ),
+  );
+
   final TextEditingController _searchQuery = new TextEditingController();
 
   @override
@@ -64,7 +71,10 @@ class NewsPageState extends State<NewsTabs> {
                       this.actionIcon = new Icon(Icons.close);
                       this.appBarTitle = new TextField(
                         controller: _searchQuery,
-                        style: new TextStyle(
+                        style: TextStyle(
+                          fontFamily: 'Raleway',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
                           color: Colors.white,
                         ),
                         decoration: new InputDecoration(
@@ -107,6 +117,8 @@ class NewsPageState extends State<NewsTabs> {
                   new Tab(text: "Science",),
                   new Tab(text: "Health",)
                 ],
+                labelStyle: TextStyle(
+                  fontSize: 20.0, fontFamily: 'RobotoMono',),
               ),
             ),
             body: TabBarView(
@@ -211,16 +223,39 @@ class NewsPageState extends State<NewsTabs> {
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   Container(
-                    height: 120.0,
+                    color: Colors.black,
+                    height: 200.0,
                     child: DrawerHeader(
-                      child: Text("Country's News",
-                        style: new TextStyle(
-                            fontSize: 24.0,
-                            fontStyle: FontStyle.italic,
-                            color: Colors.white),),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        color: Colors.blue,
+                      child: new Container(
+                          decoration: new BoxDecoration(
+                            image: new DecorationImage(
+                              image: new AssetImage("assets/newsDisplay.jpg"),
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          //padding: EdgeInsets.only(top: 10.0),
+                          child: new Row(
+                            mainAxisAlignment: MainAxisAlignment
+                                .spaceBetween,
+                            children: <Widget>[
+                              Text("Global",
+                                style: TextStyle(
+                                    fontFamily: 'DancingScriptOt',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 35.0,
+                                    color: Colors.white),
+                                textAlign: TextAlign.left,
+                              ),
+                              Text("News",
+                                style: TextStyle(
+                                    fontFamily: 'DancingScriptOt',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 35.0,
+                                    color: Colors.white),
+                                textAlign: TextAlign.right,
+                              ),
+                            ],
+                          )
                       ),
                     ),
                   ),
@@ -240,8 +275,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('India', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic),),
+                    title: Text('India', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -250,6 +288,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'in')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -267,8 +307,11 @@ class NewsPageState extends State<NewsTabs> {
                           ),
                         )),
                     title: Text('United States of America',
-                        style: new TextStyle(
-                            fontSize: 18.0, fontStyle: FontStyle.italic)),
+                        style: TextStyle(
+                          fontFamily: 'Raleway',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -277,6 +320,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'us')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -293,8 +338,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('China', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('China', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -303,6 +351,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'cn')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -320,8 +370,11 @@ class NewsPageState extends State<NewsTabs> {
                           ),
                         )),
                     title: Text(
-                        'Australia', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                        'Australia', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -330,6 +383,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'au')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -347,8 +402,11 @@ class NewsPageState extends State<NewsTabs> {
                           ),
                         )),
                     title: Text(
-                        'Ireland', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                        'Ireland', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -357,6 +415,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'ie')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -374,8 +434,11 @@ class NewsPageState extends State<NewsTabs> {
                           ),
                         )),
                     title: Text(
-                        'Netherland', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                        'Netherlands', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -384,6 +447,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'nl')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -401,8 +466,11 @@ class NewsPageState extends State<NewsTabs> {
                           ),
                         )),
                     title: Text(
-                        'New Zealand', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                        'New Zealand', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -411,6 +479,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'nz')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -428,8 +498,11 @@ class NewsPageState extends State<NewsTabs> {
                           ),
                         )),
                     title: Text(
-                        'United Kingdom', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                        'United Kingdom', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -438,6 +511,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'gb')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -454,8 +529,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Japan', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Japan', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -464,6 +542,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'jp')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -480,8 +560,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Israel', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Israel', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -490,6 +573,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'il')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -506,8 +591,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Canada', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Canada', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -516,6 +604,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'ca')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -532,8 +622,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('UAE', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('UAE', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -542,6 +635,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'ae')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -558,8 +653,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('France', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('France', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -568,6 +666,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'fr')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -584,8 +684,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Germany', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Germany', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -594,6 +697,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'de')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -610,8 +715,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Singapore', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Singapore', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -620,6 +728,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'sg')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -636,8 +746,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Russia', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Russia', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -646,6 +759,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'ru')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -662,8 +777,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('South Korea', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('South Korea', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -672,6 +790,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'kr')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing:
                     new Container(
@@ -689,8 +809,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Malaysia', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Malaysia', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -699,6 +822,8 @@ class NewsPageState extends State<NewsTabs> {
                               new NewsTabs(country: 'my')));
                     },
                   ),
+                  new Divider(height: 20.0, color: Colors.blue,),
+
                   ListTile(
                     trailing: new Container(
                         height: 50.0,
@@ -715,8 +840,11 @@ class NewsPageState extends State<NewsTabs> {
                             width: 2.0,
                           ),
                         )),
-                    title: Text('Thailand', style: new TextStyle(
-                        fontSize: 18.0, fontStyle: FontStyle.italic)),
+                    title: Text('Thailand', style: TextStyle(
+                      fontFamily: 'Raleway',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,)
+                    ),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute<bool>(
@@ -755,7 +883,7 @@ String country(String country) {
       _countryCode = "Ireland";
       break;
     case 'nl':
-      _countryCode = "Netherland";
+      _countryCode = "Netherlands";
       break;
     case 'nz':
       _countryCode = "New Zealand";
@@ -794,7 +922,7 @@ String country(String country) {
       _countryCode = "Malaysia";
       break;
     case 'th':
-      _countryCode = "Thaiand";
+      _countryCode = "Thailand";
       break;
   }
   return _countryCode;

@@ -62,8 +62,15 @@ class PodcastPageState extends State<PodcastTabs> {
                     new Tab(text: "Religion & Spirituality",),
                     new Tab(text: "Arts",)
                   ],
+                  labelStyle: TextStyle(
+                    fontSize: 20.0, fontFamily: 'RobotoMono',),
                 ),
-                title: Text("Podcast")),
+                title: Text("Podcast", style: new TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Raleway',
+                  fontSize: 22.0,
+                  color: Colors.white,
+                ),)),
             body: TabBarView(
               children: [
                 new HomePage(
