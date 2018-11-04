@@ -21,7 +21,6 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
-  String _monthName;
 
   Future<String> getData() async {
     try {
@@ -136,7 +135,7 @@ class HomePageState extends State<HomePage> {
                                     constraints: BoxConstraints(
                                         maxHeight: 200.0,
                                         minHeight: 100.0,
-                                        minWidth: 300.0
+                                        maxWidth: 400.0
                                     ),
                                   )
                                       : new Container(
@@ -148,7 +147,12 @@ class HomePageState extends State<HomePage> {
                                             fit: BoxFit.fitWidth),
                                         borderRadius: new BorderRadius.all(
                                             new Radius.circular(16.0)),
-                                      )
+                                      ),
+                                    constraints: BoxConstraints(
+                                        maxHeight: 200.0,
+                                        minHeight: 100.0,
+                                        maxWidth: 400.0
+                                    ),
                                   ),
                                   new Container(
                                       height: 30.0),

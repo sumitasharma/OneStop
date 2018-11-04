@@ -103,94 +103,108 @@ class HomePageState extends State<HomePage> {
                                         ),
                                       ))
                               ),
-                          child: new Wrap(
-                            spacing: 4.0,
-                            // gap between adjacent chips
-                            runSpacing: 4.0,
-                            // gap between lines
-                            direction: Axis.horizontal,
-                            // main axis (rows or columns)
+                            child: new Container(
+                              child: new Column(
+                                children: <Widget>[
+                                  new Container(
+                                      height: 16.0),
 
-                            children: <Widget>[
-                              new Container(
-                                  height: 16.0),
-                              data[index]["urlToImage"] == null
-                                  ? new Container(
+                                  data[index]["urlToImage"] == null
+                                      ? new Container(
+                                    alignment: FractionalOffset.center,
                                   height: 200.0,
                                   decoration: new BoxDecoration(
                                     image: new DecorationImage(
-                                        image: new AssetImage(
-                                            'assets/news.jpg'),
-                                        fit: BoxFit.fitWidth),
+                                      image: new AssetImage(
+                                          'assets/news.jpg'),
+                                      fit: BoxFit.fitWidth,),
                                     borderRadius: new BorderRadius.all(
                                         new Radius.circular(16.0)),
-                                  )
-                              )
-                                  : new Container(
-                                decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                    image: new NetworkImage(
-                                        data[index]["urlToImage"]),
-                                    fit: BoxFit.fill,
                                   ),
-                                  borderRadius: new BorderRadius.all(
-                                      new Radius.circular(16.0)),
-                                ),
-                                constraints: BoxConstraints(
-                                    maxHeight: 200.0,
-                                    minHeight: 100.0,
-                                    minWidth: 300.0
-                                ),
-                              ),
-
-                              new Container(
-                                height: 20.0,
-                              ),
-
-                              data[index]["title"] == null
-                                  ? new Text("Missing Title")
-                                  : new Container(
-                                // height: 100.0,
-                                  child: new Text(data[index]["title"],
-                                      style: new TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Raleway',
-                                        fontSize: 22.0,
+                                    constraints: BoxConstraints(
+                                      maxHeight: 200.0,
+                                      minHeight: 100.0,
+                                      maxWidth: 400.0,
+                                    ),
+                                  )
+                                      : new Container(
+                                    alignment: FractionalOffset.center,
+                                    decoration: new BoxDecoration(
+                                      image: new DecorationImage(
+                                        image: new NetworkImage(
+                                            data[index]["urlToImage"]),
+                                        fit: BoxFit.fill,
                                       ),
-                                      textAlign: TextAlign.left)),
+                                      borderRadius: new BorderRadius.all(
+                                          new Radius.circular(16.0)),
+                                    ),
+                                    constraints: BoxConstraints(
+                                        maxHeight: 200.0,
+                                        minHeight: 100.0,
+                                        maxWidth: 400.0
+                                    ),
+                                  ),
+                                  new Wrap(
+                                    spacing: 4.0,
+                                    // gap between adjacent chips
+                                    runSpacing: 4.0,
+                                    // gap between lines
+                                    direction: Axis.horizontal,
+                                    // main axis (rows or columns)
 
-                              new Container(
-                                height: 16.0,
-                              ),
+                                    children: <Widget>[
 
-                              data[index]["description"] == null
-                                  ? new Text("")
-                                  : new Container(
-                                  child: new Text(data[index]["description"],
-                                      style: TextStyle(
-                                          fontFamily: 'Raleway',
-                                          fontSize: 18.0))
-                              ),
-                              new Container(
-                                height: 16.0,
-                              ),
-                              data[index]["source"]["name"] == null
-                                  ? new Text("")
-                                  : new Container(
-                                  height: 20.0,
-                                  child: new Text(
-                                      data[index]["source"]["name"],
-                                      style
-                                          : TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontStyle: FontStyle.italic,
-                                        color: Colors.lightGreen,
+                                      new Container(
+                                        height: 20.0,
                                       ),
-                                      textAlign: TextAlign.center)),
-                            ],
 
-                          ),
+                                      data[index]["title"] == null
+                                          ? new Text("Missing Title")
+                                          : new Container(
+                                          child: new Text(data[index]["title"],
+                                              style: new TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontFamily: 'Raleway',
+                                                fontSize: 22.0,
+                                              ),
+                                              textAlign: TextAlign.left)),
 
+                                      new Container(
+                                        height: 16.0,
+                                      ),
+
+                                      data[index]["description"] == null
+                                          ? new Text("")
+                                          : new Container(
+                                          child: new Text(
+                                              data[index]["description"],
+                                              style: TextStyle(
+                                                  fontFamily: 'Raleway',
+                                                  fontSize: 18.0))
+                                      ),
+                                      new Container(
+                                        height: 16.0,
+                                      ),
+                                      data[index]["source"]["name"] == null
+                                          ? new Text("")
+                                          : new Container(
+                                          height: 20.0,
+                                          child: new Text(
+                                              data[index]["source"]["name"],
+                                              style
+                                                  : TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle: FontStyle.italic,
+                                                color: Colors.lightGreen,
+                                              ),
+                                              textAlign: TextAlign.center)),
+                                    ],
+
+                                  ),
+                                ],
+                              ),
+
+                            )
                         ),
                       ),
                       new Container(
