@@ -33,11 +33,15 @@ class HomePageState extends State<HomePage> {
       return "Success!";
     }
     catch (e) {
-      _scaffoldKey.currentState.showSnackBar(new SnackBar(
-          content: new Text("Kindly Check the Internet Connection"),
-          backgroundColor: Colors.blueGrey));
+      try {
+        _scaffoldKey.currentState.showSnackBar(new SnackBar(
+            content: new Text("Kindly Check the Internet Connection"),
+            backgroundColor: Colors.blueGrey));
+      }
+      catch (e) {
+        return "error";
+      }
       return "No Internet";
-      //return new SnackBar(content: new Text("No Internet Connectivity"),duration: ,new Duration(seconds: 5));
     }
   }
 
@@ -131,22 +135,11 @@ class HomePageState extends State<HomePage> {
                                           maxWidth: 150.0
                                       ),
                                     ),
-                                    data[index]["feed"]["small_feed_image_url"] ==
-                                        null
+                                    (data[index]["feed"]["small_feed_image_url"] !=
+                                        null &&
+                                        data[index]["feed"]["small_feed_image_url"] !=
+                                            "/assets/missing_small.png")
                                         ? new Container(
-                                        decoration: new BoxDecoration(
-                                          image: new DecorationImage(
-                                              image: new AssetImage(
-                                                  'assets/podcast.jpg'),
-                                              fit: BoxFit.fill),
-                                          borderRadius: new BorderRadius.all(
-                                              new Radius.circular(16.0)),
-                                          border: new Border.all(
-                                            color: Colors.orangeAccent,
-                                            width: 2.0,
-                                          ),
-                                        ))
-                                        : new Container(
                                       decoration: new BoxDecoration(
                                         image: new DecorationImage(
                                           image: new NetworkImage(
@@ -161,11 +154,27 @@ class HomePageState extends State<HomePage> {
                                           minHeight: 150.0,
                                           minWidth: 150.0
                                       ),
-                                    ),
+                                    )
+                                        : new Container(
+                                      decoration: new BoxDecoration(
+                                        image: new DecorationImage(
+                                            image: new AssetImage(
+                                                'assets/podcastImage.jpg'),
+                                            fit: BoxFit.fill),
+                                        borderRadius: new BorderRadius.all(
+                                            new Radius.circular(16.0)),
+                                      ),
+                                      constraints: BoxConstraints(
+                                          maxHeight: 200.0,
+                                          minHeight: 150.0,
+                                          minWidth: 150.0
+                                      ),
+                                    )
+
                                   ]
                               ),
                               new Container(
-                                height: 16.0,
+                                height: 50.0,
                               ),
 
                               new Text(data[index]['feed']["description"],
