@@ -232,11 +232,17 @@ class HomePageState extends State<HomePage> {
                                                           data[index]["end"]["local"])
                                                           .hour
                                                           .toString() + ":" +
-                                                      DateTime
+                                                      ((DateTime
                                                           .parse(
                                                           data[index]["end"]["local"])
                                                           .minute
-                                                          .toString(),
+                                                          .toString()) == "0"
+                                                          ? "00"
+                                                          : DateTime
+                                                          .parse(
+                                                          data[index]["end"]["local"])
+                                                          .minute
+                                                          .toString()),
                                                   style: TextStyle(
                                                     fontFamily: 'RobotoMono',
                                                     fontSize: 20.0,
