@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   List data;
-
+  DateFormat format = new DateFormat("EEE, dd MMM yyyy hh:mm a zzz");
   Future<String> getData() async {
     try {
       var response = await http.get(widget.url);

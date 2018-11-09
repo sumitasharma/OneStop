@@ -418,11 +418,10 @@ class EventsPageState extends State<EventsTabs> {
                     ),
 
                     ListTile(
-
                       title: Text('Today', style: TextStyle(
                         fontFamily: 'Raleway',
                         fontWeight: FontWeight.bold,
-                        fontSize: 20.0,)
+                          fontSize: 20.0)
                       ),
                       onTap: () {
                         Navigator.of(context, rootNavigator: true).push(
