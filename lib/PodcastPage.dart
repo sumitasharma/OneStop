@@ -176,7 +176,11 @@ class HomePageState extends State<HomePage> {
                               new Container(
                                 height: 50.0,
                               ),
-
+                              new Divider(height: 20.0, color: Color.fromRGBO(
+                                  128, 0, 128, 50.0)),
+                              new Container(
+                                height: 16.0,
+                              ),
                               new Text(data[index]['feed']["description"],
                                 style: new TextStyle(
                                     fontFamily: 'RobotoMono',

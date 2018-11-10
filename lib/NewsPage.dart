@@ -185,20 +185,28 @@ class HomePageState extends State<HomePage> {
                                       new Container(
                                         height: 16.0,
                                       ),
-                                      data[index]["source"]["name"] == null
-                                          ? new Text("")
-                                          : new Container(
-                                          height: 20.0,
-                                          child: new Text(
-                                              data[index]["source"]["name"],
-                                              style
-                                                  : TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle: FontStyle.italic,
-                                                  color: Colors.blueAccent,
-                                                  fontSize: 20.0
-                                              ),
-                                              textAlign: TextAlign.center)),
+                                      new Divider(
+                                        height: 20.0, color: Colors.blue,),
+                                      Chip(
+//                                  avatar: CircleAvatar(
+//                                    backgroundColor: Colors.grey.shade800,
+//                                  ),
+                                        label: data[index]["source"]["name"] ==
+                                            null
+                                            ? new Text("")
+                                            : new Container(
+                                            height: 20.0,
+                                            child: new Text(
+                                                data[index]["source"]["name"],
+                                                style
+                                                    : TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle: FontStyle.italic,
+                                                    color: Colors.blue,
+                                                    fontSize: 20.0
+                                                ),
+                                                textAlign: TextAlign.center)),
+                                      ),
                                     ],
 
                                   ),
