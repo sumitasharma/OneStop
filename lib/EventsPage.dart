@@ -159,7 +159,7 @@ class HomePageState extends State<HomePage> {
                                     style: new TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontFamily: 'Raleway',
-                                        fontSize: 20.0),),
+                                        fontSize: 24.0),),
 
                                   new Container(
                                     height: 20.0,
@@ -202,7 +202,7 @@ class HomePageState extends State<HomePage> {
                                                         .toString(),
                                                   style: TextStyle(
                                                     fontFamily: 'RobotoMono',
-                                                    fontSize: 20.0,
+                                                      fontSize: 22.0,
                                                       fontWeight: FontWeight
                                                           .bold,
                                                       color: Colors.deepOrange
@@ -253,7 +253,7 @@ class HomePageState extends State<HomePage> {
                                                           .toString()),
                                                   style: TextStyle(
                                                     fontFamily: 'RobotoMono',
-                                                    fontSize: 20.0,
+                                                      fontSize: 22.0,
                                                       fontWeight: FontWeight
                                                           .bold,
                                                       color: Colors.deepOrange

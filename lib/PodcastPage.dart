@@ -125,7 +125,7 @@ class HomePageState extends State<HomePage> {
                                           style: new TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontFamily: 'DancingScriptOt',
-                                            fontSize: 30.0,
+                                            fontSize: 32.0,
                                           ),
                                           softWrap: true,),
                                       ),
@@ -184,7 +184,7 @@ class HomePageState extends State<HomePage> {
                               new Text(data[index]['feed']["description"],
                                 style: new TextStyle(
                                     fontFamily: 'RobotoMono',
-                                    fontSize: 18.0),),
+                                    fontSize: 20.0),),
 
                             ],
 
