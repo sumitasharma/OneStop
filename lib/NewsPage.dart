@@ -195,7 +195,8 @@ class HomePageState extends State<HomePage> {
                                                   : TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontStyle: FontStyle.italic,
-                                                color: Colors.lightGreen,
+                                                  color: Colors.blueAccent,
+                                                  fontSize: 20.0
                                               ),
                                               textAlign: TextAlign.center)),
                                     ],
