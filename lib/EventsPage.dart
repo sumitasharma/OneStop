@@ -164,6 +164,11 @@ class HomePageState extends State<HomePage> {
                                   new Container(
                                     height: 20.0,
                                   ),
+                                  new Divider(height: 20.0,
+                                      color: Color.fromRGBO(205, 92, 92, 50.0)),
+                                  new Container(
+                                    height: 20.0,
+                                  ),
                                   new Row(
                                     crossAxisAlignment: CrossAxisAlignment
                                         .start,
@@ -198,6 +203,9 @@ class HomePageState extends State<HomePage> {
                                                   style: TextStyle(
                                                     fontFamily: 'RobotoMono',
                                                     fontSize: 20.0,
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                      color: Colors.deepOrange
                                                   ),
                                                 ),
                                               ),
@@ -246,6 +254,9 @@ class HomePageState extends State<HomePage> {
                                                   style: TextStyle(
                                                     fontFamily: 'RobotoMono',
                                                     fontSize: 20.0,
+                                                      fontWeight: FontWeight
+                                                          .bold,
+                                                      color: Colors.deepOrange
                                                   ),
                                                 ),
                                               ),
