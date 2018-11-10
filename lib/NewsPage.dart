@@ -165,7 +165,7 @@ class HomePageState extends State<HomePage> {
                                             style: new TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontFamily: 'Raleway',
-                                              fontSize: 25.0,
+                                              fontSize: 24.0,
                                             ),
                                             textAlign: TextAlign.left)),
 
@@ -187,7 +187,9 @@ class HomePageState extends State<HomePage> {
                                     ),
                                     new Divider(
                                       height: 20.0, color: Colors.blue,),
-
+                                    new Container(
+                                      height: 16.0,
+                                    ),
 
                                   ],
 
