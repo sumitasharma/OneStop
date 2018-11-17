@@ -46,7 +46,7 @@ class SearchNewsState extends State<SearchNews> {
 
   bool isInternetConnectivity() {
     var connectivityResult = new Connectivity()
-        .checkConnectivity(); // User defined class
+        .checkConnectivity(); 
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       return true;
