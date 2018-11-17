@@ -145,13 +145,12 @@ class HomePageState extends State<HomePage> {
                                   ),
                                 ),
                                 new Wrap(
-                                  spacing: 4.0,
                                   // gap between adjacent chips
-                                  runSpacing: 4.0,
+                                  spacing: 4.0,
                                   // gap between lines
-                                  direction: Axis.horizontal,
+                                  runSpacing: 4.0,
                                   // main axis (rows or columns)
-
+                                  direction: Axis.horizontal,
                                   children: <Widget>[
 
                                     new Container(
