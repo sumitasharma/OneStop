@@ -25,7 +25,7 @@ It provides an intuitive interface for getting access to all the useful informat
 
 Credits:
    - New API is powered by  - https://newsapi.org 
-   - Events API is powered by - https://www.eventbrite.com
+   - Events API is powered by - https://www.eventbrite.com (Deprecated, Tab no longer works. Will update with a new Events API soon...)
    - Podcasts API is powered by - http://www.digitalpodcast.com
    
 ## Installation
