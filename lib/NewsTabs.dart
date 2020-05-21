@@ -108,7 +108,7 @@ class NewsPageState extends State<NewsTabs> {
                 tabs: <Widget>[
                   new Tab(text: _countryName + "'s Top News"),
                   new Tab(text: "World"),
-                  new Tab(text: "Buisness"),
+                  new Tab(text: "Business"),
                   new Tab(text: "Technology"),
                   new Tab(text: "Entertainment"),
                   new Tab(text: "Sports"),
